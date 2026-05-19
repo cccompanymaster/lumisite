@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주문 완료 — LUMI INTERNATIONAL</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="container" style="padding: 80px 24px;">
+    <div id="orderView" style="max-width: 720px; margin: 0 auto; text-align:center;"></div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/products.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/cart.js"></script>
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const view = document.getElementById('orderView');
+      const order = JSON.parse(sessionStorage.getItem('lumi.lastOrder') || 'null');
+      if (!order) {
+        view.innerHTML = `<div class="empty"><h3>주문 정보가 없습니다.</h3><a class="btn btn-primary" href="/pages/shop.html">SHOP으로 이동</a></div>`;
+        return;
+      }
+      view.innerHTML = `
+        <div style="font-size:60px; margin-bottom:20px;">✓</div>
+        <h1 style="font-family:var(--font-display); letter-spacing:3px; font-size:32px; margin:0 0 12px;">ORDER COMPLETED</h1>
+        <p style="color:var(--color-muted); margin-bottom:30px;">주문이 정상적으로 완료되었습니다. 입력하신 이메일로 주문 내역을 발송해드릴 예정입니다.</p>
+        <div style="background:var(--color-bg-soft); border-radius:8px; padding:28px; text-align:left; margin-bottom:24px;">
+          <div style="display:flex; justify-content:space-between; padding-bottom:14px; border-bottom:1px solid var(--color-line); margin-bottom:14px;">
+            <span style="color:var(--color-muted);">주문 번호</span>
+            <strong>${order.id}</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0;">
+            <span style="color:var(--color-muted);">결제 수단</span>
+            <span>${({card:'신용/체크카드',trans:'실시간 계좌이체',vbank:'무통장 입금',kakaopay:'카카오페이',naverpay:'네이버페이',toss:'토스페이'})[order.payMethod] || order.payMethod}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0;">
+            <span style="color:var(--color-muted);">결제 금액</span>
+            <strong style="color:var(--color-accent); font-size:18px;">${formatPrice(order.totalPaid)}</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0;">
+            <span style="color:var(--color-muted);">받는 분</span>
+            <span>${order.shipTo.name}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0;">
+            <span style="color:var(--color-muted);">배송지</span>
+            <span style="text-align:right;">[${order.shipTo.zip}] ${order.shipTo.addr1} ${order.shipTo.addr2}</span>
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; justify-content:center;">
+          <a class="btn btn-outline" href="/pages/shop.html">계속 쇼핑</a>
+          <a class="btn btn-primary" href="/pages/mypage.html">주문 내역 보기</a>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>

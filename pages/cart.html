@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CART — LUMI INTERNATIONAL</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <div class="page-head">
+    <h1>CART</h1>
+    <p>장바구니에 담긴 상품을 확인하세요</p>
+  </div>
+
+  <main class="container" style="padding: 40px 24px 80px;">
+    <div id="cartView"></div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/products.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/cart.js"></script>
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    function render() {
+      const view = document.getElementById('cartView');
+      const detail = LumiCart.detail();
+      if (detail.length === 0) {
+        view.innerHTML = `
+          <div class="empty">
+            <h3>장바구니가 비어있습니다.</h3>
+            <p>마음에 드는 LUMI 상품을 만나보세요.</p>
+            <a class="btn btn-primary" href="/pages/shop.html">SHOP 둘러보기</a>
+          </div>`;
+        return;
+      }
+      const subtotal = LumiCart.subtotal();
+      const shipping = subtotal >= 50000 ? 0 : 3000;
+      const u = LumiAuth.current();
+      const grade = u ? LumiAuth.gradeOf(u.totalPurchase || 0) : LumiAuth.GRADES[0];
+      const gradeDiscount = Math.floor(subtotal * grade.discount);
+      const total = subtotal - gradeDiscount + shipping;
+
+      view.innerHTML = `
+        <table class="cart-table">
+          <thead><tr><th>상품</th><th style="width:120px;">단가</th><th style="width:120px;">수량</th><th style="width:120px;">소계</th><th style="width:60px;"></th></tr></thead>
+          <tbody>
+            ${detail.map(i => `
+              <tr>
+                <td>
+                  <div class="product-cell">
+                    <img src="${i.product.image}" alt="">
+                    <div class="info">
+                      <div class="name">${i.product.name}</div>
+                      <div class="option">${i.option.name}</div>
+                    </div>
+                  </div>
+                </td>
+                <td>${formatPrice(i.unitPrice)}</td>
+                <td><input type="number" class="qty-input" min="1" data-key="${i.key}" value="${i.qty}"></td>
+                <td><strong>${formatPrice(i.lineTotal)}</strong></td>
+                <td><button class="remove-btn" data-remove="${i.key}">삭제</button></td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+        <div class="cart-summary">
+          <div class="row"><span>상품 합계</span><strong>${formatPrice(subtotal)}</strong></div>
+          ${u ? `<div class="row"><span>회원 등급 할인 (${grade.name} · ${(grade.discount * 100).toFixed(0)}%)</span><strong style="color:var(--color-accent)">-${formatPrice(gradeDiscount)}</strong></div>` : `<div class="row" style="color:var(--color-muted)">회원 등급 할인은 로그인 후 적용됩니다.</div>`}
+          <div class="row"><span>배송비</span><strong>${shipping === 0 ? '무료' : formatPrice(shipping)}</strong></div>
+          <div class="row total"><span>총 결제 예정 금액</span><span class="v">${formatPrice(total)}</span></div>
+          <div style="display:flex; gap:10px; margin-top:16px;">
+            <a class="btn btn-outline" href="/pages/shop.html" style="flex:1;">계속 쇼핑</a>
+            <a class="btn btn-primary" href="/pages/checkout.html" style="flex:2;">결제하기</a>
+          </div>
+        </div>
+      `;
+
+      view.querySelectorAll('.qty-input').forEach(inp => {
+        inp.addEventListener('change', e => {
+          LumiCart.setQty(e.target.dataset.key, parseInt(e.target.value) || 1);
+          render();
+        });
+      });
+      view.querySelectorAll('[data-remove]').forEach(btn => {
+        btn.addEventListener('click', e => {
+          LumiCart.remove(e.target.dataset.remove);
+          render();
+        });
+      });
+    }
+    document.addEventListener('DOMContentLoaded', render);
+  </script>
+</body>
+</html>

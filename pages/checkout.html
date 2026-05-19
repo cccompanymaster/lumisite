@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHECKOUT — LUMI INTERNATIONAL</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <div class="page-head">
+    <h1>CHECKOUT</h1>
+    <p>주문 정보를 확인하고 결제를 진행하세요</p>
+  </div>
+
+  <main class="container">
+    <div id="checkoutView"></div>
+  </main>
+
+  <div class="modal-back" id="payProcessModal">
+    <div class="modal">
+      <h3>결제 진행 중</h3>
+      <p>본 결제 창은 결제완료 후 자동으로 닫힙니다.<br>잠시만 기다려주세요…</p>
+      <div style="height:4px; background:#eee; border-radius:2px; overflow:hidden;">
+        <div id="payBar" style="height:100%; width:0; background:var(--color-accent); transition: width 1.6s ease;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/products.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/cart.js"></script>
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    let selectedPayMethod = 'card';
+    let usedPoints = 0;
+
+    function render() {
+      const view = document.getElementById('checkoutView');
+      const detail = LumiCart.detail();
+      if (detail.length === 0) {
+        view.innerHTML = `<div class="empty"><h3>장바구니가 비어있습니다.</h3><a class="btn btn-primary" href="/pages/shop.html">SHOP 둘러보기</a></div>`;
+        return;
+      }
+      const u = LumiAuth.current();
+      const subtotal = LumiCart.subtotal();
+      const shipping = subtotal >= 50000 ? 0 : 3000;
+      const grade = u ? LumiAuth.gradeOf(u.totalPurchase || 0) : LumiAuth.GRADES[0];
+      const gradeDiscount = u ? Math.floor(subtotal * grade.discount) : 0;
+      const pointBalance = u ? (u.points || 0) : 0;
+      const total = subtotal - gradeDiscount + shipping - usedPoints;
+
+      view.innerHTML = `
+        <div class="checkout-grid">
+          <div>
+            <div class="checkout-section">
+              <h3>주문자 정보</h3>
+              ${u ? `
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                  <div class="form-row"><label>이름</label><input type="text" id="orderName" value="${u.name || ''}"></div>
+                  <div class="form-row"><label>연락처</label><input type="tel" id="orderPhone" value="${u.phone || ''}"></div>
+                  <div class="form-row" style="grid-column:1/-1;"><label>이메일</label><input type="email" id="orderEmail" value="${u.email}" readonly></div>
+                </div>
+              ` : `
+                <div style="background:#fff8e6; padding:14px; border-radius:6px; font-size:13px; margin-bottom:14px;">
+                  로그인 시 적립금/등급 할인이 적용됩니다. <a href="/pages/login.html" style="font-weight:700; color:var(--color-accent)">로그인 →</a>
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                  <div class="form-row"><label>이름 *</label><input type="text" id="orderName" required></div>
+                  <div class="form-row"><label>연락처 *</label><input type="tel" id="orderPhone" required></div>
+                  <div class="form-row" style="grid-column:1/-1;"><label>이메일 *</label><input type="email" id="orderEmail" required></div>
+                </div>
+              `}
+            </div>
+
+            <div class="checkout-section">
+              <h3>배송지</h3>
+              <div class="form-row"><label>받는 분 *</label><input type="text" id="rcvName" value="${u?.name || ''}"></div>
+              <div style="display:grid; grid-template-columns: 1fr 3fr; gap:12px;">
+                <div class="form-row"><label>우편번호 *</label><input type="text" id="rcvZip" placeholder="우편번호"></div>
+                <div class="form-row"><label>주소 *</label><input type="text" id="rcvAddr1" placeholder="기본주소"></div>
+              </div>
+              <div class="form-row"><label>상세주소</label><input type="text" id="rcvAddr2" placeholder="상세주소"></div>
+              <div class="form-row"><label>배송 요청사항</label>
+                <select id="rcvMemo">
+                  <option>배송 전 연락 바랍니다.</option>
+                  <option>부재 시 경비실에 맡겨주세요.</option>
+                  <option>부재 시 문 앞에 놓아주세요.</option>
+                </select>
+              </div>
+            </div>
+
+            ${u ? `
+              <div class="checkout-section">
+                <h3>적립금 사용</h3>
+                <div style="display:flex; gap:8px; align-items:end;">
+                  <div class="form-row" style="flex:1; margin:0;">
+                    <label>사용 적립금 (보유: ${formatPrice(pointBalance)})</label>
+                    <input type="number" id="usePoint" min="0" max="${pointBalance}" value="${usedPoints}">
+                  </div>
+                  <button class="btn btn-outline" id="useAllPoint" style="padding:10px 16px;">전액 사용</button>
+                </div>
+                <p style="font-size:11px; color:var(--color-muted); margin-top:6px;">최소 5,000원 이상 보유 시 사용 가능 · 결제금액 한도</p>
+              </div>
+            ` : ''}
+
+            <div class="checkout-section">
+              <h3>결제 수단</h3>
+              <div class="pay-methods">
+                <div class="pay-method ${selectedPayMethod==='card'?'active':''}" data-pm="card">신용/체크카드</div>
+                <div class="pay-method ${selectedPayMethod==='trans'?'active':''}" data-pm="trans">실시간 계좌이체</div>
+                <div class="pay-method ${selectedPayMethod==='vbank'?'active':''}" data-pm="vbank">무통장 입금</div>
+                <div class="pay-method ${selectedPayMethod==='kakaopay'?'active':''}" data-pm="kakaopay">카카오페이</div>
+                <div class="pay-method ${selectedPayMethod==='naverpay'?'active':''}" data-pm="naverpay">네이버페이</div>
+                <div class="pay-method ${selectedPayMethod==='toss'?'active':''}" data-pm="toss">토스페이</div>
+              </div>
+            </div>
+
+            <div class="form-row check" style="padding:0 4px;">
+              <input type="checkbox" id="agree">
+              <label for="agree" style="margin:0; font-size:13px; color:var(--color-text);">주문 내용을 확인하였으며, 구매 약관 및 결제에 동의합니다. (필수)</label>
+            </div>
+          </div>
+
+          <aside>
+            <div class="order-summary-card">
+              <h3>주문 요약</h3>
+              <div class="order-items">
+                ${detail.map(i => `
+                  <div class="item">
+                    <img src="${i.product.image}" alt="">
+                    <div class="info">
+                      <div style="font-weight:600;">${i.product.name}</div>
+                      <div style="color:var(--color-muted)">${i.option.name} · ${i.qty}개</div>
+                    </div>
+                    <div><strong>${formatPrice(i.lineTotal)}</strong></div>
+                  </div>
+                `).join('')}
+              </div>
+              <div class="line"><span>상품 합계</span><span>${formatPrice(subtotal)}</span></div>
+              ${u ? `<div class="line"><span>등급 할인 (${grade.name})</span><span style="color:var(--color-accent)">-${formatPrice(gradeDiscount)}</span></div>` : ''}
+              ${usedPoints > 0 ? `<div class="line"><span>적립금 사용</span><span style="color:var(--color-accent)">-${formatPrice(usedPoints)}</span></div>` : ''}
+              <div class="line"><span>배송비</span><span>${shipping === 0 ? '무료' : formatPrice(shipping)}</span></div>
+              <div class="line total"><span>총 결제 금액</span><span class="v">${formatPrice(total)}</span></div>
+              <button class="btn btn-primary btn-block" id="payBtn" style="margin-top:18px;">${formatPrice(total)} 결제하기</button>
+              ${u ? `<p style="font-size:11px; color:var(--color-muted); text-align:center; margin-top:10px;">결제 완료 시 ${formatPrice(Math.floor(total * 0.01))} 적립 예정</p>` : ''}
+            </div>
+          </aside>
+        </div>
+      `;
+
+      view.querySelectorAll('.pay-method').forEach(el => {
+        el.addEventListener('click', () => {
+          selectedPayMethod = el.dataset.pm;
+          render();
+        });
+      });
+
+      const upEl = document.getElementById('usePoint');
+      if (upEl) {
+        upEl.addEventListener('change', () => {
+          let v = parseInt(upEl.value) || 0;
+          if (v < 0) v = 0;
+          if (v > pointBalance) v = pointBalance;
+          if (v > (subtotal - gradeDiscount + shipping)) v = subtotal - gradeDiscount + shipping;
+          if (v > 0 && pointBalance < 5000) {
+            alert('적립금은 5,000원 이상 보유 시 사용 가능합니다.');
+            v = 0;
+          }
+          usedPoints = v;
+          render();
+        });
+        document.getElementById('useAllPoint').onclick = () => {
+          if (pointBalance < 5000) {
+            alert('적립금은 5,000원 이상 보유 시 사용 가능합니다.');
+            return;
+          }
+          usedPoints = Math.min(pointBalance, subtotal - gradeDiscount + shipping);
+          render();
+        };
+      }
+
+      document.getElementById('payBtn').addEventListener('click', () => {
+        const required = ['orderName', 'orderPhone', 'orderEmail', 'rcvName', 'rcvZip', 'rcvAddr1'];
+        for (const id of required) {
+          const el = document.getElementById(id);
+          if (!el.value.trim()) {
+            alert('필수 항목을 모두 입력해주세요.');
+            el.focus();
+            return;
+          }
+        }
+        if (!document.getElementById('agree').checked) {
+          alert('약관 동의가 필요합니다.');
+          return;
+        }
+        // 결제 시뮬레이션
+        const modal = document.getElementById('payProcessModal');
+        modal.classList.add('show');
+        setTimeout(() => { document.getElementById('payBar').style.width = '100%'; }, 50);
+        setTimeout(() => {
+          const order = {
+            id: 'LUMI-' + Date.now(),
+            createdAt: new Date().toISOString(),
+            items: detail.map(i => ({
+              productId: i.productId, productName: i.product.name,
+              option: i.option.name, qty: i.qty, unitPrice: i.unitPrice, lineTotal: i.lineTotal,
+              image: i.product.image
+            })),
+            subtotal, shipping, gradeDiscount, usedPoints, totalPaid: total,
+            payMethod: selectedPayMethod,
+            shipTo: {
+              name: document.getElementById('rcvName').value,
+              zip: document.getElementById('rcvZip').value,
+              addr1: document.getElementById('rcvAddr1').value,
+              addr2: document.getElementById('rcvAddr2').value,
+              memo: document.getElementById('rcvMemo').value
+            },
+            status: 'paid'
+          };
+          if (u) LumiAuth.addOrder(order);
+          LumiCart.clear();
+          sessionStorage.setItem('lumi.lastOrder', JSON.stringify(order));
+          location.href = '/pages/order-complete.html';
+        }, 1800);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', render);
+  </script>
+</body>
+</html>

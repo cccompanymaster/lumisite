@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP LOUNGE — LUMI INTERNATIONAL</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="membership-hero">
+    <h1>VIP LOUNGE</h1>
+    <p>LUMI 회원만을 위한 다섯 가지 단계의 특별한 혜택</p>
+  </section>
+
+  <main class="container">
+    <div class="tier-grid" id="tierGrid"></div>
+
+    <section style="padding: 60px 0; border-top: 1px solid var(--color-line);">
+      <h2 style="text-align:center; font-family:var(--font-display); letter-spacing:3px; font-size:24px; margin:0 0 40px;">MEMBERSHIP BENEFITS</h2>
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 960px; margin: 0 auto;">
+        <div style="text-align:center;">
+          <div style="font-size:36px; margin-bottom:14px;">🎁</div>
+          <h3 style="font-size:16px; margin:0 0 8px;">가입 즉시 적립금</h3>
+          <p style="color:var(--color-muted); font-size:13px; line-height:1.7;">신규 가입 시 15,000원 즉시 적립</p>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:36px; margin-bottom:14px;">🚚</div>
+          <h3 style="font-size:16px; margin:0 0 8px;">무료 배송</h3>
+          <p style="color:var(--color-muted); font-size:13px; line-height:1.7;">5만원 이상 구매 시 전 등급 무료 배송</p>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:36px; margin-bottom:14px;">💎</div>
+          <h3 style="font-size:16px; margin:0 0 8px;">생일 쿠폰</h3>
+          <p style="color:var(--color-muted); font-size:13px; line-height:1.7;">생일 월 10% 할인 쿠폰 자동 발송</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 60px 0; background: var(--color-bg-soft); margin: 0 -24px;">
+      <div style="max-width: 720px; margin: 0 auto; text-align:center; padding: 0 24px;">
+        <h2 style="font-family:var(--font-display); letter-spacing:3px; font-size:24px; margin:0 0 16px;">JOIN LUMI</h2>
+        <p style="color:var(--color-muted); margin-bottom:28px;">지금 회원가입하고 LUMI의 특별한 혜택을 누려보세요.</p>
+        <a class="btn btn-primary" href="/pages/signup.html" id="ctaSignup">회원가입하기</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/products.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/cart.js"></script>
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const u = LumiAuth.current();
+      const curId = u ? LumiAuth.gradeOf(u.totalPurchase || 0).id : null;
+      document.getElementById('tierGrid').innerHTML = LumiAuth.GRADES.map(g => `
+        <div class="tier-card" ${curId === g.id ? 'style="border-color:'+g.color+'; box-shadow:0 4px 20px rgba(0,0,0,0.05);"' : ''}>
+          <div class="tier-name" style="background:${g.color}">${g.name}</div>
+          <div class="tier-min">${g.desc}</div>
+          <div class="tier-benefits">
+            구매 할인 <strong>${(g.discount * 100).toFixed(0)}%</strong><br>
+            적립 <strong>1%</strong><br>
+            ${g.id === 'vip' || g.id === 'vvip' ? '시즌 이벤트 우선 안내<br>VIP 한정 굿즈 증정' : '신상품 사전 알림'}
+          </div>
+        </div>
+      `).join('');
+
+      if (u) document.getElementById('ctaSignup').outerHTML = `<a class="btn btn-primary" href="/pages/mypage.html">마이페이지로 이동</a>`;
+    });
+  </script>
+</body>
+</html>

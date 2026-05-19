@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHOP — LUMI INTERNATIONAL</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .category-tabs { display: flex; justify-content: center; gap: 8px; margin: 32px 0 48px; flex-wrap: wrap; }
+    .category-tabs a { padding: 10px 22px; border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--color-muted); border: 1px solid var(--color-line); }
+    .category-tabs a.active { background: var(--color-primary); color: #fff; border-color: var(--color-primary); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <div class="page-head">
+    <h1>SHOP</h1>
+    <p>LUMI 시그니처 컬렉션을 만나보세요</p>
+  </div>
+
+  <main class="container" style="padding: 24px;">
+    <nav class="category-tabs" id="categoryTabs"></nav>
+    <div class="product-grid" data-product-grid data-filter="all" id="shopGrid"></div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/products.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/cart.js"></script>
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(location.search);
+      const current = params.get('cat') || 'all';
+      const tabs = document.getElementById('categoryTabs');
+      const grid = document.getElementById('shopGrid');
+
+      tabs.innerHTML = LUMI_CATEGORIES.map(c =>
+        `<a href="?cat=${c.id}" class="${c.id === current ? 'active' : ''}">${c.name}</a>`
+      ).join('');
+
+      grid.dataset.filter = current;
+      let items = LUMI_PRODUCTS.slice();
+      if (current === 'best') items = items.filter(p => p.tags.includes('BEST'));
+      else if (current === 'new') items = items.filter(p => p.tags.includes('NEW'));
+      else if (current === 'set') items = items.filter(p => p.tags.includes('SET'));
+      else if (current !== 'all') items = items.filter(p => p.category === current);
+      grid.innerHTML = items.map(productCardHTML).join('');
+    });
+  </script>
+</body>
+</html>
