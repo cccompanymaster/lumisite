@@ -786,6 +786,91 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
   .hero-product h2 { font-size: 64px; }
 }
 
+/* ============ PDLLA SPOTLIGHT ============ */
+.pdlla-spotlight {
+  background: #0a0a0d; color: #fff;
+  padding: 90px 0;
+  position: relative; overflow: hidden;
+}
+.pdlla-spotlight::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 30%, rgba(184,107,107,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(139,58,58,0.10) 0%, transparent 50%);
+  pointer-events: none;
+}
+.pdlla-spotlight .container { position: relative; z-index: 1; }
+.pdlla-spotlight .mono-mark {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 80px; letter-spacing: 14px;
+  color: rgba(184,107,107,0.18);
+  position: absolute; top: 50%; right: -30px; transform: translateY(-50%);
+  white-space: nowrap; line-height: 1; pointer-events: none;
+  user-select: none;
+}
+.pdlla-spotlight-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; position: relative; z-index: 1; }
+.pdlla-spotlight .eyebrow {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 6px;
+  text-transform: uppercase; color: var(--c-gold-soft);
+  margin-bottom: 22px; display: inline-flex; align-items: center; gap: 14px;
+}
+.pdlla-spotlight .eyebrow::before {
+  content: ''; display: inline-block; width: 36px; height: 1px; background: var(--c-gold-soft);
+}
+.pdlla-spotlight h2 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: 42px; letter-spacing: -0.5px; line-height: 1.15;
+  margin: 0 0 30px;
+}
+.pdlla-spotlight h2 em { font-style: italic; color: var(--c-gold-soft); }
+.pdlla-spotlight p {
+  color: rgba(255,255,255,0.78); font-size: 15px; line-height: 1.95;
+  margin: 0 0 20px; font-weight: 300; max-width: 540px;
+}
+.pdlla-spotlight p:last-of-type { margin-bottom: 36px; }
+.pdlla-spotlight .visual {
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, #1a1318 0%, #0a0a0d 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.pdlla-spotlight .visual img {
+  max-width: 70%; max-height: 80%; object-fit: contain;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6));
+}
+.pdlla-spotlight .visual::after {
+  content: 'PDLLA'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display); font-style: italic;
+  font-size: 90px; letter-spacing: 10px;
+  color: rgba(255,255,255,0.04); pointer-events: none;
+  white-space: nowrap;
+}
+.pdlla-spotlight .key-points {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.pdlla-spotlight .key-points .item .num {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 28px; color: var(--c-gold-soft); display: block; margin-bottom: 4px;
+}
+.pdlla-spotlight .key-points .item .lbl {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
+  color: rgba(255,255,255,0.55); text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .pdlla-spotlight { padding: 120px 0; }
+  .pdlla-spotlight-grid { grid-template-columns: 1fr 1fr; gap: 70px; }
+  .pdlla-spotlight h2 { font-size: 58px; }
+  .pdlla-spotlight .visual::after { font-size: 140px; }
+}
+@media (min-width: 1024px) {
+  .pdlla-spotlight { padding: 150px 0; }
+  .pdlla-spotlight h2 { font-size: 72px; }
+  .pdlla-spotlight .visual::after { font-size: 200px; }
+}
+
 /* ============ EMPTY / MODAL ============ */
 .empty { padding: 80px 24px; text-align: center; color: var(--c-muted); }
 .empty h3 { font-family: var(--font-display); font-size: 24px; color: var(--c-ink); margin: 0 0 12px; font-weight: 500; }
