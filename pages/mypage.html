@@ -3,14 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#faf7f2">
   <title>마이페이지 — LUMI INTERNATIONAL</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231a1d24'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='52' fill='%23c8a987'%3EL%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+  <div class="preloader">
+    <div class="logo-mark">L U M I</div>
+    <div class="small">INTERNATIONAL</div>
+    <div class="bar"></div>
+  </div>
+
   <div id="site-header"></div>
+
+  <div class="page-head">
+    <span class="eyebrow">MY ACCOUNT</span>
+    <h1>My Page</h1>
+  </div>
 
   <main class="container">
     <div id="mypageView"></div>
@@ -18,17 +31,17 @@
 
   <div id="site-footer"></div>
 
-  <script src="/assets/js/products.js"></script>
-  <script src="/assets/js/auth.js"></script>
-  <script src="/assets/js/cart.js"></script>
-  <script src="/assets/js/layout.js"></script>
-  <script src="/assets/js/main.js"></script>
+  <script src="../assets/js/products.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const u = LumiAuth.current();
       const view = document.getElementById('mypageView');
       if (!u) {
-        view.innerHTML = `<div class="empty"><h3>로그인이 필요합니다.</h3><a class="btn btn-primary" href="/pages/login.html?next=/pages/mypage.html">로그인하기</a></div>`;
+        view.innerHTML = `<div class="empty"><h3>로그인이 필요합니다.</h3><a class="btn btn-primary" href="login.html?next=mypage.html">로그인하기</a></div>`;
         return;
       }
       const total = u.totalPurchase || 0;
@@ -41,39 +54,38 @@
         <div class="mypage">
           <aside class="mypage-side">
             <div class="user">
-              <div class="name">${u.name}님</div>
-              <div class="grade"><span class="grade-pill" style="background:${g.color}">${g.name}</span></div>
+              <div class="name">${u.name}</div>
+              <div><span class="grade-pill" style="background:${g.color}">${g.name}</span></div>
             </div>
             <ul>
               <li><a href="#overview" class="active">대시보드</a></li>
               <li><a href="#orders">주문 내역</a></li>
-              <li><a href="#grade">등급 / 혜택</a></li>
-              <li><a href="#profile">회원 정보</a></li>
+              <li><a href="#grade">등급 · 혜택</a></li>
             </ul>
           </aside>
 
           <section class="mypage-main">
-            <h2>안녕하세요, ${u.name}님 👋</h2>
+            <h2>안녕하세요, ${u.name}님</h2>
 
             <div class="stat-grid">
               <div class="stat-card">
                 <div class="label">현재 등급</div>
-                <div class="value"><span class="grade-pill" style="background:${g.color}; font-size:14px;">${g.name}</span></div>
+                <div class="value"><span class="grade-pill" style="background:${g.color}; font-size:13px;">${g.name}</span></div>
                 <div class="sub">${g.desc}</div>
               </div>
               <div class="stat-card">
                 <div class="label">누적 구매</div>
                 <div class="value">${formatPrice(total)}</div>
-                <div class="sub">${next ? `다음 ${next.name}까지 ${formatPrice(toNext)}` : '최고 등급 달성! 🎉'}</div>
+                <div class="sub">${next ? `다음 ${next.name}까지 ${formatPrice(toNext)}` : '최고 등급 달성'}</div>
               </div>
               <div class="stat-card">
                 <div class="label">사용 가능 적립금</div>
-                <div class="value" style="color:var(--color-accent);">${formatPrice(u.points || 0)}</div>
+                <div class="value" style="color:var(--c-gold);">${formatPrice(u.points || 0)}</div>
                 <div class="sub">5,000원 이상 보유 시 사용 가능</div>
               </div>
             </div>
 
-            <h3 id="orders" style="font-size:18px; margin:36px 0 16px;">주문 내역</h3>
+            <h3 id="orders" style="font-family:var(--font-display); font-size:24px; margin:36px 0 18px;">주문 내역</h3>
             ${(u.orders && u.orders.length > 0) ? `
               <table class="cart-table">
                 <thead><tr><th>주문번호</th><th>주문일</th><th>상품</th><th>결제금액</th><th>상태</th></tr></thead>
@@ -84,14 +96,14 @@
                       <td>${new Date(o.createdAt).toLocaleDateString('ko-KR')}</td>
                       <td>${o.items[0].productName}${o.items.length > 1 ? ` 외 ${o.items.length - 1}건` : ''}</td>
                       <td><strong>${formatPrice(o.totalPaid)}</strong></td>
-                      <td><span class="tag" style="background:#22c55e;">결제완료</span></td>
+                      <td><span class="tag" style="background:#22c55e; color:#fff; padding:4px 8px; font-family:var(--font-mono); font-size:9px; letter-spacing:1.5px; text-transform:uppercase;">결제완료</span></td>
                     </tr>
                   `).join('')}
                 </tbody>
               </table>
-            ` : `<p style="color:var(--color-muted); padding:24px; text-align:center; background:var(--color-bg-soft); border-radius:6px;">주문 내역이 없습니다.</p>`}
+            ` : `<p style="color:var(--c-muted); padding:32px 20px; text-align:center; background:var(--c-bg-alt);">주문 내역이 없습니다.</p>`}
 
-            <h3 id="grade" style="font-size:18px; margin:36px 0 16px;">회원 등급 안내</h3>
+            <h3 id="grade" style="font-family:var(--font-display); font-size:24px; margin:36px 0 18px;">회원 등급 안내</h3>
             <table class="grade-table">
               <thead><tr><th>등급</th><th>조건</th><th>구매 할인</th><th>적립</th></tr></thead>
               <tbody>

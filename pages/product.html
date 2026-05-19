@@ -3,13 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#faf7f2">
   <title>PRODUCT — LUMI INTERNATIONAL</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231a1d24'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='52' fill='%23c8a987'%3EL%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+  <div class="preloader">
+    <div class="logo-mark">L U M I</div>
+    <div class="small">INTERNATIONAL</div>
+    <div class="bar"></div>
+  </div>
+
   <div id="site-header"></div>
   <main class="container" id="productView"></main>
 
@@ -31,16 +39,16 @@
       <p>지금 결제하시거나 계속 쇼핑하실 수 있습니다.</p>
       <div class="actions">
         <a class="btn btn-outline" href="#" id="modalContinue">계속 쇼핑</a>
-        <a class="btn btn-primary" href="/pages/cart.html">장바구니 보기</a>
+        <a class="btn btn-primary" href="cart.html">장바구니 보기</a>
       </div>
     </div>
   </div>
 
-  <script src="/assets/js/products.js"></script>
-  <script src="/assets/js/auth.js"></script>
-  <script src="/assets/js/cart.js"></script>
-  <script src="/assets/js/layout.js"></script>
-  <script src="/assets/js/main.js"></script>
+  <script src="../assets/js/products.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(location.search);
@@ -48,7 +56,7 @@
       const p = LUMI_PRODUCTS.find(x => x.id === id);
       const view = document.getElementById('productView');
       if (!p) {
-        view.innerHTML = `<div class="empty"><h3>상품을 찾을 수 없습니다.</h3><a class="btn btn-primary" href="/pages/shop.html">SHOP으로 돌아가기</a></div>`;
+        view.innerHTML = `<div class="empty"><h3>상품을 찾을 수 없습니다.</h3><a class="btn btn-primary" href="shop.html">SHOP으로 돌아가기</a></div>`;
         return;
       }
       const off = Math.round((1 - p.salePrice / p.price) * 100);
@@ -58,13 +66,13 @@
       }).join('');
 
       view.innerHTML = `
-        <p class="breadcrumb" style="padding:32px 0 0;"><a href="/">HOME</a> · <a href="/pages/shop.html">SHOP</a> · ${p.nameKo || p.name}</p>
+        <p class="breadcrumb" style="padding:24px 0 0;"><a href="../index.html">HOME</a> · <a href="shop.html">SHOP</a> · ${p.nameKo || p.name}</p>
         <div class="product-detail">
           <div class="main-img"><img src="${p.image}" alt="${p.name}"></div>
           <div class="info-side">
             <div class="cat-label">${p.cat_label || ''}</div>
             <div class="tags">${tagHTML}</div>
-            <h1>${p.name}<br><span style="font-size:18px; color:var(--c-muted); font-style:italic;">${p.nameKo || ''}${p.size ? ' · ' + p.size : ''}</span></h1>
+            <h1>${p.name}<span class="sub">${p.nameKo || ''}${p.size ? ' · ' + p.size : ''}</span></h1>
             <p class="desc">${p.desc}</p>
             <div class="price-block">
               <span class="original">${formatPrice(p.price)}</span>
@@ -89,7 +97,7 @@
           </div>
         </div>
         <div class="detail-body">
-          <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:5px; color:var(--c-gold); text-transform:uppercase; display:block; text-align:center; margin-bottom:14px;">PRODUCT DETAIL</span>
+          <span style="font-family:var(--font-mono); font-size:10px; letter-spacing:4px; color:var(--c-gold); text-transform:uppercase; display:block; text-align:center; margin-bottom:14px;">PRODUCT DETAIL</span>
           <h3>${p.name}</h3>
           <p>${p.detail}</p>
         </div>
@@ -99,21 +107,10 @@
       document.getElementById('qtyMinus').onclick = () => { qty.value = Math.max(1, +qty.value - 1); };
       document.getElementById('qtyPlus').onclick = () => { qty.value = +qty.value + 1; };
 
-      function addItem() {
-        LumiCart.add(p.id, +document.getElementById('optSelect').value, +qty.value);
-      }
-      document.getElementById('addToCart').onclick = () => {
-        addItem();
-        document.getElementById('addedModal').classList.add('show');
-      };
-      document.getElementById('buyNow').onclick = () => {
-        addItem();
-        location.href = '/pages/checkout.html';
-      };
-      document.getElementById('modalContinue').onclick = (e) => {
-        e.preventDefault();
-        document.getElementById('addedModal').classList.remove('show');
-      };
+      function addItem() { LumiCart.add(p.id, +document.getElementById('optSelect').value, +qty.value); }
+      document.getElementById('addToCart').onclick = () => { addItem(); document.getElementById('addedModal').classList.add('show'); };
+      document.getElementById('buyNow').onclick = () => { addItem(); location.href = 'checkout.html'; };
+      document.getElementById('modalContinue').onclick = (e) => { e.preventDefault(); document.getElementById('addedModal').classList.remove('show'); };
     });
   </script>
 </body>

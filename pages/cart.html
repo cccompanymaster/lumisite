@@ -3,31 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#faf7f2">
   <title>CART — LUMI INTERNATIONAL</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231a1d24'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='52' fill='%23c8a987'%3EL%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+  <div class="preloader">
+    <div class="logo-mark">L U M I</div>
+    <div class="small">INTERNATIONAL</div>
+    <div class="bar"></div>
+  </div>
+
   <div id="site-header"></div>
 
   <div class="page-head">
-    <h1>CART</h1>
+    <span class="eyebrow">YOUR ORDER</span>
+    <h1>Cart</h1>
     <p>장바구니에 담긴 상품을 확인하세요</p>
   </div>
 
-  <main class="container" style="padding: 40px 24px 80px;">
+  <main class="container" style="padding-top: 32px; padding-bottom: 70px;">
     <div id="cartView"></div>
   </main>
 
   <div id="site-footer"></div>
 
-  <script src="/assets/js/products.js"></script>
-  <script src="/assets/js/auth.js"></script>
-  <script src="/assets/js/cart.js"></script>
-  <script src="/assets/js/layout.js"></script>
-  <script src="/assets/js/main.js"></script>
+  <script src="../assets/js/products.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/main.js"></script>
   <script>
     function render() {
       const view = document.getElementById('cartView');
@@ -37,7 +46,7 @@
           <div class="empty">
             <h3>장바구니가 비어있습니다.</h3>
             <p>마음에 드는 LUMI 상품을 만나보세요.</p>
-            <a class="btn btn-primary" href="/pages/shop.html">SHOP 둘러보기</a>
+            <a class="btn btn-primary" href="shop.html">SHOP 둘러보기</a>
           </div>`;
         return;
       }
@@ -45,7 +54,7 @@
       const shipping = subtotal >= 50000 ? 0 : 3000;
       const u = LumiAuth.current();
       const grade = u ? LumiAuth.gradeOf(u.totalPurchase || 0) : LumiAuth.GRADES[0];
-      const gradeDiscount = Math.floor(subtotal * grade.discount);
+      const gradeDiscount = u ? Math.floor(subtotal * grade.discount) : 0;
       const total = subtotal - gradeDiscount + shipping;
 
       view.innerHTML = `
@@ -54,31 +63,34 @@
           <tbody>
             ${detail.map(i => `
               <tr>
-                <td>
+                <td class="product-col">
                   <div class="product-cell">
                     <img src="${i.product.image}" alt="">
                     <div class="info">
                       <div class="name">${i.product.name}</div>
                       <div class="option">${i.option.name}</div>
+                      <div class="price">${formatPrice(i.unitPrice)}</div>
                     </div>
                   </div>
                 </td>
-                <td>${formatPrice(i.unitPrice)}</td>
-                <td><input type="number" class="qty-input" min="1" data-key="${i.key}" value="${i.qty}"></td>
-                <td><strong>${formatPrice(i.lineTotal)}</strong></td>
-                <td><button class="remove-btn" data-remove="${i.key}">삭제</button></td>
+                <td class="hide-mobile">${formatPrice(i.unitPrice)}</td>
+                <td class="cart-controls">
+                  <input type="number" class="qty-input" min="1" data-key="${i.key}" value="${i.qty}">
+                  <strong>${formatPrice(i.lineTotal)}</strong>
+                  <button class="remove-btn" data-remove="${i.key}">삭제</button>
+                </td>
               </tr>
             `).join('')}
           </tbody>
         </table>
         <div class="cart-summary">
           <div class="row"><span>상품 합계</span><strong>${formatPrice(subtotal)}</strong></div>
-          ${u ? `<div class="row"><span>회원 등급 할인 (${grade.name} · ${(grade.discount * 100).toFixed(0)}%)</span><strong style="color:var(--color-accent)">-${formatPrice(gradeDiscount)}</strong></div>` : `<div class="row" style="color:var(--color-muted)">회원 등급 할인은 로그인 후 적용됩니다.</div>`}
+          ${u ? `<div class="row"><span>회원 등급 (${grade.name}) 할인 ${(grade.discount * 100).toFixed(0)}%</span><strong style="color:var(--c-gold)">-${formatPrice(gradeDiscount)}</strong></div>` : `<div class="row" style="color:var(--c-muted); font-size:12px;">로그인 시 등급 할인 자동 적용</div>`}
           <div class="row"><span>배송비</span><strong>${shipping === 0 ? '무료' : formatPrice(shipping)}</strong></div>
-          <div class="row total"><span>총 결제 예정 금액</span><span class="v">${formatPrice(total)}</span></div>
-          <div style="display:flex; gap:10px; margin-top:16px;">
-            <a class="btn btn-outline" href="/pages/shop.html" style="flex:1;">계속 쇼핑</a>
-            <a class="btn btn-primary" href="/pages/checkout.html" style="flex:2;">결제하기</a>
+          <div class="row total"><span>총 결제 예정</span><span class="v">${formatPrice(total)}</span></div>
+          <div class="actions">
+            <a class="btn btn-outline" href="shop.html">계속 쇼핑</a>
+            <a class="btn btn-primary" href="checkout.html">결제하기</a>
           </div>
         </div>
       `;

@@ -3,35 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#faf7f2">
   <title>Brand Story — LUMI INTERNATIONAL</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231a1d24'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='52' fill='%23c8a987'%3EL%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
   <style>
-    .brand-hero { background: linear-gradient(180deg, #0a0c12 0%, #14171e 100%); color: #fff; padding: 180px 0 140px; text-align: center; position: relative; overflow: hidden; }
-    .brand-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(169,140,92,0.18) 0%, transparent 60%); }
+    .brand-hero { background: linear-gradient(180deg, #0a0c12 0%, #14171e 100%); color: #fff; padding: 120px 0 100px; text-align: center; position: relative; overflow: hidden; }
+    .brand-hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at center, rgba(169,140,92,0.18) 0%, transparent 60%); }
     .brand-hero .container { position: relative; z-index: 1; }
-    .brand-hero .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 8px; color: var(--c-gold-soft); margin-bottom: 24px; display: block; }
-    .brand-hero h1 { font-family: var(--font-display); font-size: 96px; letter-spacing: -1px; margin: 0 0 28px; font-weight: 400; font-style: italic; line-height: 1; }
-    .brand-hero p { font-size: 17px; opacity: 0.78; max-width: 620px; margin: 0 auto; line-height: 1.9; font-weight: 300; }
-    .quote-section { padding: 140px 0; text-align: center; background: var(--c-bg-alt); }
-    .quote-section blockquote { font-family: var(--font-display); font-size: 38px; line-height: 1.45; max-width: 880px; margin: 0 auto; font-style: italic; font-weight: 400; color: var(--c-ink); }
-    .quote-section cite { display: block; margin-top: 36px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 4px; color: var(--c-muted); text-transform: uppercase; font-style: normal; }
-    .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; padding: 0 32px; }
-    .value-card { text-align: center; padding: 40px 24px; }
-    .value-card .num { font-family: var(--font-display); font-style: italic; font-size: 48px; color: var(--c-gold); margin-bottom: 16px; }
-    .value-card h4 { font-family: var(--font-display); font-size: 24px; margin: 0 0 14px; font-weight: 500; }
+    .brand-hero .eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: 6px; color: var(--c-gold-soft); margin-bottom: 18px; display: block; }
+    .brand-hero h1 { font-family: var(--font-display); font-size: 60px; letter-spacing: -0.5px; margin: 0 0 22px; font-weight: 400; font-style: italic; line-height: 1; }
+    .brand-hero p { font-size: 14px; opacity: 0.78; max-width: 580px; margin: 0 auto; line-height: 1.9; font-weight: 300; }
+    .quote-section { padding: 80px 0; text-align: center; background: var(--c-bg-alt); }
+    .quote-section blockquote { font-family: var(--font-display); font-size: 24px; line-height: 1.5; max-width: 800px; margin: 0 auto; font-style: italic; font-weight: 400; color: var(--c-ink); padding: 0 24px; }
+    .quote-section cite { display: block; margin-top: 28px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 4px; color: var(--c-muted); text-transform: uppercase; font-style: normal; }
+    .value-grid { display: grid; grid-template-columns: 1fr; gap: 30px; padding: 0 24px; }
+    .value-card { text-align: center; padding: 24px 16px; }
+    .value-card .num { font-family: var(--font-display); font-style: italic; font-size: 40px; color: var(--c-gold); margin-bottom: 14px; }
+    .value-card h4 { font-family: var(--font-display); font-size: 22px; margin: 0 0 12px; font-weight: 500; }
     .value-card p { font-size: 13px; line-height: 1.85; color: var(--c-ink-soft); max-width: 280px; margin: 0 auto; font-weight: 300; }
-    .timeline { max-width: 800px; margin: 0 auto; padding: 0 32px; }
-    .timeline-item { display: grid; grid-template-columns: 140px 1fr; gap: 60px; padding: 36px 0; border-bottom: 1px solid var(--c-line); }
-    .timeline-item .year { font-family: var(--font-display); font-style: italic; font-size: 36px; color: var(--c-gold); }
-    .timeline-item .desc h4 { margin: 0 0 10px; font-size: 17px; font-weight: 600; }
-    .timeline-item .desc p { margin: 0; color: var(--c-ink-soft); line-height: 1.8; font-size: 14px; font-weight: 300; }
-    @media (max-width:768px) { .brand-hero h1 { font-size: 56px; } .quote-section blockquote { font-size: 24px; } .value-grid { grid-template-columns: 1fr; gap: 20px; } .timeline-item { grid-template-columns: 1fr; gap: 8px; } }
+    .timeline { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .timeline-item { display: grid; grid-template-columns: 1fr; gap: 8px; padding: 28px 0; border-bottom: 1px solid var(--c-line); }
+    .timeline-item .year { font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--c-gold); }
+    .timeline-item .desc h4 { margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+    .timeline-item .desc p { margin: 0; color: var(--c-ink-soft); line-height: 1.8; font-size: 13px; font-weight: 300; }
+    @media (min-width:768px) {
+      .brand-hero { padding: 160px 0 140px; }
+      .brand-hero h1 { font-size: 84px; }
+      .quote-section blockquote { font-size: 32px; }
+      .value-grid { grid-template-columns: repeat(3, 1fr); gap: 50px; }
+      .timeline-item { grid-template-columns: 120px 1fr; gap: 50px; }
+      .timeline-item .year { font-size: 32px; }
+    }
+    @media (min-width:1024px) {
+      .brand-hero h1 { font-size: 96px; }
+      .quote-section blockquote { font-size: 36px; }
+    }
   </style>
 </head>
 <body>
+  <div class="preloader">
+    <div class="logo-mark">L U M I</div>
+    <div class="small">INTERNATIONAL</div>
+    <div class="bar"></div>
+  </div>
+
   <div id="site-header"></div>
 
   <section class="brand-hero">
@@ -84,7 +103,7 @@
     </div>
   </section>
 
-  <section class="editorial reverse reveal" style="background:#fff;">
+  <section class="editorial reveal" style="background:#fff;">
     <div class="image-side" style="background-image:url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1400&q=85&auto=format&fit=crop')"></div>
     <div class="text-side">
       <span class="eyebrow">Heritage</span>
@@ -128,10 +147,10 @@
   <section class="stats-section reveal">
     <div class="container">
       <div class="stats-grid reveal-stagger">
-        <div class="stat-item"><div class="num">98<span style="font-size:36px;">%</span></div><div class="label">CUSTOMER SATISFACTION</div></div>
-        <div class="stat-item"><div class="num">120<span style="font-size:36px;">k+</span></div><div class="label">VERIFIED MEMBERS</div></div>
-        <div class="stat-item"><div class="num">14<span style="font-size:36px;"></span></div><div class="label">COUNTRIES SHIPPED</div></div>
-        <div class="stat-item"><div class="num">0<span style="font-size:36px;"></span></div><div class="label">ANIMAL TESTING</div></div>
+        <div class="stat-item"><div class="num">98<span class="unit">%</span></div><div class="label">SATISFACTION</div></div>
+        <div class="stat-item"><div class="num">120<span class="unit">k+</span></div><div class="label">MEMBERS</div></div>
+        <div class="stat-item"><div class="num">14<span class="unit"></span></div><div class="label">COUNTRIES</div></div>
+        <div class="stat-item"><div class="num">0<span class="unit"></span></div><div class="label">ANIMAL TESTING</div></div>
       </div>
     </div>
   </section>
@@ -139,19 +158,19 @@
   <section class="section tight" style="text-align:center;">
     <div class="container">
       <div class="reveal">
-        <span class="eyebrow" style="font-family:var(--font-mono); font-size:11px; letter-spacing:6px; color:var(--c-gold); text-transform:uppercase; display:block; margin-bottom:18px;">EXPLORE</span>
-        <h2 style="font-family:var(--font-display); font-size:48px; font-weight:400; margin:0 0 36px;">Experience <em style="color:var(--c-gold); font-style:italic;">LUMI</em></h2>
-        <a class="btn btn-primary" href="/pages/shop.html">LUMI 컬렉션 보기</a>
+        <span class="eyebrow" style="font-family:var(--font-mono); font-size:10px; letter-spacing:5px; color:var(--c-gold); text-transform:uppercase; display:block; margin-bottom:14px;">EXPLORE</span>
+        <h2 style="font-family:var(--font-display); font-size:38px; font-weight:400; margin:0 0 28px;">Experience <em style="color:var(--c-gold); font-style:italic;">LUMI</em></h2>
+        <a class="btn btn-primary" href="shop.html">LUMI 컬렉션 보기</a>
       </div>
     </div>
   </section>
 
   <div id="site-footer"></div>
 
-  <script src="/assets/js/products.js"></script>
-  <script src="/assets/js/auth.js"></script>
-  <script src="/assets/js/cart.js"></script>
-  <script src="/assets/js/layout.js"></script>
-  <script src="/assets/js/main.js"></script>
+  <script src="../assets/js/products.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>

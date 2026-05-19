@@ -2,7 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#faf7f2">
   <title>LUMI INTERNATIONAL — Light Up Your Ritual</title>
   <meta name="description" content="LUMI International — 일상에 빛을 더하는 글로벌 뷰티 큐레이션. 검증된 K-뷰티 처방의 새로운 기준.">
   <meta property="og:title" content="LUMI INTERNATIONAL">
@@ -13,45 +14,52 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="logo-mark">L U M I</div>
+    <div class="small">INTERNATIONAL</div>
+    <div class="bar"></div>
+  </div>
+
   <div id="site-header"></div>
 
   <!-- Main Visual -->
   <section class="main-visual">
     <div class="swiper main-swiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide slide" style="background-image:url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=2000&q=85&auto=format&fit=crop')">
+        <div class="swiper-slide slide" style="background-image:url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1800&q=85&auto=format&fit=crop')">
           <div class="slide-content">
             <p class="eyebrow">LUMI SIGNATURE</p>
             <h2 class="title">Light Up<br>Your <em>Ritual</em></h2>
             <p class="desc">매일의 루틴을 빛나게 만드는 LUMI의 시그니처 컬렉션. 검증된 K-뷰티 처방으로 완성한 새로운 케어 시스템.</p>
-            <a class="btn btn-ghost" href="/pages/shop.html?cat=best">컬렉션 보기</a>
+            <a class="btn btn-ghost" href="pages/shop.html?cat=best">컬렉션 보기</a>
           </div>
         </div>
-        <div class="swiper-slide slide" style="background-image:url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=2000&q=85&auto=format&fit=crop')">
+        <div class="swiper-slide slide" style="background-image:url('https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=1800&q=85&auto=format&fit=crop')">
           <div class="slide-content">
             <p class="eyebrow">NEW LAUNCH</p>
             <h2 class="title">Collagen <em>Booster</em><br>Ampoule Line</h2>
             <p class="desc">탄력의 시작. 저분자 콜라겐과 펩타이드 컴플렉스가 즉각 흡수되는 데일리 탄력 부스터.</p>
-            <a class="btn btn-ghost" href="/pages/product.html?id=2">자세히 보기</a>
+            <a class="btn btn-ghost" href="pages/product.html?id=2">자세히 보기</a>
           </div>
         </div>
-        <div class="swiper-slide slide" style="background-image:url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=2000&q=85&auto=format&fit=crop')">
+        <div class="swiper-slide slide" style="background-image:url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1800&q=85&auto=format&fit=crop')">
           <div class="slide-content">
-            <p class="eyebrow">FULL CARE COLLECTION</p>
+            <p class="eyebrow">FULL CARE</p>
             <h2 class="title">The <em>Complete</em><br>Skincare Set</h2>
             <p class="desc">에센스부터 크림까지, LUMI 베스트 4종을 한번에. 단품 대비 20% 할인 런칭 프로모션.</p>
-            <a class="btn btn-ghost" href="/pages/product.html?id=5">세트 보기</a>
+            <a class="btn btn-ghost" href="pages/product.html?id=5">세트 보기</a>
           </div>
         </div>
-        <div class="swiper-slide slide" style="background-image:url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=2000&q=85&auto=format&fit=crop')">
+        <div class="swiper-slide slide" style="background-image:url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1800&q=85&auto=format&fit=crop')">
           <div class="slide-content">
             <p class="eyebrow">MEMBERSHIP</p>
             <h2 class="title">Become<br>a <em>LUMI</em> Member</h2>
             <p class="desc">신규 가입 시 즉시 15,000원 적립. 누적 구매에 따라 자동으로 상승하는 5단계 멤버십 혜택.</p>
-            <a class="btn btn-ghost" href="/pages/signup.html">멤버 가입</a>
+            <a class="btn btn-ghost" href="pages/signup.html">멤버 가입</a>
           </div>
         </div>
       </div>
@@ -76,8 +84,8 @@
         <p class="desc">전 세계 LUMI 멤버들이 선택한 시그니처 컬렉션. 매일의 루틴을 빛나게 만드는 베스트 라인업.</p>
       </div>
       <div class="product-grid reveal-stagger" data-product-grid data-filter="best"></div>
-      <div style="text-align:center; margin-top:60px;" class="reveal">
-        <a class="btn btn-outline" href="/pages/shop.html?cat=best">전체 베스트 보기</a>
+      <div style="text-align:center; margin-top:48px;" class="reveal">
+        <a class="btn btn-outline" href="pages/shop.html?cat=best">전체 베스트 보기</a>
       </div>
     </div>
   </section>
@@ -89,7 +97,7 @@
       <span class="eyebrow">The Story</span>
       <h2>매일을 빛나게,<br><em>LUMI Ritual</em></h2>
       <p>모든 피부는 빛을 가지고 있습니다. LUMI는 그 빛이 더 오래, 더 깊이 머무를 수 있도록 검증된 처방과 클린 포뮬러로 매일의 케어를 완성합니다. 부담 없는 사용감, 정직한 성분, 매일 사용해도 좋은 안정성.</p>
-      <a href="/pages/brand.html" class="link-arrow">브랜드 스토리 보기</a>
+      <a href="pages/brand.html" class="link-arrow">브랜드 스토리 보기</a>
     </div>
   </section>
 
@@ -106,23 +114,29 @@
           <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=900&q=85&auto=format&fit=crop" alt="LUMI Ritual">
         </div>
         <div class="care-steps">
-          <a class="care-step" href="/pages/product.html?id=1">
-            <div class="num">STEP · 01</div>
+          <a class="care-step" href="pages/product.html?id=1">
             <div class="step-img"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=85" alt=""></div>
-            <div class="step-name">Essence</div>
-            <p class="step-desc">성분 흡수를 돕는<br>첫 단계 에센스</p>
+            <div>
+              <div class="num">STEP · 01</div>
+              <div class="step-name">Essence</div>
+              <p class="step-desc">성분 흡수를 돕는 첫 단계 에센스</p>
+            </div>
           </a>
-          <a class="care-step" href="/pages/product.html?id=2">
-            <div class="num">STEP · 02</div>
+          <a class="care-step" href="pages/product.html?id=2">
             <div class="step-img"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=85" alt=""></div>
-            <div class="step-name">Booster</div>
-            <p class="step-desc">콜라겐 부스팅을 돕는<br>앰플 / 마스크팩</p>
+            <div>
+              <div class="num">STEP · 02</div>
+              <div class="step-name">Booster</div>
+              <p class="step-desc">콜라겐 부스팅 앰플 / 마스크</p>
+            </div>
           </a>
-          <a class="care-step" href="/pages/product.html?id=4">
-            <div class="num">STEP · 03</div>
+          <a class="care-step" href="pages/product.html?id=4">
             <div class="step-img"><img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&q=85" alt=""></div>
-            <div class="step-name">Cream</div>
-            <p class="step-desc">피부 방어를 돕는<br>마무리 크림</p>
+            <div>
+              <div class="num">STEP · 03</div>
+              <div class="step-name">Cream</div>
+              <p class="step-desc">피부 방어를 돕는 마무리 크림</p>
+            </div>
           </a>
         </div>
       </div>
@@ -134,19 +148,19 @@
     <div class="container">
       <div class="stats-grid reveal-stagger">
         <div class="stat-item">
-          <div class="num">98<span style="font-size:36px;">%</span></div>
-          <div class="label">CUSTOMER SATISFACTION</div>
+          <div class="num">98<span class="unit">%</span></div>
+          <div class="label">SATISFACTION</div>
         </div>
         <div class="stat-item">
-          <div class="num">120<span style="font-size:36px;">k+</span></div>
-          <div class="label">VERIFIED MEMBERS</div>
+          <div class="num">120<span class="unit">k+</span></div>
+          <div class="label">MEMBERS</div>
         </div>
         <div class="stat-item">
-          <div class="num">14<span style="font-size:36px;"></span></div>
-          <div class="label">COUNTRIES SHIPPED</div>
+          <div class="num">14<span class="unit"></span></div>
+          <div class="label">COUNTRIES</div>
         </div>
         <div class="stat-item">
-          <div class="num">0<span style="font-size:36px;"></span></div>
+          <div class="num">0<span class="unit"></span></div>
           <div class="label">ANIMAL TESTING</div>
         </div>
       </div>
@@ -161,7 +175,7 @@
           <span class="eyebrow">NEW ARRIVAL</span>
           <h2>새로 만나는 <em>LUMI</em></h2>
         </div>
-        <a class="link-arrow" href="/pages/shop.html?cat=new">전체 신상품 보기</a>
+        <a class="link-arrow" href="pages/shop.html?cat=new">전체 신상품</a>
       </div>
       <div class="product-grid reveal-stagger" data-product-grid data-filter="new"></div>
     </div>
@@ -174,7 +188,7 @@
         <span class="eyebrow">LUMI HERITAGE</span>
         <h2>Verified<br><em>K-Beauty</em> Standard</h2>
         <p>식약처 기능성 인증, 20대 유해성분 ZERO, 14개국 임상 안전성 테스트. 매일 사용해도 부담 없는 정직한 처방이 LUMI의 약속입니다.</p>
-        <a class="btn btn-ghost" href="/pages/brand.html">브랜드 스토리 →</a>
+        <a class="btn btn-ghost" href="pages/brand.html">브랜드 스토리 →</a>
       </div>
       <div class="image-side" style="background-image:url('https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=1400&q=85&auto=format&fit=crop')"></div>
     </div>
@@ -193,7 +207,7 @@
           <div class="body">
             <div class="stars">★★★★★</div>
             <div class="review-name">Glow First Essence</div>
-            <div class="review-text">건조한 피부에 흡수가 빠르고 끈적임이 없어 매일 쓰고 있어요. 결이 정돈됩니다.</div>
+            <div class="review-text">건조한 피부에 흡수가 빠르고 끈적임이 없어 매일 쓰고 있어요.</div>
             <div class="meta"><span>김**</span><span>2일 전</span></div>
           </div>
         </div>
@@ -258,16 +272,15 @@
   <div id="site-footer"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="/assets/js/products.js"></script>
-  <script src="/assets/js/auth.js"></script>
-  <script src="/assets/js/cart.js"></script>
-  <script src="/assets/js/layout.js"></script>
-  <script src="/assets/js/main.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const counter = document.querySelector('.visual-counter .current');
-      const total = document.querySelector('.swiper-slide:not(.swiper-slide-duplicate)');
-      const swiper = new Swiper('.main-swiper', {
+      new Swiper('.main-swiper', {
         loop: true,
         autoplay: { delay: 5500, disableOnInteraction: false },
         pagination: { el: '.swiper-pagination', clickable: true },

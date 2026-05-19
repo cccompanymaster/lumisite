@@ -99,11 +99,12 @@
   window.renderAuthMenu = function (selector) {
     const el = document.querySelector(selector);
     if (!el) return;
+    const P = window.LUMI_PREFIX || './';
     const u = Auth.current();
     if (u) {
       const g = Auth.gradeOf(u.totalPurchase || 0);
       el.innerHTML = `
-        <a href="/pages/mypage.html" class="auth-name"><span class="grade-pill" style="background:${g.color}">${g.name}</span> ${u.name}님</a>
+        <a href="${P}pages/mypage.html" class="auth-name"><span class="grade-pill" style="background:${g.color}">${g.name}</span> ${u.name}님</a>
         <a href="#" class="auth-logout">로그아웃</a>
       `;
       el.querySelector('.auth-logout').addEventListener('click', (e) => {
@@ -113,8 +114,8 @@
       });
     } else {
       el.innerHTML = `
-        <a href="/pages/login.html">로그인</a>
-        <a href="/pages/signup.html">회원가입</a>
+        <a href="${P}pages/login.html">로그인</a>
+        <a href="${P}pages/signup.html">회원가입</a>
       `;
     }
   };

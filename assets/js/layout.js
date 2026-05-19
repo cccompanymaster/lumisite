@@ -1,37 +1,66 @@
-// LUMI - 공통 헤더/푸터 인서트
+// LUMI - 공통 헤더/푸터 + 모바일 드로어 + 경로 헬퍼
 (function () {
+  // 페이지 위치 기반으로 상대경로 prefix 계산 (GH Pages 서브경로 호환)
+  function computePrefix() {
+    const path = location.pathname;
+    // /pages/* 안에 있으면 한 단계 위로
+    if (/\/pages\//.test(path)) return '../';
+    return './';
+  }
+  const P = computePrefix();
+  window.LUMI_PREFIX = P;
+
   const HEADER = `
     <div class="top-banner" id="topBanner">
-      <a href="/pages/signup.html">신규 가입 즉시 <strong>15,000원 적립금</strong> · LUMI 멤버 혜택을 만나보세요</a>
+      <a href="${P}pages/signup.html">신규 가입 즉시 <strong>15,000원 적립금</strong> · LUMI 멤버 혜택을 만나보세요</a>
       <button class="close" aria-label="배너 닫기">×</button>
     </div>
     <header class="header">
       <div class="header-inner">
-        <a class="logo" href="/">LUMI<small>INTERNATIONAL</small></a>
+        <a class="logo" href="${P}index.html">LUMI<small>INTERNATIONAL</small></a>
         <ul class="gnb">
-          <li><a href="/pages/shop.html">Shop</a>
+          <li><a href="${P}pages/shop.html">Shop</a>
             <ul class="submenu">
-              <li><a href="/pages/shop.html?cat=all">All</a></li>
-              <li><a href="/pages/shop.html?cat=best">Best</a></li>
-              <li><a href="/pages/shop.html?cat=new">New</a></li>
-              <li><a href="/pages/shop.html?cat=skincare">Skincare</a></li>
-              <li><a href="/pages/shop.html?cat=cleanser">Cleanser</a></li>
-              <li><a href="/pages/shop.html?cat=set">Set</a></li>
+              <li><a href="${P}pages/shop.html?cat=all">All</a></li>
+              <li><a href="${P}pages/shop.html?cat=best">Best</a></li>
+              <li><a href="${P}pages/shop.html?cat=new">New</a></li>
+              <li><a href="${P}pages/shop.html?cat=skincare">Skincare</a></li>
+              <li><a href="${P}pages/shop.html?cat=cleanser">Cleanser</a></li>
+              <li><a href="${P}pages/shop.html?cat=set">Set</a></li>
             </ul>
           </li>
-          <li><a href="/pages/membership.html">VIP</a></li>
-          <li><a href="/pages/brand.html">Brand</a></li>
-          <li><a href="/pages/shop.html?cat=new">New</a></li>
+          <li><a href="${P}pages/membership.html">VIP</a></li>
+          <li><a href="${P}pages/brand.html">Brand</a></li>
+          <li><a href="${P}pages/shop.html?cat=new">New</a></li>
         </ul>
         <div class="header-utils">
           <div class="auth-menu"></div>
-          <a class="cart-link" href="/pages/cart.html">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <a class="cart-link" href="${P}pages/cart.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             <span class="cart-count">0</span>
           </a>
+          <button class="hamburger" id="hamburger" aria-label="메뉴">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
     </header>
+
+    <div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+    <aside class="mobile-drawer" id="mobileDrawer">
+      <button class="close-btn" aria-label="닫기">×</button>
+      <a class="logo" href="${P}index.html">LUMI<small>INTERNATIONAL</small></a>
+      <nav class="mobile-drawer-nav">
+        <a href="${P}pages/shop.html">Shop</a>
+        <a href="${P}pages/shop.html?cat=best">Best</a>
+        <a href="${P}pages/shop.html?cat=new">New Arrivals</a>
+        <a href="${P}pages/shop.html?cat=set">Sets</a>
+        <a href="${P}pages/membership.html">VIP Lounge</a>
+        <a href="${P}pages/brand.html">Brand Story</a>
+        <a href="${P}pages/cart.html">Cart</a>
+      </nav>
+      <div class="mobile-drawer-auth" id="drawerAuth"></div>
+    </aside>
   `;
 
   const FOOTER = `
@@ -39,7 +68,7 @@
       <div class="container">
         <div class="footer-top">
           <div class="brand">
-            <div class="logo">LUMI<small>INTERNATIONAL</small></div>
+            <a class="logo" href="${P}index.html">LUMI<small>INTERNATIONAL</small></a>
             <p>주식회사 루미인터내셔널은 글로벌 뷰티·라이프스타일 브랜드를 발굴하고 유통하는 전문 무역상사입니다. 일상에 빛을 더하는 모든 순간을 큐레이션합니다.</p>
             <div class="social-links">
               <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -50,19 +79,19 @@
           <div class="col">
             <h4>SHOP</h4>
             <ul>
-              <li><a href="/pages/shop.html?cat=all">전체보기</a></li>
-              <li><a href="/pages/shop.html?cat=best">베스트</a></li>
-              <li><a href="/pages/shop.html?cat=new">신상품</a></li>
-              <li><a href="/pages/shop.html?cat=set">세트</a></li>
+              <li><a href="${P}pages/shop.html?cat=all">전체보기</a></li>
+              <li><a href="${P}pages/shop.html?cat=best">베스트</a></li>
+              <li><a href="${P}pages/shop.html?cat=new">신상품</a></li>
+              <li><a href="${P}pages/shop.html?cat=set">세트</a></li>
             </ul>
           </div>
           <div class="col">
             <h4>ABOUT</h4>
             <ul>
-              <li><a href="/pages/brand.html">브랜드 스토리</a></li>
-              <li><a href="/pages/membership.html">멤버십</a></li>
-              <li><a href="/pages/login.html">로그인</a></li>
-              <li><a href="/pages/signup.html">회원가입</a></li>
+              <li><a href="${P}pages/brand.html">브랜드 스토리</a></li>
+              <li><a href="${P}pages/membership.html">멤버십</a></li>
+              <li><a href="${P}pages/login.html">로그인</a></li>
+              <li><a href="${P}pages/signup.html">회원가입</a></li>
             </ul>
           </div>
           <div class="col">
@@ -99,6 +128,7 @@
     if (h) h.innerHTML = HEADER;
     if (f) f.innerHTML = FOOTER;
 
+    // Top banner close
     const tb = document.querySelector('.top-banner');
     if (tb) {
       const closeBtn = tb.querySelector('.close');
@@ -108,7 +138,63 @@
         sessionStorage.setItem('lumi.tb.hide', '1');
       });
     }
+
+    // Header scroll state
+    const hdr = document.querySelector('.header');
+    if (hdr) {
+      const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 20);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    // Mobile drawer
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('mobileDrawer');
+    const backdrop = document.getElementById('drawerBackdrop');
+    const closeBtn = drawer && drawer.querySelector('.close-btn');
+    function toggleDrawer(open) {
+      if (!drawer || !backdrop || !hamburger) return;
+      drawer.classList.toggle('open', open);
+      backdrop.classList.toggle('open', open);
+      hamburger.classList.toggle('open', open);
+      document.body.classList.toggle('no-scroll', open);
+    }
+    if (hamburger) hamburger.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleDrawer(false));
+    if (backdrop) backdrop.addEventListener('click', () => toggleDrawer(false));
+
     if (window.renderAuthMenu) window.renderAuthMenu('.auth-menu');
+    renderDrawerAuth();
     if (window.updateCartBadge) window.updateCartBadge('.cart-count');
+
+    // Preloader hide
+    const pre = document.querySelector('.preloader');
+    if (pre) {
+      window.addEventListener('load', () => {
+        setTimeout(() => pre.classList.add('hidden'), 400);
+        setTimeout(() => pre.remove(), 1400);
+      });
+      // fallback
+      setTimeout(() => pre.classList.add('hidden'), 2800);
+    }
   });
+
+  function renderDrawerAuth() {
+    const el = document.getElementById('drawerAuth');
+    if (!el || !window.LumiAuth) return;
+    const u = window.LumiAuth.current();
+    if (u) {
+      el.innerHTML = `
+        <a href="${P}pages/mypage.html" class="primary">마이페이지</a>
+        <a href="#" id="drawerLogout">로그아웃</a>
+      `;
+      const lo = el.querySelector('#drawerLogout');
+      if (lo) lo.addEventListener('click', e => { e.preventDefault(); window.LumiAuth.logout(); location.reload(); });
+    } else {
+      el.innerHTML = `
+        <a href="${P}pages/login.html" class="primary">로그인</a>
+        <a href="${P}pages/signup.html">회원가입</a>
+      `;
+    }
+  }
 })();
