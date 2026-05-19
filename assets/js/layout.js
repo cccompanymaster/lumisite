@@ -17,7 +17,7 @@
     </div>
     <header class="header">
       <div class="header-inner">
-        <a class="logo" href="${P}index.html">LUMI<small>INTERNATIONAL</small></a>
+        <a class="logo" href="${P}index.html">ORAVIN<small>PREMIUM SKINCARE</small></a>
         <ul class="gnb">
           <li><a href="${P}pages/shop.html">Shop</a>
             <ul class="submenu">
@@ -49,7 +49,7 @@
     <div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
     <aside class="mobile-drawer" id="mobileDrawer">
       <button class="close-btn" aria-label="닫기">×</button>
-      <a class="logo" href="${P}index.html">LUMI<small>INTERNATIONAL</small></a>
+      <a class="logo" href="${P}index.html">ORAVIN<small>PREMIUM SKINCARE</small></a>
       <nav class="mobile-drawer-nav">
         <a href="${P}pages/shop.html">Shop</a>
         <a href="${P}pages/shop.html?cat=best">Best</a>
@@ -68,8 +68,8 @@
       <div class="container">
         <div class="footer-top">
           <div class="brand">
-            <a class="logo" href="${P}index.html">LUMI<small>INTERNATIONAL</small></a>
-            <p>주식회사 루미인터내셔널은 글로벌 뷰티·라이프스타일 브랜드를 발굴하고 유통하는 전문 무역상사입니다. 일상에 빛을 더하는 모든 순간을 큐레이션합니다.</p>
+            <a class="logo" href="${P}index.html">ORAVIN<small>PREMIUM SKINCARE</small></a>
+            <p>ORAVIN은 메디컬 에스테틱 감성과 스킨부스터 트렌드를 기반으로 탄생한 프리미엄 스킨케어 브랜드입니다. PDLLA·보르피린·스피큘 기반의 차별화된 처방으로 탄력·광채·볼륨 케어에 집중합니다.</p>
             <div class="social-links">
               <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
               <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>

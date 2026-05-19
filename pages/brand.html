@@ -3,36 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#faf7f2">
-  <title>Brand Story — LUMI INTERNATIONAL</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231a1d24'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='52' fill='%23c8a987'%3EL%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#0d0d10">
+  <title>Brand Story — ORAVIN</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230d0d10'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='52' fill='%238b3a3a'%3EO%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
-    .brand-hero { background: linear-gradient(180deg, #0a0c12 0%, #14171e 100%); color: #fff; padding: 120px 0 100px; text-align: center; position: relative; overflow: hidden; }
-    .brand-hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at center, rgba(169,140,92,0.18) 0%, transparent 60%); }
+    .brand-hero { background: linear-gradient(180deg, #0a0a0d 0%, #1c1518 100%); color: #fff; padding: 120px 0 100px; text-align: center; position: relative; overflow: hidden; }
+    .brand-hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at center, rgba(184,107,107,0.18) 0%, transparent 60%); }
     .brand-hero .container { position: relative; z-index: 1; }
     .brand-hero .eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: 6px; color: var(--c-gold-soft); margin-bottom: 18px; display: block; }
     .brand-hero h1 { font-family: var(--font-display); font-size: 60px; letter-spacing: -0.5px; margin: 0 0 22px; font-weight: 400; font-style: italic; line-height: 1; }
     .brand-hero p { font-size: 14px; opacity: 0.78; max-width: 580px; margin: 0 auto; line-height: 1.9; font-weight: 300; }
+
+    .manifesto { padding: 80px 0; }
+    .manifesto-inner { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .manifesto p {
+      font-family: var(--font-sans); font-size: 16px; line-height: 2.1;
+      color: var(--c-ink-soft); margin: 0 0 22px; font-weight: 300;
+    }
+    .manifesto p.lead {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 26px; line-height: 1.5; color: var(--c-ink);
+      margin-bottom: 36px;
+    }
+    .manifesto p strong { color: var(--c-ink); font-weight: 500; }
+
     .quote-section { padding: 80px 0; text-align: center; background: var(--c-bg-alt); }
     .quote-section blockquote { font-family: var(--font-display); font-size: 24px; line-height: 1.5; max-width: 800px; margin: 0 auto; font-style: italic; font-weight: 400; color: var(--c-ink); padding: 0 24px; }
     .quote-section cite { display: block; margin-top: 28px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 4px; color: var(--c-muted); text-transform: uppercase; font-style: normal; }
+
     .value-grid { display: grid; grid-template-columns: 1fr; gap: 30px; padding: 0 24px; }
     .value-card { text-align: center; padding: 24px 16px; }
     .value-card .num { font-family: var(--font-display); font-style: italic; font-size: 40px; color: var(--c-gold); margin-bottom: 14px; }
     .value-card h4 { font-family: var(--font-display); font-size: 22px; margin: 0 0 12px; font-weight: 500; }
     .value-card p { font-size: 13px; line-height: 1.85; color: var(--c-ink-soft); max-width: 280px; margin: 0 auto; font-weight: 300; }
+
     .timeline { max-width: 720px; margin: 0 auto; padding: 0 24px; }
     .timeline-item { display: grid; grid-template-columns: 1fr; gap: 8px; padding: 28px 0; border-bottom: 1px solid var(--c-line); }
     .timeline-item .year { font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--c-gold); }
     .timeline-item .desc h4 { margin: 0 0 8px; font-size: 15px; font-weight: 600; }
     .timeline-item .desc p { margin: 0; color: var(--c-ink-soft); line-height: 1.8; font-size: 13px; font-weight: 300; }
+
     @media (min-width:768px) {
       .brand-hero { padding: 160px 0 140px; }
       .brand-hero h1 { font-size: 84px; }
+      .manifesto p.lead { font-size: 30px; }
+      .manifesto p { font-size: 17px; }
       .quote-section blockquote { font-size: 32px; }
       .value-grid { grid-template-columns: repeat(3, 1fr); gap: 50px; }
       .timeline-item { grid-template-columns: 120px 1fr; gap: 50px; }
@@ -40,14 +59,15 @@
     }
     @media (min-width:1024px) {
       .brand-hero h1 { font-size: 96px; }
+      .manifesto p.lead { font-size: 34px; }
       .quote-section blockquote { font-size: 36px; }
     }
   </style>
 </head>
 <body>
   <div class="preloader">
-    <div class="logo-mark">L U M I</div>
-    <div class="small">INTERNATIONAL</div>
+    <div class="logo-mark">O R A V I N</div>
+    <div class="small">PREMIUM SKINCARE</div>
     <div class="bar"></div>
   </div>
 
@@ -56,59 +76,77 @@
   <section class="brand-hero">
     <div class="container">
       <span class="eyebrow">BRAND STORY</span>
-      <h1>LUMI</h1>
-      <p>Light Up Your Ritual — 일상에 빛을 더하는 글로벌 뷰티 큐레이션. 루미인터내셔널이 만드는 새로운 K-뷰티의 기준.</p>
+      <h1>ORAVIN</h1>
+      <p>메디컬 에스테틱 감성과 스킨부스터 트렌드를 기반으로 탄생한 프리미엄 스킨케어 브랜드.</p>
+    </div>
+  </section>
+
+  <!-- Manifesto -->
+  <section class="manifesto reveal">
+    <div class="manifesto-inner">
+      <p class="lead">"피부 본연의 컨디션과 균형을 고려한 프리미엄 홈케어 루틴."</p>
+      <p>ORAVIN은 <strong>메디컬 에스테틱 감성과 스킨부스터 트렌드</strong>를 기반으로 탄생한 프리미엄 스킨케어 브랜드입니다.</p>
+      <p>피부 탄력 저하, 볼륨 감소, 피부결 변화 등 현대인의 다양한 피부 고민에 집중하여 <strong>피부 본연의 건강한 아름다움과 자연스러운 광채</strong>를 완성하는 데 브랜드 가치를 두고 있습니다.</p>
+      <p>ORAVIN은 단순한 스킨케어를 넘어 <strong>프리미엄 홈에스테틱 경험</strong>을 제안하며, PDLLA, 보르피린, 스피큘 등 프리미엄 성분을 기반으로 <strong>탄력·광채·볼륨 케어</strong>에 집중한 차별화된 스킨케어 솔루션을 선보이고 있습니다.</p>
+      <p>또한 메디컬 럭셔리 콘셉트와 감각적인 디자인을 통해 고급스러운 브랜드 아이덴티티를 구축하였으며, 피부 본연의 컨디션과 균형을 고려한 프리미엄 홈케어 루틴을 제안합니다.</p>
+      <p>ORAVIN은 피부에 필요한 본질적인 아름다움과 프리미엄 스킨케어 경험을 위해 <strong>끊임없이 연구하고 있습니다.</strong></p>
     </div>
   </section>
 
   <section class="editorial reveal" style="background:#fff;">
-    <div class="image-side" style="background-image:url('https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1400&q=85&auto=format&fit=crop')"></div>
+    <div class="image-side"
+         data-bg-src="../assets/images/brand/brand-1.jpg"
+         data-bg-fallback="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1400&q=85&auto=format&fit=crop"
+         style="background-image:url('https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1400&q=85&auto=format&fit=crop')"></div>
     <div class="text-side">
-      <span class="eyebrow">Our Philosophy</span>
-      <h2>The Light <em>Within</em><br>Every Skin</h2>
-      <p>LUMI는 라틴어로 '빛'을 뜻하는 단어에서 출발했습니다. 우리는 모든 피부에 빛이 있다고 믿습니다. 검증된 K-뷰티 기술력과 글로벌 라이프스타일 큐레이션이 만나, 매일의 루틴을 빛나게 만드는 것 — 그것이 LUMI가 추구하는 단 하나의 가치입니다.</p>
+      <span class="eyebrow">OUR PHILOSOPHY</span>
+      <h2>Medical Luxury,<br><em>Home Aesthetic</em></h2>
+      <p>피부 본연의 컨디션을 회복하고, 매일의 케어를 통해 시술 직후의 결을 만들어내는 것 — ORAVIN의 모든 처방은 이 단 하나의 약속에서 출발합니다.</p>
     </div>
   </section>
 
   <section class="quote-section reveal">
     <div class="container">
-      <blockquote>"우리는 단순히 좋아 보이는 제품이 아니라,<br>매일 사용해도 부담이 없는 정직한 포뮬러를 약속합니다."</blockquote>
-      <cite>— LUMI Manifesto</cite>
+      <blockquote>"피부에 필요한 본질적인 아름다움과<br>프리미엄 스킨케어 경험을 위해 끊임없이 연구합니다."</blockquote>
+      <cite>— ORAVIN Manifesto</cite>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">THREE PROMISES</span>
-        <h2>세 가지 <em>약속</em></h2>
+        <span class="eyebrow">THREE PILLARS</span>
+        <h2>The <em>ORAVIN</em> Standard</h2>
       </div>
       <div class="value-grid reveal-stagger">
         <div class="value-card">
           <div class="num">01</div>
-          <h4>Verified</h4>
-          <p>식약처 기능성 인증을 통과한 검증된 처방. 모든 제품은 자체 안정성 테스트를 거쳐 출시됩니다.</p>
+          <h4>Medical Aesthetic</h4>
+          <p>메디컬 에스테틱에서 검증된 PDLLA·보르피린·스피큘을 매일의 홈케어로. 시술 직후의 결을 매일.</p>
         </div>
         <div class="value-card">
           <div class="num">02</div>
-          <h4>Clean</h4>
-          <p>20대 유해성분 ZERO. 매일 사용해도 부담 없는 저자극 클린 뷰티 포뮬러를 추구합니다.</p>
+          <h4>Elasticity · Glow · Volume</h4>
+          <p>탄력, 광채, 볼륨. ORAVIN이 집중하는 세 가지 키워드. 현대인의 피부 고민에 정조준한 솔루션.</p>
         </div>
         <div class="value-card">
           <div class="num">03</div>
-          <h4>Global</h4>
-          <p>한국에서 시작해 14개국으로. 글로벌 임상으로 검증된 안전성과 효능을 약속합니다.</p>
+          <h4>Luxury Identity</h4>
+          <p>메디컬 럭셔리 콘셉트와 감각적인 디자인을 통해 완성한 고급스러운 브랜드 아이덴티티.</p>
         </div>
       </div>
     </div>
   </section>
 
   <section class="editorial reveal" style="background:#fff;">
-    <div class="image-side" style="background-image:url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1400&q=85&auto=format&fit=crop')"></div>
+    <div class="image-side"
+         data-bg-src="../assets/images/brand/brand-2.jpg"
+         data-bg-fallback="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1400&q=85&auto=format&fit=crop"
+         style="background-image:url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1400&q=85&auto=format&fit=crop')"></div>
     <div class="text-side">
-      <span class="eyebrow">Heritage</span>
-      <h2>From <em>Korea</em><br>to the World</h2>
-      <p>2025년 설립된 주식회사 루미인터내셔널은 전자상거래를 기반으로 화장품, 생활용품, 의류, 패션잡화, 가전제품까지 폭넓은 카테고리를 다루는 글로벌 무역상사입니다. 그 중에서도 뷰티 카테고리는 가장 먼저, 가장 집중적으로 전개하는 시그니처 사업 영역입니다.</p>
+      <span class="eyebrow">SIGNATURE INGREDIENTS</span>
+      <h2><em>PDLLA</em> · Borfirin<br>· Spicule</h2>
+      <p>메디컬 에스테틱 시술에서 사용되는 핵심 성분을 홈케어 농도와 텍스처로 최적화. PDLLA는 콜라겐 부스팅을, 보르피린은 리프팅을, 스피큘은 결 정돈을 담당합니다.</p>
     </div>
   </section>
 
@@ -122,22 +160,29 @@
         <div class="timeline-item">
           <div class="year">2025.07</div>
           <div class="desc">
-            <h4>주식회사 루미인터내셔널 설립</h4>
-            <p>경기도 수원시에 본사를 두고 글로벌 뷰티·라이프스타일 무역상사로 출범.</p>
+            <h4>Brand Launch</h4>
+            <p>ORAVIN, 메디컬 에스테틱 감성을 기반으로 한 프리미엄 홈에스테틱 브랜드로 출범.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="year">2025.09</div>
           <div class="desc">
-            <h4>LUMI 시그니처 컬렉션 런칭</h4>
-            <p>3-Step Care System을 중심으로 한 시그니처 스킨케어 4종을 런칭.</p>
+            <h4>Hydro Regene Air Ampoule</h4>
+            <p>99.9ml 시그니처 앰플 런칭. 5종 히알루론산 컴플렉스로 데일리 부스팅 완성.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2025.11</div>
+          <div class="desc">
+            <h4>Premium Booster Line</h4>
+            <p>PDLLA Collagen Booster · Borfirin Lifting · Spicule Resurfacing 3종 라인 추가.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="year">2026</div>
           <div class="desc">
             <h4>Global Expansion</h4>
-            <p>일본·동남아·북미 14개국으로 유통 확대. 라이프스타일 라인업 추가 예정.</p>
+            <p>일본·동남아·북미 14개국으로 유통 확대. 글로벌 프리미엄 스킨케어 브랜드로 성장.</p>
           </div>
         </div>
       </div>
@@ -148,8 +193,8 @@
     <div class="container">
       <div class="stats-grid reveal-stagger">
         <div class="stat-item"><div class="num">98<span class="unit">%</span></div><div class="label">SATISFACTION</div></div>
-        <div class="stat-item"><div class="num">120<span class="unit">k+</span></div><div class="label">MEMBERS</div></div>
-        <div class="stat-item"><div class="num">14<span class="unit"></span></div><div class="label">COUNTRIES</div></div>
+        <div class="stat-item"><div class="num">24<span class="unit">h</span></div><div class="label">EFFECT DURATION</div></div>
+        <div class="stat-item"><div class="num">5<span class="unit"></span></div><div class="label">PREMIUM ACTIVES</div></div>
         <div class="stat-item"><div class="num">0<span class="unit"></span></div><div class="label">ANIMAL TESTING</div></div>
       </div>
     </div>
@@ -159,8 +204,8 @@
     <div class="container">
       <div class="reveal">
         <span class="eyebrow" style="font-family:var(--font-mono); font-size:10px; letter-spacing:5px; color:var(--c-gold); text-transform:uppercase; display:block; margin-bottom:14px;">EXPLORE</span>
-        <h2 style="font-family:var(--font-display); font-size:38px; font-weight:400; margin:0 0 28px;">Experience <em style="color:var(--c-gold); font-style:italic;">LUMI</em></h2>
-        <a class="btn btn-primary" href="shop.html">LUMI 컬렉션 보기</a>
+        <h2 style="font-family:var(--font-display); font-size:38px; font-weight:400; margin:0 0 28px;">Experience <em style="color:var(--c-gold); font-style:italic;">ORAVIN</em></h2>
+        <a class="btn btn-primary" href="shop.html">컬렉션 보기</a>
       </div>
     </div>
   </section>

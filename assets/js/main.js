@@ -30,20 +30,31 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
     document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+    if (window.applyImageFallbacks) window.applyImageFallbacks();
   });
+
+  // 로컬 이미지 → 실패 시 Unsplash fallback
+  function imgWithFallback(p, type) {
+    const P = window.LUMI_PREFIX || './';
+    const local = type === 'hover' ? p.localHover : p.localImage;
+    const remote = type === 'hover' ? (p.hoverImage || p.image) : p.image;
+    const cls = type === 'hover' ? 'hover-img' : 'main-img';
+    return `<img class="${cls}" src="${P}assets/images/products/${local}" onerror="this.onerror=null;this.src='${remote}'" alt="${type === 'hover' ? '' : p.name}" loading="lazy">`;
+  }
 
   window.productCardHTML = function (p) {
     const P = window.LUMI_PREFIX || './';
     const off = Math.round((1 - p.salePrice / p.price) * 100);
     const tagHTML = p.tags.map(t => {
-      const cls = t === 'NEW' ? 'new' : (t === 'SET' ? 'set' : '');
+      const cls = t === 'NEW' ? 'new' : (t === 'SET' ? 'set' : (t === 'HERO' ? 'set' : ''));
       return `<span class="tag ${cls}">${t}</span>`;
     }).join('');
     return `
       <a class="product-card" href="${P}pages/product.html?id=${p.id}">
         <div class="thumb">
-          <img class="main-img" src="${p.image}" alt="${p.name}" loading="lazy">
-          <img class="hover-img" src="${p.hoverImage || p.image}" alt="" loading="lazy">
+          ${imgWithFallback(p, 'main')}
+          ${imgWithFallback(p, 'hover')}
           <div class="tags">${tagHTML}</div>
         </div>
         <div class="info">
@@ -56,5 +67,21 @@
         </div>
       </a>
     `;
+  };
+
+  // 헤어/배경 이미지도 자동 fallback 처리
+  window.applyImageFallbacks = function () {
+    document.querySelectorAll('[data-bg-src]').forEach(el => {
+      const local = el.dataset.bgSrc;
+      const fallback = el.dataset.bgFallback;
+      const img = new Image();
+      img.onload = () => el.style.backgroundImage = `url('${local}')`;
+      img.onerror = () => el.style.backgroundImage = `url('${fallback}')`;
+      img.src = local;
+    });
+    document.querySelectorAll('img[data-src][data-fallback]').forEach(el => {
+      el.src = el.dataset.src;
+      el.onerror = () => { el.onerror = null; el.src = el.dataset.fallback; };
+    });
   };
 })();

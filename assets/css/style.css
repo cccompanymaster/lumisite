@@ -8,10 +8,10 @@
   --c-muted: #8a8e96;
   --c-line: #e8e2d6;
   --c-line-soft: #efebe2;
-  --c-gold: #a98c5c;
-  --c-gold-soft: #c8a987;
-  --c-rose: #d4a59a;
-  --c-deep: #14171e;
+  --c-gold: #8b3a3a;            /* ORAVIN wine/burgundy accent */
+  --c-gold-soft: #b86b6b;       /* soft rose-wine */
+  --c-rose: #e9c9c3;
+  --c-deep: #0d0d10;            /* near-black */
 
   --font-sans: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'Cormorant Garamond', Georgia, serif;
@@ -68,8 +68,8 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 .preloader.hidden { opacity: 0; visibility: hidden; }
 .preloader .logo-mark {
   font-family: var(--font-display); font-weight: 400; font-style: italic;
-  font-size: 18px; letter-spacing: 14px;
-  color: var(--c-ink); margin-bottom: 32px;
+  font-size: 20px; letter-spacing: 10px;
+  color: var(--c-gold); margin-bottom: 32px;
   position: relative; overflow: hidden;
   padding: 0 14px;
 }
@@ -162,15 +162,16 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 }
 .logo {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 24px; letter-spacing: 8px;
-  color: var(--c-ink); line-height: 1; white-space: nowrap;
+  font-weight: 500; font-style: italic;
+  font-size: 22px; letter-spacing: 5px;
+  color: var(--c-gold); line-height: 1; white-space: nowrap;
   justify-self: start;
 }
 .logo small {
-  display: block; font-family: var(--font-sans);
-  font-size: 8px; letter-spacing: 6px;
-  color: var(--c-muted); font-weight: 400; margin-top: 5px;
+  display: block; font-family: var(--font-mono);
+  font-size: 8px; letter-spacing: 3px;
+  color: var(--c-muted); font-weight: 500; margin-top: 5px;
+  font-style: normal;
 }
 .gnb {
   display: none; gap: 36px;
@@ -688,6 +689,103 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 .order-items .item img { width: 48px; height: 60px; object-fit: cover; }
 .order-items .item .info { flex: 1; min-width: 0; }
 
+/* ============ ORAVIN HERO PRODUCT SHOWCASE ============ */
+.hero-product {
+  background: var(--c-deep); color: #fff;
+  padding: 80px 0;
+  position: relative; overflow: hidden;
+}
+.hero-product::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(184,107,107,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-product .container { position: relative; z-index: 1; }
+.hero-product-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+.hero-product .product-visual {
+  aspect-ratio: 3/4; background: linear-gradient(135deg, #1a1a1f 0%, #0a0a0d 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.hero-product .product-visual img {
+  max-height: 90%; max-width: 80%; width: auto; height: auto;
+  object-fit: contain; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6));
+}
+.hero-product .text-side .eyebrow {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 5px;
+  text-transform: uppercase; color: var(--c-gold-soft);
+  margin-bottom: 18px; display: block;
+}
+.hero-product h2 {
+  font-family: var(--font-display); font-size: 38px; font-weight: 400;
+  letter-spacing: -0.5px; line-height: 1.1; margin: 0 0 22px;
+}
+.hero-product h2 em { font-style: italic; color: var(--c-gold-soft); }
+.hero-product .size {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 4px;
+  color: rgba(255,255,255,0.5); margin-bottom: 24px;
+  text-transform: uppercase; display: block;
+}
+.hero-product p {
+  color: rgba(255,255,255,0.72); font-size: 14px; line-height: 1.9;
+  margin: 0 0 28px; font-weight: 300; max-width: 480px;
+}
+.hero-product .ingredient-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-bottom: 32px; padding: 24px 0;
+  border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.hero-product .ingredient {
+  text-align: left;
+}
+.hero-product .ingredient .key { font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--c-gold-soft); display: block; margin-bottom: 4px; }
+.hero-product .ingredient .val { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 1px; }
+
+/* ============ RITUAL STEPS (ORAVIN) ============ */
+.ritual-steps { display: grid; grid-template-columns: 1fr; gap: 28px; counter-reset: rstep; }
+.ritual-step {
+  display: grid; grid-template-columns: 80px 1fr;
+  gap: 24px; align-items: start;
+  padding: 24px 0; border-bottom: 1px solid var(--c-line);
+  counter-increment: rstep;
+}
+.ritual-step:last-child { border-bottom: none; }
+.ritual-step .step-num {
+  font-family: var(--font-display); font-style: italic; font-weight: 400;
+  font-size: 56px; line-height: 1; color: var(--c-gold);
+}
+.ritual-step .step-num::before { content: '0' counter(rstep); }
+.ritual-step h4 { font-family: var(--font-display); font-size: 22px; margin: 0 0 10px; font-weight: 500; }
+.ritual-step p { color: var(--c-ink-soft); font-size: 13px; line-height: 1.8; margin: 0; max-width: 480px; }
+
+/* ============ INGREDIENT GRID ============ */
+.ingredient-section { background: var(--c-bg-alt); padding: 70px 0; }
+.ingredient-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.ingredient-card { background: var(--c-paper); padding: 28px 22px; text-align: center; }
+.ingredient-card .icon {
+  width: 60px; height: 60px; border-radius: 50%; background: var(--c-bg-alt);
+  margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-style: italic; font-size: 20px; color: var(--c-gold);
+}
+.ingredient-card h5 { font-family: var(--font-display); font-size: 18px; font-weight: 500; margin: 0 0 6px; }
+.ingredient-card .pct { font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; color: var(--c-gold); text-transform: uppercase; margin-bottom: 10px; }
+.ingredient-card p { font-size: 12px; color: var(--c-ink-soft); line-height: 1.7; margin: 0; font-weight: 300; }
+
+@media (min-width: 768px) {
+  .hero-product { padding: 110px 0; }
+  .hero-product-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+  .hero-product h2 { font-size: 56px; }
+  .hero-product .product-visual { aspect-ratio: 3/4; }
+  .ritual-steps { grid-template-columns: 1fr; }
+  .ritual-step { grid-template-columns: 120px 1fr; gap: 40px; }
+  .ritual-step .step-num { font-size: 72px; }
+  .ingredient-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 1024px) {
+  .hero-product { padding: 140px 0; }
+  .hero-product h2 { font-size: 64px; }
+}
+
 /* ============ EMPTY / MODAL ============ */
 .empty { padding: 80px 24px; text-align: center; color: var(--c-muted); }
 .empty h3 { font-family: var(--font-display); font-size: 24px; color: var(--c-ink); margin: 0 0 12px; font-weight: 500; }
@@ -792,7 +890,7 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
   .gnb { display: flex; }
   .hamburger { display: none; }
   .header-utils .auth-menu { display: flex; }
-  .logo { font-size: 28px; letter-spacing: 12px; }
+  .logo { font-size: 26px; letter-spacing: 7px; }
 
   .main-visual .swiper { aspect-ratio: 16/8; min-height: 600px; }
   .main-visual .slide { align-items: center; padding-bottom: 0; }
