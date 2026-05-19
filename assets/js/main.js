@@ -1,23 +1,16 @@
 // LUMI - Common page initializer
 (function () {
-  // Top banner close
   document.addEventListener('DOMContentLoaded', () => {
-    const tb = document.querySelector('.top-banner');
-    if (tb) {
-      const closeBtn = tb.querySelector('.close');
-      if (sessionStorage.getItem('lumi.tb.hide') === '1') tb.style.display = 'none';
-      if (closeBtn) closeBtn.addEventListener('click', () => {
-        tb.style.display = 'none';
-        sessionStorage.setItem('lumi.tb.hide', '1');
-      });
+    // Header scroll state
+    const hdr = document.querySelector('.header');
+    if (hdr) {
+      const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 20);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
     }
 
-    if (window.renderAuthMenu) window.renderAuthMenu('.auth-menu');
-    if (window.updateCartBadge) window.updateCartBadge('.cart-count');
-
-    // Product card render helper used by index/shop
-    const grids = document.querySelectorAll('[data-product-grid]');
-    grids.forEach(grid => {
+    // Render product grids
+    document.querySelectorAll('[data-product-grid]').forEach(grid => {
       const filter = grid.dataset.filter;
       let items = window.LUMI_PRODUCTS.slice();
       if (filter === 'best') items = items.filter(p => p.tags.includes('BEST'));
@@ -26,6 +19,17 @@
       else if (filter && filter !== 'all') items = items.filter(p => p.category === filter);
       grid.innerHTML = items.map(productCardHTML).join('');
     });
+
+    // Reveal animation
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
   });
 
   window.productCardHTML = function (p) {
@@ -37,11 +41,17 @@
     return `
       <a class="product-card" href="/pages/product.html?id=${p.id}">
         <div class="thumb">
-          <img src="${p.image}" alt="${p.name}" loading="lazy">
+          <img class="main-img" src="${p.image}" alt="${p.name}" loading="lazy">
+          <img class="hover-img" src="${p.hoverImage || p.image}" alt="" loading="lazy">
           <div class="tags">${tagHTML}</div>
+          <button class="wishlist" aria-label="위시리스트" onclick="event.preventDefault();event.stopPropagation();this.style.color='#a98c5c';">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <span class="quick-add">자세히 보기</span>
         </div>
         <div class="info">
-          <span class="name">${p.name}</span>
+          <div class="cat">${p.cat_label || ''}</div>
+          <span class="name">${p.nameKo || p.name}${p.size ? ` <small style="color:#999;font-weight:400;">${p.size}</small>` : ''}</span>
           <div class="price-row">
             <span class="price">${formatPrice(p.salePrice)}</span>
             ${off > 0 ? `<span class="original">${formatPrice(p.price)}</span><span class="discount">${off}%</span>` : ''}

@@ -4,18 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PRODUCT — LUMI INTERNATIONAL</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
   <div id="site-header"></div>
   <main class="container" id="productView"></main>
+
+  <section class="section" style="background:var(--c-bg-alt);">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">YOU MAY ALSO LIKE</span>
+        <h2>Discover <em>More</em></h2>
+      </div>
+      <div class="product-grid reveal-stagger" data-product-grid data-filter="best"></div>
+    </div>
+  </section>
+
   <div id="site-footer"></div>
 
   <div class="modal-back" id="addedModal">
     <div class="modal">
-      <h3>장바구니에 담겼습니다</h3>
-      <p>지금 결제하시거나 계속 쇼핑할 수 있습니다.</p>
+      <h3>장바구니에 담았습니다</h3>
+      <p>지금 결제하시거나 계속 쇼핑하실 수 있습니다.</p>
       <div class="actions">
         <a class="btn btn-outline" href="#" id="modalContinue">계속 쇼핑</a>
         <a class="btn btn-primary" href="/pages/cart.html">장바구니 보기</a>
@@ -45,12 +58,13 @@
       }).join('');
 
       view.innerHTML = `
-        <p class="breadcrumb" style="padding:20px 0 0;"><a href="/">HOME</a> &gt; <a href="/pages/shop.html">SHOP</a> &gt; ${p.name}</p>
+        <p class="breadcrumb" style="padding:32px 0 0;"><a href="/">HOME</a> · <a href="/pages/shop.html">SHOP</a> · ${p.nameKo || p.name}</p>
         <div class="product-detail">
           <div class="main-img"><img src="${p.image}" alt="${p.name}"></div>
           <div class="info-side">
+            <div class="cat-label">${p.cat_label || ''}</div>
             <div class="tags">${tagHTML}</div>
-            <h1>${p.name}</h1>
+            <h1>${p.name}<br><span style="font-size:18px; color:var(--c-muted); font-style:italic;">${p.nameKo || ''}${p.size ? ' · ' + p.size : ''}</span></h1>
             <p class="desc">${p.desc}</p>
             <div class="price-block">
               <span class="original">${formatPrice(p.price)}</span>
@@ -63,7 +77,7 @@
               </select>
             </div>
             <div class="qty-row">
-              <label style="font-size:12px; font-weight:600;">수량</label>
+              <label>QTY</label>
               <button id="qtyMinus">−</button>
               <input type="number" id="qty" value="1" min="1">
               <button id="qtyPlus">+</button>
@@ -75,7 +89,8 @@
           </div>
         </div>
         <div class="detail-body">
-          <h3>PRODUCT DETAIL</h3>
+          <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:5px; color:var(--c-gold); text-transform:uppercase; display:block; text-align:center; margin-bottom:14px;">PRODUCT DETAIL</span>
+          <h3>${p.name}</h3>
           <p>${p.detail}</p>
         </div>
       `;

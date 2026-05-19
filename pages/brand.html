@@ -3,73 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BRAND STORY — LUMI INTERNATIONAL</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap">
+  <title>Brand Story — LUMI INTERNATIONAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
   <style>
-    .brand-hero { background: linear-gradient(180deg, #0a0c18 0%, #1c2238 100%); color: #fff; padding: 140px 0 100px; text-align: center; }
-    .brand-hero h1 { font-family: var(--font-display); font-size: 56px; letter-spacing: 8px; margin: 0 0 18px; }
-    .brand-hero p { font-size: 16px; opacity: 0.8; max-width: 620px; margin: 0 auto; line-height: 1.8; }
-    .brand-story { max-width: 880px; margin: 0 auto; padding: 100px 24px; }
-    .brand-story h2 { font-family: var(--font-display); letter-spacing: 4px; font-size: 28px; margin: 0 0 40px; text-align: center; }
-    .brand-story h3 { font-size: 22px; margin: 50px 0 16px; }
-    .brand-story p { font-size: 15px; line-height: 1.95; color: var(--color-text); margin: 0 0 16px; }
-    .brand-photo { margin: 60px 0; aspect-ratio: 16/9; background-size: cover; background-position: center; border-radius: 8px; }
-    .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 50px 0; }
-    .value-card { padding: 28px; background: var(--color-bg-soft); border-radius: 8px; text-align: center; }
-    .value-card .icon { font-size: 40px; margin-bottom: 14px; }
-    .value-card h4 { font-size: 16px; margin: 0 0 8px; }
-    .value-card p { font-size: 13px; color: var(--color-muted); line-height: 1.7; }
-    @media (max-width:768px) { .value-grid { grid-template-columns: 1fr; } .brand-hero h1 { font-size: 36px; } }
+    .brand-hero { background: linear-gradient(180deg, #0a0c12 0%, #14171e 100%); color: #fff; padding: 180px 0 140px; text-align: center; position: relative; overflow: hidden; }
+    .brand-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(169,140,92,0.18) 0%, transparent 60%); }
+    .brand-hero .container { position: relative; z-index: 1; }
+    .brand-hero .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 8px; color: var(--c-gold-soft); margin-bottom: 24px; display: block; }
+    .brand-hero h1 { font-family: var(--font-display); font-size: 96px; letter-spacing: -1px; margin: 0 0 28px; font-weight: 400; font-style: italic; line-height: 1; }
+    .brand-hero p { font-size: 17px; opacity: 0.78; max-width: 620px; margin: 0 auto; line-height: 1.9; font-weight: 300; }
+    .quote-section { padding: 140px 0; text-align: center; background: var(--c-bg-alt); }
+    .quote-section blockquote { font-family: var(--font-display); font-size: 38px; line-height: 1.45; max-width: 880px; margin: 0 auto; font-style: italic; font-weight: 400; color: var(--c-ink); }
+    .quote-section cite { display: block; margin-top: 36px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 4px; color: var(--c-muted); text-transform: uppercase; font-style: normal; }
+    .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; padding: 0 32px; }
+    .value-card { text-align: center; padding: 40px 24px; }
+    .value-card .num { font-family: var(--font-display); font-style: italic; font-size: 48px; color: var(--c-gold); margin-bottom: 16px; }
+    .value-card h4 { font-family: var(--font-display); font-size: 24px; margin: 0 0 14px; font-weight: 500; }
+    .value-card p { font-size: 13px; line-height: 1.85; color: var(--c-ink-soft); max-width: 280px; margin: 0 auto; font-weight: 300; }
+    .timeline { max-width: 800px; margin: 0 auto; padding: 0 32px; }
+    .timeline-item { display: grid; grid-template-columns: 140px 1fr; gap: 60px; padding: 36px 0; border-bottom: 1px solid var(--c-line); }
+    .timeline-item .year { font-family: var(--font-display); font-style: italic; font-size: 36px; color: var(--c-gold); }
+    .timeline-item .desc h4 { margin: 0 0 10px; font-size: 17px; font-weight: 600; }
+    .timeline-item .desc p { margin: 0; color: var(--c-ink-soft); line-height: 1.8; font-size: 14px; font-weight: 300; }
+    @media (max-width:768px) { .brand-hero h1 { font-size: 56px; } .quote-section blockquote { font-size: 24px; } .value-grid { grid-template-columns: 1fr; gap: 20px; } .timeline-item { grid-template-columns: 1fr; gap: 8px; } }
   </style>
 </head>
 <body>
   <div id="site-header"></div>
 
   <section class="brand-hero">
-    <h1>LUMI</h1>
-    <p>매일의 일상에 빛을 더하는 글로벌 뷰티·라이프스타일 브랜드 큐레이션. 루미인터내셔널이 만드는 새로운 기준.</p>
+    <div class="container">
+      <span class="eyebrow">BRAND STORY</span>
+      <h1>LUMI</h1>
+      <p>Light Up Your Ritual — 일상에 빛을 더하는 글로벌 뷰티 큐레이션. 루미인터내셔널이 만드는 새로운 K-뷰티의 기준.</p>
+    </div>
   </section>
 
-  <article class="brand-story">
-    <h2>OUR PHILOSOPHY</h2>
-    <p>LUMI는 라틴어로 '빛'을 뜻하는 단어에서 출발했습니다. 우리는 검증된 K-뷰티 기술력과 글로벌 라이프스타일 큐레이션을 하나의 경험으로 연결합니다. 매일의 루틴을 빛나게 만드는 것 — 그것이 LUMI가 추구하는 단 하나의 가치입니다.</p>
+  <section class="editorial reveal" style="background:#fff;">
+    <div class="image-side" style="background-image:url('https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1400&q=85&auto=format&fit=crop')"></div>
+    <div class="text-side">
+      <span class="eyebrow">Our Philosophy</span>
+      <h2>The Light <em>Within</em><br>Every Skin</h2>
+      <p>LUMI는 라틴어로 '빛'을 뜻하는 단어에서 출발했습니다. 우리는 모든 피부에 빛이 있다고 믿습니다. 검증된 K-뷰티 기술력과 글로벌 라이프스타일 큐레이션이 만나, 매일의 루틴을 빛나게 만드는 것 — 그것이 LUMI가 추구하는 단 하나의 가치입니다.</p>
+    </div>
+  </section>
 
-    <div class="brand-photo" style="background-image:url('https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1600&q=85')"></div>
+  <section class="quote-section reveal">
+    <div class="container">
+      <blockquote>"우리는 단순히 좋아 보이는 제품이 아니라,<br>매일 사용해도 부담이 없는 정직한 포뮬러를 약속합니다."</blockquote>
+      <cite>— LUMI Manifesto</cite>
+    </div>
+  </section>
 
-    <h3>HERITAGE</h3>
-    <p>2025년 설립된 주식회사 루미인터내셔널은 전자상거래를 기반으로 화장품, 생활용품, 의류, 패션잡화, 가전제품, 기계설비 부품까지 폭넓은 카테고리를 다루는 글로벌 무역상사입니다. 그 중에서도 뷰티 카테고리는 가장 먼저, 그리고 가장 집중적으로 전개하는 시그니처 사업 영역입니다.</p>
-
-    <h3>QUALITY STANDARD</h3>
-    <p>저자극 처방, 임상으로 검증된 안정성, 친환경 패키지. 우리는 단순히 좋아 보이는 제품이 아니라, 매일 사용해도 부담이 없는 정직한 포뮬러를 약속합니다. 모든 제품은 식약처 기능성 인증과 자체 안정성 테스트를 통과한 제품만을 선별합니다.</p>
-
-    <div class="value-grid">
-      <div class="value-card">
-        <div class="icon">✨</div>
-        <h4>VERIFIED</h4>
-        <p>식약처 기능성 인증을<br>통과한 검증된 처방</p>
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">THREE PROMISES</span>
+        <h2>세 가지 <em>약속</em></h2>
       </div>
-      <div class="value-card">
-        <div class="icon">🌿</div>
-        <h4>CLEAN</h4>
-        <p>20대 유해성분 ZERO<br>저자극 클린 뷰티</p>
-      </div>
-      <div class="value-card">
-        <div class="icon">🌍</div>
-        <h4>GLOBAL</h4>
-        <p>한국에서 세계로,<br>K-뷰티의 새로운 기준</p>
+      <div class="value-grid reveal-stagger">
+        <div class="value-card">
+          <div class="num">01</div>
+          <h4>Verified</h4>
+          <p>식약처 기능성 인증을 통과한 검증된 처방. 모든 제품은 자체 안정성 테스트를 거쳐 출시됩니다.</p>
+        </div>
+        <div class="value-card">
+          <div class="num">02</div>
+          <h4>Clean</h4>
+          <p>20대 유해성분 ZERO. 매일 사용해도 부담 없는 저자극 클린 뷰티 포뮬러를 추구합니다.</p>
+        </div>
+        <div class="value-card">
+          <div class="num">03</div>
+          <h4>Global</h4>
+          <p>한국에서 시작해 14개국으로. 글로벌 임상으로 검증된 안전성과 효능을 약속합니다.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="brand-photo" style="background-image:url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1600&q=85')"></div>
+  <section class="editorial reverse reveal" style="background:#fff;">
+    <div class="image-side" style="background-image:url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1400&q=85&auto=format&fit=crop')"></div>
+    <div class="text-side">
+      <span class="eyebrow">Heritage</span>
+      <h2>From <em>Korea</em><br>to the World</h2>
+      <p>2025년 설립된 주식회사 루미인터내셔널은 전자상거래를 기반으로 화장품, 생활용품, 의류, 패션잡화, 가전제품까지 폭넓은 카테고리를 다루는 글로벌 무역상사입니다. 그 중에서도 뷰티 카테고리는 가장 먼저, 가장 집중적으로 전개하는 시그니처 사업 영역입니다.</p>
+    </div>
+  </section>
 
-    <h3>NEXT CHAPTER</h3>
-    <p>LUMI는 멈추지 않습니다. 화장품을 시작으로 가전, 패션, 라이프스타일까지 — 일상의 모든 순간에 빛이 닿을 수 있도록 라인업을 확장해 갑니다. 다음 챕터에서 만나게 될 LUMI를 기대해주세요.</p>
+  <section class="section tight">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">JOURNEY</span>
+        <h2><em>Milestones</em></h2>
+      </div>
+      <div class="timeline reveal-stagger">
+        <div class="timeline-item">
+          <div class="year">2025.07</div>
+          <div class="desc">
+            <h4>주식회사 루미인터내셔널 설립</h4>
+            <p>경기도 수원시에 본사를 두고 글로벌 뷰티·라이프스타일 무역상사로 출범.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2025.09</div>
+          <div class="desc">
+            <h4>LUMI 시그니처 컬렉션 런칭</h4>
+            <p>3-Step Care System을 중심으로 한 시그니처 스킨케어 4종을 런칭.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2026</div>
+          <div class="desc">
+            <h4>Global Expansion</h4>
+            <p>일본·동남아·북미 14개국으로 유통 확대. 라이프스타일 라인업 추가 예정.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <p style="text-align:center; margin-top:50px;">
-      <a class="btn btn-primary" href="/pages/shop.html">LUMI 컬렉션 보기 →</a>
-    </p>
-  </article>
+  <section class="stats-section reveal">
+    <div class="container">
+      <div class="stats-grid reveal-stagger">
+        <div class="stat-item"><div class="num">98<span style="font-size:36px;">%</span></div><div class="label">CUSTOMER SATISFACTION</div></div>
+        <div class="stat-item"><div class="num">120<span style="font-size:36px;">k+</span></div><div class="label">VERIFIED MEMBERS</div></div>
+        <div class="stat-item"><div class="num">14<span style="font-size:36px;"></span></div><div class="label">COUNTRIES SHIPPED</div></div>
+        <div class="stat-item"><div class="num">0<span style="font-size:36px;"></span></div><div class="label">ANIMAL TESTING</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight" style="text-align:center;">
+    <div class="container">
+      <div class="reveal">
+        <span class="eyebrow" style="font-family:var(--font-mono); font-size:11px; letter-spacing:6px; color:var(--c-gold); text-transform:uppercase; display:block; margin-bottom:18px;">EXPLORE</span>
+        <h2 style="font-family:var(--font-display); font-size:48px; font-weight:400; margin:0 0 36px;">Experience <em style="color:var(--c-gold); font-style:italic;">LUMI</em></h2>
+        <a class="btn btn-primary" href="/pages/shop.html">LUMI 컬렉션 보기</a>
+      </div>
+    </div>
+  </section>
 
   <div id="site-footer"></div>
 
