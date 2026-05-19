@@ -16,8 +16,8 @@ window.LUMI_PRODUCTS = [
     hoverImage: U('1620916566398-39f1143ab7be', 900),
     localImage: 'oravin-ampoule-main.jpg',
     localHover: 'oravin-ampoule-hover.jpg',
-    desc: 'ORAVIN의 시그니처 — 99.9ml 대용량 보습·광채 부스팅 앰플',
-    detail: 'ORAVIN Hydro Regene Air Ampoule은 99.9ml 대용량으로 매일 풍부하게 사용하는 데일리 부스터 앰플입니다. 저분자~고분자 5종 히알루론산 컴플렉스가 단계적으로 수분을 채우고, 판테놀과 마데카소사이드가 피부 장벽을 안정화시켜 광채로 가득한 결을 완성합니다. 에어리한 텍스처가 즉각 흡수되어 끈적임 없는 마무리.',
+    desc: '넉넉한 99.9ml로 매일 듬뿍, ORAVIN 시그니처 보습·광채 앰플',
+    detail: 'ORAVIN의 시그니처 앰플이에요. 넉넉한 99.9ml 용량 덕분에 매일 부담 없이 듬뿍 사용하실 수 있어요. 분자 크기가 다른 5종 히알루론산이 속부터 표면까지 단계별로 수분을 채워주고, 판테놀과 마데카소사이드가 결을 차분하게 다듬어드려요. 가볍게 발리지만 오래 머무는 에어리 텍스처라 끈적임 걱정 없이 사용하실 수 있어요.',
     options: [{ name: '99.9ml 단품', addPrice: 0 }, { name: '99.9ml + 30ml 미니 (선물 패키지)', addPrice: 15000 }]
   },
   {
@@ -32,8 +32,8 @@ window.LUMI_PRODUCTS = [
     hoverImage: U('1608248543803-ba4f8c70ae0b', 900),
     localImage: 'oravin-pdlla-main.jpg',
     localHover: 'oravin-pdlla-hover.jpg',
-    desc: 'PDLLA 콜라겐 부스팅 시그니처 — 탄력·볼륨 케어',
-    detail: 'PDLLA(Poly-D,L-Lactic Acid) 콜라겐 부스팅 컴플렉스가 피부 진피층의 콜라겐 생성을 자극하여 탄력과 볼륨을 회복시키는 메디컬 에스테틱 세럼. 매일의 홈케어에서 시술 직후의 매끈한 결을 경험하세요.',
+    desc: 'PDLLA 콜라겐 부스팅으로 탄력과 볼륨을 채워주는 시그니처 세럼',
+    detail: 'PDLLA(Poly-D,L-Lactic Acid) 콜라겐 부스팅 컴플렉스가 피부 진피층의 콜라겐 생성을 도와 탄력과 볼륨을 자연스럽게 회복시켜드려요. 매일의 홈케어로 시술 직후처럼 매끈한 결을 경험해보세요.',
     options: [{ name: '30ml 단품', addPrice: 0 }]
   },
   {
@@ -48,8 +48,8 @@ window.LUMI_PRODUCTS = [
     hoverImage: U('1571781926291-c477ebfd024b', 900),
     localImage: 'oravin-borfirin-main.jpg',
     localHover: 'oravin-borfirin-hover.jpg',
-    desc: '보르피린 5% 함유 — 리프팅·V라인 케어',
-    detail: '보르피린(Borfirin) 고함량 5%가 처진 피부에 즉각적인 리프팅감을 주고, 시간이 흐를수록 또렷한 V라인을 완성합니다. 풍부하지만 무겁지 않은 텍스처가 24시간 탄탄한 베일을 만듭니다.',
+    desc: '보르피린 5% 고함량으로 또렷한 V라인을 잡아주는 리프팅 크림',
+    detail: '보르피린(Borfirin) 5% 고함량이 처진 피부에 즉각적인 리프팅감을 더해드리고, 시간이 흐를수록 또렷한 V라인을 완성해드려요. 풍부하지만 무겁지 않은 텍스처가 24시간 탄탄한 베일을 만들어드려요.',
     options: [{ name: '50ml 단품', addPrice: 0 }]
   },
   {
@@ -64,8 +64,8 @@ window.LUMI_PRODUCTS = [
     hoverImage: U('1556228453-efd6c1ff04f6', 900),
     localImage: 'oravin-spicule-main.jpg',
     localHover: 'oravin-spicule-hover.jpg',
-    desc: '스피큘 마이크로니들 — 결 정돈 트리트먼트',
-    detail: '천연 해면 유래 스피큘(Spicule)이 피부 표면에 마이크로 채널을 형성하여 액티브 성분의 흡수를 극대화하는 홈에스테틱 마스크. 주 1회 사용으로 매끈하게 정돈된 결을 경험하세요.',
+    desc: '천연 스피큘로 결을 매끈하게 정돈하는 주 1회 트리트먼트',
+    detail: '천연 해면 유래 스피큘(Spicule)이 피부 표면에 미세 채널을 만들어 활성 성분의 흡수를 도와드려요. 주 1회만 사용해도 한결 매끈해진 결을 느끼실 수 있을 거예요.',
     options: [{ name: '5매 1박스', addPrice: 0 }, { name: '5매 2박스 (15% OFF)', addPrice: 51000 }]
   },
   {
@@ -80,8 +80,8 @@ window.LUMI_PRODUCTS = [
     hoverImage: U('1612817288484-6f916006741a', 900),
     localImage: 'oravin-set-main.jpg',
     localHover: 'oravin-set-hover.jpg',
-    desc: '시그니처 3종 — 보습·부스팅·리프팅 완성',
-    detail: 'Hydro Regene Air Ampoule + PDLLA Collagen Booster Serum + Borfirin Lifting Cream. 매일의 홈에스테틱 루틴을 완성하는 시그니처 3종 세트. 단품 대비 20% 할인 + 시그니처 더스트백 동봉.',
+    desc: '보습·부스팅·리프팅을 한 번에, ORAVIN 시그니처 3종 풀세트',
+    detail: 'Hydro Regene Air Ampoule + PDLLA Collagen Booster Serum + Borfirin Lifting Cream 3종을 한 번에 만나보세요. 매일의 홈에스테틱 루틴을 완성해드리는 시그니처 세트입니다. 단품 대비 20% 할인 혜택과 시그니처 더스트백을 함께 보내드려요.',
     options: [{ name: 'Premium Full Set', addPrice: 0 }]
   },
   {
@@ -96,8 +96,8 @@ window.LUMI_PRODUCTS = [
     hoverImage: U('1571781926291-c477ebfd024b', 900),
     localImage: 'oravin-duo-main.jpg',
     localHover: 'oravin-duo-hover.jpg',
-    desc: '앰플 + PDLLA 세럼 — 보습·콜라겐 부스팅 듀오',
-    detail: 'Hydro Regene Air Ampoule와 PDLLA Collagen Booster Serum의 듀오 구성. 보습과 콜라겐 부스팅을 동시에 잡는 시너지 케어. 20% 할인 + 무료 배송.',
+    desc: '앰플과 PDLLA 세럼의 듀오 — 보습부터 콜라겐 부스팅까지',
+    detail: 'Hydro Regene Air Ampoule와 PDLLA Collagen Booster Serum의 듀오 구성이에요. 보습과 콜라겐 부스팅을 한 번에 챙기실 수 있도록 준비했어요. 20% 할인과 무료 배송 혜택이 함께 적용됩니다.',
     options: [{ name: 'Duo Pack', addPrice: 0 }]
   },
   {
@@ -112,8 +112,8 @@ window.LUMI_PRODUCTS = [
     hoverImage: U('1556228852-bbef5683b97c', 900),
     localImage: 'oravin-travel-main.jpg',
     localHover: 'oravin-travel-hover.jpg',
-    desc: '여행에서도 흔들리지 않는 홈에스테틱 미니 키트',
-    detail: 'Hydro Regene Ampoule 30ml + PDLLA Booster Serum 15ml + Borfirin Cream 20ml. 기내 반입 가능 사이즈로 어디서나 ORAVIN 루틴을 유지하세요.',
+    desc: '어디서나 흔들리지 않는 ORAVIN 미니 3종 키트',
+    detail: 'Hydro Regene Ampoule 30ml + PDLLA Booster Serum 15ml + Borfirin Cream 20ml 구성이에요. 기내 반입이 가능한 미니 사이즈라 여행지에서도 ORAVIN 루틴을 그대로 이어가실 수 있어요.',
     options: [{ name: 'Travel Kit', addPrice: 0 }]
   },
   {
@@ -128,8 +128,8 @@ window.LUMI_PRODUCTS = [
     hoverImage: U('1556228720-da4e85ab4a93', 900),
     localImage: 'oravin-foam-main.jpg',
     localHover: 'oravin-foam-hover.jpg',
-    desc: '약산성 모이스처 폼 — 시술 후 케어에도 안전',
-    detail: '약산성 5.5pH로 시술 직후 민감한 피부에도 사용 가능한 모이스처 클렌징 폼. 풍부한 거품이 모공 속 노폐물을 부드럽게 세정하고 다음 단계 흡수를 위한 깨끗한 베이스를 만듭니다.',
+    desc: '약산성 5.5pH 모이스처 폼 — 시술 후 민감한 날에도 안심',
+    detail: '약산성 5.5pH 포뮬러라 시술 직후 민감한 피부에도 안심하고 사용하실 수 있어요. 풍부한 거품이 모공 속 노폐물을 부드럽게 세정해주고, 다음 단계 흡수를 위한 깨끗한 베이스를 만들어드려요.',
     options: [{ name: '150ml 단품', addPrice: 0 }]
   }
 ];

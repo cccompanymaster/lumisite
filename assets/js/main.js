@@ -31,6 +31,85 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
     document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
 
+    // Count-up animation
+    const counterIo = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseInt(el.dataset.count, 10) || 0;
+        const dur = 1400;
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased);
+          if (p < 1) requestAnimationFrame(tick);
+          else el.textContent = target;
+        };
+        requestAnimationFrame(tick);
+        counterIo.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(el => counterIo.observe(el));
+
+    // Scroll progress bar
+    const bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    document.body.prepend(bar);
+    const updateBar = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      bar.style.transform = `scaleX(${pct / 100})`;
+    };
+    updateBar();
+    window.addEventListener('scroll', updateBar, { passive: true });
+
+    // Cart badge bounce
+    document.addEventListener('lumi:cart:change', () => {
+      document.querySelectorAll('.cart-count').forEach(el => {
+        el.classList.remove('bounce');
+        void el.offsetWidth;
+        el.classList.add('bounce');
+      });
+    });
+
+    // Subtle hover tilt on product cards (desktop only)
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.body.addEventListener('mousemove', (ev) => {
+        const card = ev.target.closest('.product-card');
+        if (!card) return;
+        const r = card.getBoundingClientRect();
+        const dx = (ev.clientX - r.left) / r.width - 0.5;
+        const dy = (ev.clientY - r.top) / r.height - 0.5;
+        const thumb = card.querySelector('.thumb');
+        if (thumb) thumb.style.transform = `perspective(800px) rotateX(${-dy * 3}deg) rotateY(${dx * 3}deg)`;
+      });
+      document.body.addEventListener('mouseleave', (ev) => {
+        const card = ev.target.closest && ev.target.closest('.product-card');
+        if (card) {
+          const thumb = card.querySelector('.thumb');
+          if (thumb) thumb.style.transform = '';
+        }
+      }, true);
+      document.querySelectorAll('.product-card').forEach(c => {
+        c.addEventListener('mouseleave', () => {
+          const t = c.querySelector('.thumb');
+          if (t) t.style.transform = '';
+        });
+      });
+    }
+
+    // Back-to-top button
+    const fab = document.createElement('button');
+    fab.className = 'back-to-top';
+    fab.setAttribute('aria-label', '맨 위로');
+    fab.innerHTML = '↑';
+    document.body.appendChild(fab);
+    fab.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    const toggleFab = () => fab.classList.toggle('show', window.scrollY > 600);
+    toggleFab();
+    window.addEventListener('scroll', toggleFab, { passive: true });
+
     if (window.applyImageFallbacks) window.applyImageFallbacks();
   });
 
