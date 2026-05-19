@@ -19,19 +19,19 @@
       <div class="header-inner">
         <a class="logo" href="${P}index.html">ORAVIN<small>PREMIUM SKINCARE</small></a>
         <ul class="gnb">
-          <li><a href="${P}pages/shop.html">Shop</a>
+          <li><a href="${P}pages/shop.html">쇼핑</a>
             <ul class="submenu">
-              <li><a href="${P}pages/shop.html?cat=all">All</a></li>
-              <li><a href="${P}pages/shop.html?cat=best">Best</a></li>
-              <li><a href="${P}pages/shop.html?cat=new">New</a></li>
-              <li><a href="${P}pages/shop.html?cat=skincare">Skincare</a></li>
-              <li><a href="${P}pages/shop.html?cat=cleanser">Cleanser</a></li>
-              <li><a href="${P}pages/shop.html?cat=set">Set</a></li>
+              <li><a href="${P}pages/shop.html?cat=all">전체</a></li>
+              <li><a href="${P}pages/shop.html?cat=best">베스트</a></li>
+              <li><a href="${P}pages/shop.html?cat=new">신상품</a></li>
+              <li><a href="${P}pages/shop.html?cat=skincare">스킨케어</a></li>
+              <li><a href="${P}pages/shop.html?cat=cleanser">클렌저</a></li>
+              <li><a href="${P}pages/shop.html?cat=set">세트</a></li>
             </ul>
           </li>
-          <li><a href="${P}pages/membership.html">VIP</a></li>
-          <li><a href="${P}pages/brand.html">Brand</a></li>
-          <li><a href="${P}pages/shop.html?cat=new">New</a></li>
+          <li><a href="${P}pages/membership.html">멤버십</a></li>
+          <li><a href="${P}pages/brand.html">브랜드</a></li>
+          <li><a href="${P}pages/shop.html?cat=new">신상품</a></li>
         </ul>
         <div class="header-utils">
           <div class="auth-menu"></div>
@@ -51,13 +51,13 @@
       <button class="close-btn" aria-label="닫기">×</button>
       <a class="logo" href="${P}index.html">ORAVIN<small>PREMIUM SKINCARE</small></a>
       <nav class="mobile-drawer-nav">
-        <a href="${P}pages/shop.html">Shop</a>
-        <a href="${P}pages/shop.html?cat=best">Best</a>
-        <a href="${P}pages/shop.html?cat=new">New Arrivals</a>
-        <a href="${P}pages/shop.html?cat=set">Sets</a>
-        <a href="${P}pages/membership.html">VIP Lounge</a>
-        <a href="${P}pages/brand.html">Brand Story</a>
-        <a href="${P}pages/cart.html">Cart</a>
+        <a href="${P}pages/shop.html">쇼핑</a>
+        <a href="${P}pages/shop.html?cat=best">베스트</a>
+        <a href="${P}pages/shop.html?cat=new">신상품</a>
+        <a href="${P}pages/shop.html?cat=set">세트</a>
+        <a href="${P}pages/membership.html">멤버십</a>
+        <a href="${P}pages/brand.html">브랜드 스토리</a>
+        <a href="${P}pages/cart.html">장바구니</a>
       </nav>
       <div class="mobile-drawer-auth" id="drawerAuth"></div>
     </aside>
@@ -77,7 +77,7 @@
             </div>
           </div>
           <div class="col">
-            <h4>SHOP</h4>
+            <h4>쇼핑</h4>
             <ul>
               <li><a href="${P}pages/shop.html?cat=all">전체보기</a></li>
               <li><a href="${P}pages/shop.html?cat=best">베스트</a></li>
@@ -86,16 +86,16 @@
             </ul>
           </div>
           <div class="col">
-            <h4>ABOUT</h4>
+            <h4>안내</h4>
             <ul>
               <li><a href="${P}pages/brand.html">브랜드 스토리</a></li>
-              <li><a href="${P}pages/membership.html">멤버십</a></li>
+              <li><a href="${P}pages/membership.html">멤버십 안내</a></li>
               <li><a href="${P}pages/login.html">로그인</a></li>
               <li><a href="${P}pages/signup.html">회원가입</a></li>
             </ul>
           </div>
           <div class="col">
-            <h4>CUSTOMER</h4>
+            <h4>고객센터</h4>
             <div class="tel">031-000-0000</div>
             <div class="hours">
               평일 09:30 ~ 17:00<br>

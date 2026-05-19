@@ -14,7 +14,7 @@
 <body>
   <div class="preloader">
     <div class="logo-mark">O R A V I N</div>
-    <div class="small">PREMIUM SKINCARE</div>
+    <div class="small">프리미엄 스킨케어</div>
     <div class="bar"></div>
   </div>
 
@@ -24,8 +24,8 @@
   <section class="section" style="background:var(--c-bg-alt);">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">YOU MAY ALSO LIKE</span>
-        <h2>Discover <em>More</em></h2>
+        <span class="eyebrow">함께 보면 좋은</span>
+        <h2>다른 <em>제품</em></h2>
       </div>
       <div class="product-grid reveal-stagger" data-product-grid data-filter="best"></div>
     </div>
@@ -66,7 +66,7 @@
       }).join('');
 
       view.innerHTML = `
-        <p class="breadcrumb" style="padding:24px 0 0;"><a href="../index.html">HOME</a> · <a href="shop.html">SHOP</a> · ${p.nameKo || p.name}</p>
+        <p class="breadcrumb" style="padding:24px 0 0;"><a href="../index.html">홈</a> · <a href="shop.html">쇼핑</a> · ${p.nameKo || p.name}</p>
         <div class="product-detail">
           <div class="main-img"><img src="${p.image}" alt="${p.name}"></div>
           <div class="info-side">
@@ -85,7 +85,7 @@
               </select>
             </div>
             <div class="qty-row">
-              <label>QTY</label>
+              <label>수량</label>
               <button id="qtyMinus">−</button>
               <input type="number" id="qty" value="1" min="1">
               <button id="qtyPlus">+</button>
@@ -97,7 +97,7 @@
           </div>
         </div>
         <div class="detail-body">
-          <span style="font-family:var(--font-mono); font-size:10px; letter-spacing:4px; color:var(--c-gold); text-transform:uppercase; display:block; text-align:center; margin-bottom:14px;">PRODUCT DETAIL</span>
+          <span style="font-family:var(--font-mono); font-size:10px; letter-spacing:4px; color:var(--c-gold); text-transform:uppercase; display:block; text-align:center; margin-bottom:14px;">제품 상세</span>
           <h3>${p.name}</h3>
           <p>${p.detail}</p>
         </div>
