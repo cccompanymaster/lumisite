@@ -46,6 +46,12 @@ body {
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   line-height: 1.55; font-size: 14px; font-weight: 400;
   overflow-x: hidden;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+h1, h2, h3, h4, h5, h6, p, span, div, a, button, label, blockquote, cite {
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 body.no-scroll { overflow: hidden; }
 a { color: inherit; text-decoration: none; transition: color 0.3s var(--ease); }
@@ -360,8 +366,8 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 }
 .main-visual .title {
   font-family: var(--font-display); font-weight: 400;
-  font-size: 44px; letter-spacing: -0.5px;
-  line-height: 1.08; margin: 0 0 20px; max-width: 100%;
+  font-size: 44px; letter-spacing: -0.3px;
+  line-height: 1.15; margin: 0 0 20px; max-width: 100%;
 }
 .main-visual .title em { font-style: italic; color: var(--c-gold-soft); }
 .main-visual .desc {
@@ -405,7 +411,11 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
   letter-spacing: -0.5px; line-height: 1.1; margin: 0;
 }
 .section-head h2 em { font-style: italic; color: var(--c-gold); }
-.section-head .desc { color: var(--c-ink-soft); margin: 16px auto 0; font-size: 13px; line-height: 1.8; max-width: 520px; }
+.section-head .desc {
+  color: var(--c-ink-soft); margin: 16px auto 0;
+  font-size: 13.5px; line-height: 1.85; max-width: 560px;
+  padding: 0 12px;
+}
 .section-head.left { text-align: left; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
 
 /* ============ REVEAL ANIMATION ============ */
@@ -464,8 +474,16 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 .product-card .tag.set { background: var(--c-gold); color: #fff; }
 .product-card .info { padding: 14px 4px 0; }
 .product-card .cat { font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px; color: var(--c-muted); text-transform: uppercase; margin-bottom: 6px; }
-.product-card .name { font-size: 13px; font-weight: 500; color: var(--c-ink); display: block; margin-bottom: 10px; line-height: 1.5; min-height: 40px; }
-.product-card .name small { color: var(--c-muted); font-weight: 400; }
+.product-card .name {
+  font-size: 13px; font-weight: 500; color: var(--c-ink);
+  display: block; margin-bottom: 10px; line-height: 1.5;
+  min-height: 40px;
+}
+.product-card .name small {
+  display: block; margin-top: 4px;
+  font-size: 11px; color: var(--c-muted); font-weight: 400;
+  letter-spacing: 0;
+}
 .product-card .price-row { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
 .product-card .price { font-weight: 600; font-size: 14px; }
 .product-card .original { color: #b5aea2; text-decoration: line-through; font-size: 11px; }
@@ -519,7 +537,11 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; text-align: center; }
 .stat-item .num { font-family: var(--font-display); font-style: italic; font-size: 44px; line-height: 1; color: var(--c-gold-soft); margin-bottom: 10px; }
 .stat-item .num .unit { font-size: 24px; }
-.stat-item .label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.7; }
+.stat-item .label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+  opacity: 0.75; line-height: 1.5;
+}
 
 /* ============ BRAND HERITAGE ============ */
 .brand-heritage { background: #0a0c12; color: #fff; overflow: hidden; }
@@ -604,8 +626,16 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 .footer .col .tel { font-family: var(--font-display); font-size: 24px; color: #fff; letter-spacing: 1px; margin-bottom: 8px; font-weight: 400; }
 .footer .col .hours { line-height: 1.8; color: rgba(255,255,255,0.55); font-size: 11px; }
 .footer-bottom { padding-top: 28px; }
-.footer-biz { display: grid; grid-template-columns: 1fr; gap: 6px 24px; line-height: 1.85; color: rgba(255,255,255,0.45); font-size: 10.5px; }
-.footer-biz span strong { color: rgba(255,255,255,0.7); font-weight: 500; margin-right: 6px; }
+.footer-biz {
+  display: grid; grid-template-columns: 1fr; gap: 6px 24px;
+  line-height: 1.85; color: rgba(255,255,255,0.5);
+  font-size: 11px;
+}
+.footer-biz span { display: block; }
+.footer-biz span strong {
+  color: rgba(255,255,255,0.78); font-weight: 500;
+  margin-right: 6px; white-space: nowrap;
+}
 .footer .copyright { margin-top: 24px; font-size: 9px; color: rgba(255,255,255,0.35); letter-spacing: 2px; text-transform: uppercase; }
 .social-links { display: flex; gap: 10px; }
 .social-links a {
@@ -688,7 +718,11 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 .product-detail .tags { display: flex; gap: 6px; margin-bottom: 14px; }
 .product-detail .cat-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--c-gold); margin-bottom: 12px; }
 .product-detail h1 { font-family: var(--font-display); font-size: 30px; margin: 0 0 14px; font-weight: 400; line-height: 1.2; letter-spacing: -0.5px; }
-.product-detail h1 .sub { font-size: 14px; color: var(--c-muted); font-style: italic; display: block; margin-top: 6px; }
+.product-detail h1 .sub {
+  font-size: 14px; color: var(--c-muted); font-style: italic;
+  display: block; margin-top: 8px; line-height: 1.4;
+  font-family: var(--font-sans);
+}
 .product-detail .desc { color: var(--c-ink-soft); margin-bottom: 24px; line-height: 1.8; font-size: 14px; font-weight: 300; }
 .product-detail .price-block { padding: 22px 0; border-top: 1px solid var(--c-line); border-bottom: 1px solid var(--c-line); margin-bottom: 24px; }
 .product-detail .price-block .original { color: #aaa; text-decoration: line-through; font-size: 13px; }
@@ -818,15 +852,21 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
   margin: 0 0 28px; font-weight: 300; max-width: 480px;
 }
 .hero-product .ingredient-row {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px;
   margin-bottom: 32px; padding: 24px 0;
   border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.hero-product .ingredient {
-  text-align: left;
+.hero-product .ingredient { text-align: left; min-width: 0; }
+.hero-product .ingredient .key {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 22px; color: var(--c-gold-soft);
+  display: block; margin-bottom: 4px; line-height: 1.1;
 }
-.hero-product .ingredient .key { font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--c-gold-soft); display: block; margin-bottom: 4px; }
-.hero-product .ingredient .val { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 1px; }
+.hero-product .ingredient .val {
+  font-size: 11px; color: rgba(255,255,255,0.55);
+  letter-spacing: 0.5px; line-height: 1.4;
+  display: block;
+}
 
 /* ============ RITUAL STEPS (ORAVIN) ============ */
 .ritual-steps { display: grid; grid-template-columns: 1fr; gap: 28px; counter-reset: rstep; }
@@ -843,7 +883,7 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 }
 .ritual-step .step-num::before { content: '0' counter(rstep); }
 .ritual-step h4 { font-family: var(--font-display); font-size: 22px; margin: 0 0 10px; font-weight: 500; }
-.ritual-step p { color: var(--c-ink-soft); font-size: 13px; line-height: 1.8; margin: 0; max-width: 480px; }
+.ritual-step p { color: var(--c-ink-soft); font-size: 13px; line-height: 1.85; margin: 0; max-width: 520px; }
 
 /* ============ INGREDIENT GRID ============ */
 .ingredient-section { background: var(--c-bg-alt); padding: 70px 0; }
@@ -854,9 +894,9 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
   margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
   font-family: var(--font-display); font-style: italic; font-size: 20px; color: var(--c-gold);
 }
-.ingredient-card h5 { font-family: var(--font-display); font-size: 18px; font-weight: 500; margin: 0 0 6px; }
-.ingredient-card .pct { font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; color: var(--c-gold); text-transform: uppercase; margin-bottom: 10px; }
-.ingredient-card p { font-size: 12px; color: var(--c-ink-soft); line-height: 1.7; margin: 0; font-weight: 300; }
+.ingredient-card h5 { font-family: var(--font-display); font-size: 20px; font-weight: 500; margin: 0 0 6px; line-height: 1.2; }
+.ingredient-card .pct { font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; color: var(--c-gold); text-transform: uppercase; margin-bottom: 12px; }
+.ingredient-card p { font-size: 12.5px; color: var(--c-ink-soft); line-height: 1.8; margin: 0; font-weight: 300; max-width: 240px; margin-left: auto; margin-right: auto; }
 
 @media (min-width: 768px) {
   .hero-product { padding: 110px 0; }
@@ -934,16 +974,19 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
   white-space: nowrap;
 }
 .pdlla-spotlight .key-points {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 22px 16px;
   padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1);
 }
+.pdlla-spotlight .key-points .item { min-width: 0; }
 .pdlla-spotlight .key-points .item .num {
   font-family: var(--font-display); font-style: italic;
-  font-size: 28px; color: var(--c-gold-soft); display: block; margin-bottom: 4px;
+  font-size: 26px; color: var(--c-gold-soft);
+  display: block; margin-bottom: 4px; line-height: 1.1;
 }
 .pdlla-spotlight .key-points .item .lbl {
-  font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
-  color: rgba(255,255,255,0.55); text-transform: uppercase;
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.5px; color: rgba(255,255,255,0.6);
+  line-height: 1.5; display: block;
 }
 
 @media (min-width: 768px) {
