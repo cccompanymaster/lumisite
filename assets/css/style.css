@@ -346,15 +346,21 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 }
 .main-visual .slide {
   position: relative; height: 100%; overflow: hidden;
-  background-size: cover; background-position: center 35%;
+  background-size: cover; background-position: center 25%;
   color: #fff; display: flex; align-items: flex-end;
   padding-bottom: 96px;
 }
 .main-visual .slide::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 100%);
+  background:
+    linear-gradient(180deg, rgba(20,12,8,0.20) 0%, rgba(20,12,8,0.10) 35%, rgba(20,12,8,0.45) 65%, rgba(20,12,8,0.85) 100%);
   z-index: 1;
 }
+/* 텍스트 가독성 보강 — 미세한 그림자 */
+.main-visual .slide-content { text-shadow: 0 2px 24px rgba(20,12,8,0.55); }
+.main-visual .title { text-shadow: 0 2px 28px rgba(20,12,8,0.6), 0 1px 3px rgba(20,12,8,0.4); }
+.main-visual .eyebrow,
+.main-visual .desc { text-shadow: 0 1px 12px rgba(20,12,8,0.7); }
 .main-visual .slide-content {
   position: relative; z-index: 2;
   max-width: var(--maxw); margin: 0 auto;
@@ -465,6 +471,7 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 }
 .product-card .thumb img {
   width: 100%; height: 100%; object-fit: cover;
+  object-position: center 28%;
   transition: transform 1.2s var(--ease), opacity 0.6s var(--ease);
 }
 .product-card .thumb img.hover-img { position: absolute; inset: 0; opacity: 0; }
@@ -503,7 +510,7 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 }
 .editorial .image-side {
   min-height: 360px;
-  background-size: cover; background-position: center;
+  background-size: cover; background-position: center 30%;
 }
 .editorial .text-side { padding: 80px 28px; background: var(--c-paper); }
 .editorial .eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: 5px; color: var(--c-gold); text-transform: uppercase; margin-bottom: 18px; display: block; }
@@ -557,14 +564,14 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 .brand-heritage .text-side h2 { font-family: var(--font-display); font-size: 38px; font-weight: 400; letter-spacing: -0.5px; line-height: 1.1; margin: 0 0 22px; }
 .brand-heritage .text-side h2 em { font-style: italic; color: var(--c-gold-soft); }
 .brand-heritage .text-side p { color: rgba(255,255,255,0.72); font-size: 14px; line-height: 1.9; margin-bottom: 28px; font-weight: 300; max-width: 460px; }
-.brand-heritage .image-side { background-size: cover; background-position: center; min-height: 360px; }
+.brand-heritage .image-side { background-size: cover; background-position: center 30%; min-height: 360px; }
 
 /* ============ REVIEW ============ */
 .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .review-card { background: var(--c-paper); border: 1px solid var(--c-line); overflow: hidden; transition: all 0.4s var(--ease); }
 .review-card:hover { border-color: var(--c-gold); transform: translateY(-3px); }
 .review-card .photo { aspect-ratio: 1/1; background: var(--c-bg-alt); overflow: hidden; }
-.review-card .photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+.review-card .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; transition: transform 1s var(--ease); }
 .review-card:hover .photo img { transform: scale(1.05); }
 .review-card .body { padding: 18px 16px; }
 .review-card .stars { color: var(--c-gold); font-size: 10px; margin-bottom: 6px; letter-spacing: 1px; }
@@ -581,15 +588,17 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 }
 .lookbook-item img {
   width: 100%; height: 100%; object-fit: cover;
+  object-position: center 25%;
   transition: transform 1.4s var(--ease);
-  filter: brightness(0.92);
+  filter: brightness(0.95);
 }
 .lookbook-item:hover img { transform: scale(1.06); filter: brightness(1); }
 .lookbook-item .caption {
   position: absolute; left: 0; right: 0; bottom: 0;
-  padding: 20px 18px;
-  background: linear-gradient(180deg, transparent 0%, rgba(13,13,16,0.85) 100%);
+  padding: 24px 20px 22px;
+  background: linear-gradient(180deg, transparent 0%, rgba(20,12,8,0.4) 40%, rgba(20,12,8,0.92) 100%);
   color: #fff; z-index: 2;
+  text-shadow: 0 1px 12px rgba(20,12,8,0.6);
 }
 .lookbook-item .caption .eyebrow {
   font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px;
@@ -614,7 +623,7 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 .insta-section { padding: 88px 0; background: var(--c-bg); }
 .insta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
 .insta-item { aspect-ratio: 1/1; overflow: hidden; position: relative; display: block; }
-.insta-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+.insta-item img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; transition: transform 1s var(--ease); }
 .insta-item:hover img { transform: scale(1.08); }
 .insta-item::after { content: ''; position: absolute; inset: 0; background: rgba(20,23,30,0); transition: background 0.3s var(--ease); }
 .insta-item:hover::after { background: rgba(20,23,30,0.3); }
@@ -1119,6 +1128,9 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
     height: 92vh; min-height: 720px; max-height: 980px;
   }
   .main-visual .slide { align-items: center; padding-bottom: 0; background-position: center center; }
+  .main-visual .slide::before {
+    background: linear-gradient(135deg, rgba(20,12,8,0.7) 0%, rgba(20,12,8,0.4) 45%, rgba(20,12,8,0.15) 100%);
+  }
   .main-visual .title { font-size: 76px; }
 
   .section { padding: 140px 0; }
