@@ -53,9 +53,12 @@
       .manifesto p.lead { font-size: 30px; }
       .manifesto p { font-size: 17px; }
       .quote-section blockquote { font-size: 32px; }
-      .value-grid { grid-template-columns: repeat(3, 1fr); gap: 50px; }
+      .value-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
       .timeline-item { grid-template-columns: 120px 1fr; gap: 50px; }
       .timeline-item .year { font-size: 32px; }
+    }
+    @media (min-width:1024px) {
+      .value-grid { grid-template-columns: repeat(4, 1fr); gap: 32px; }
     }
     @media (min-width:1024px) {
       .brand-hero h1 { font-size: 96px; }
@@ -77,18 +80,18 @@
     <div class="container">
       <span class="eyebrow">브랜드 스토리</span>
       <h1>ORAVIN</h1>
-      <p>메디컬 에스테틱 감성과 스킨부스터 트렌드를 기반으로 탄생한 프리미엄 스킨케어 브랜드.</p>
+      <p>피부과 스킨부스터에서 영감을 받아 탄생한 프리미엄 스킨케어 브랜드.</p>
     </div>
   </section>
 
   <!-- Manifesto -->
   <section class="manifesto reveal">
     <div class="manifesto-inner">
-      <p class="lead">"피부 본연의 컨디션과 균형을 고려한 프리미엄 홈케어 루틴."</p>
-      <p>ORAVIN은 <strong>메디컬 에스테틱 감성과 스킨부스터 트렌드</strong>를 기반으로 탄생한 프리미엄 스킨케어 브랜드입니다.</p>
-      <p>피부 탄력 저하, 볼륨 감소, 피부결 변화 등 현대인의 다양한 피부 고민에 집중하여 <strong>피부 본연의 건강한 아름다움과 자연스러운 광채</strong>를 완성하는 데 브랜드 가치를 두고 있습니다.</p>
-      <p>ORAVIN은 단순한 스킨케어를 넘어 <strong>프리미엄 홈에스테틱 경험</strong>을 제안하며, PDLLA, 보르피린, 스피큘 등 프리미엄 성분을 기반으로 <strong>탄력·광채·볼륨 케어</strong>에 집중한 차별화된 스킨케어 솔루션을 선보이고 있습니다.</p>
-      <p>또한 메디컬 럭셔리 콘셉트와 감각적인 디자인을 통해 고급스러운 브랜드 아이덴티티를 구축하였으며, 피부 본연의 컨디션과 균형을 고려한 프리미엄 홈케어 루틴을 제안합니다.</p>
+      <p class="lead">"피부과 스킨부스터에서<br>영감을 받은 홈케어."</p>
+      <p>ORAVIN은 <strong>피부과 스킨부스터</strong>에서 영감을 받아 탄생한 프리미엄 홈케어 브랜드입니다.</p>
+      <p>피부 탄력 저하, 볼륨 감소, 피부결 변화 등 현대인의 다양한 피부 고민에 집중하여, <strong>탄력 · 볼륨 · 광채 · 재생 · 안티에이징</strong>의 다섯 가지 핵심 가치를 매일의 케어에 담아드려요.</p>
+      <p>ORAVIN은 <strong>PDLLA · Volufiline · Centella Leaf Water · Micro Spicule</strong>의 네 가지 시그니처 성분을 기반으로, 클리닉에서 시작된 스킨부스터의 본질을 매일 부담 없이 누리실 수 있도록 홈케어 농도로 다듬었습니다.</p>
+      <p>또한 감각적인 디자인과 정제된 처방으로 고급스러운 브랜드 아이덴티티를 완성하였으며, 피부 본연의 컨디션과 균형을 살리는 프리미엄 홈케어 루틴을 제안합니다.</p>
       <p>ORAVIN은 피부에 필요한 본질적인 아름다움과 프리미엄 스킨케어 경험을 위해 <strong>끊임없이 연구하고 있습니다.</strong></p>
     </div>
   </section>
@@ -99,9 +102,9 @@
          data-bg-fallback="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1400&q=85&auto=format&fit=crop"
          style="background-image:url('https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1400&q=85&auto=format&fit=crop')"></div>
     <div class="text-side">
-      <span class="eyebrow">우리의 철학</span>
-      <h2>메디컬 럭셔리,<br><em>홈 에스테틱</em></h2>
-      <p>피부 본연의 컨디션을 회복하고, 매일의 케어로 시술 직후의 결을 만들어드리는 것. ORAVIN의 모든 처방은 이 단 하나의 약속에서 시작됩니다.</p>
+      <span class="eyebrow">ORAVIN PHILOSOPHY</span>
+      <h2>피부에 <em>볼륨의 깊이</em>를<br>더하다</h2>
+      <p>탄력 · 볼륨 · 광채 · 재생 · 안티에이징 — 다섯 가지 가치를 매일의 케어에 담아, 시술 직후처럼 매끄러운 결을 일상에서도 누리실 수 있도록 해드려요.</p>
     </div>
   </section>
 
@@ -115,24 +118,29 @@
   <section class="section">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">세 가지 약속</span>
-        <h2><em>ORAVIN</em>의 기준</h2>
+        <span class="eyebrow">브랜드 키워드</span>
+        <h2><em>ORAVIN</em>이 약속하는 네 가지</h2>
       </div>
       <div class="value-grid reveal-stagger">
         <div class="value-card">
           <div class="num">01</div>
-          <h4>메디컬 에스테틱</h4>
-          <p>전문 에스테틱에서 검증된 PDLLA·보르피린·스피큘을, 매일 집에서 쉽게 사용하실 수 있도록 다듬었어요.</p>
+          <h4>Premium Derma</h4>
+          <p>피부과 스킨부스터에서 사용되는 핵심 성분을 매일의 홈케어 농도로 안정화했어요.</p>
         </div>
         <div class="value-card">
           <div class="num">02</div>
-          <h4>탄력 · 광채 · 볼륨</h4>
-          <p>탄력, 광채, 볼륨. 현대인의 피부 고민에 정조준해 ORAVIN이 가장 집중하는 세 가지예요.</p>
+          <h4>Skin Regeneration</h4>
+          <p>피부 결과 컨디션을 차분히 회복시켜 본연의 건강한 아름다움을 되찾아드려요.</p>
         </div>
         <div class="value-card">
           <div class="num">03</div>
-          <h4>럭셔리 아이덴티티</h4>
-          <p>메디컬 럭셔리 콘셉트와 감각적인 디자인으로 완성한, 일상에 자연스럽게 스며드는 고급스러움.</p>
+          <h4>Volume Science</h4>
+          <p>PDLLA와 Volufiline의 시너지로 피부에 또렷한 볼륨감과 탄력을 더해드려요.</p>
+        </div>
+        <div class="value-card">
+          <div class="num">04</div>
+          <h4>Elegant Aging Care</h4>
+          <p>안티에이징을 우아하게 — 자연스럽게 결을 가꾸는 ORAVIN만의 데일리 솔루션이에요.</p>
         </div>
       </div>
     </div>
@@ -145,8 +153,8 @@
          style="background-image:url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=1400&q=85&auto=format&fit=crop')"></div>
     <div class="text-side">
       <span class="eyebrow">시그니처 성분</span>
-      <h2><em>PDLLA</em> · 보르피린<br>· 스피큘</h2>
-      <p>메디컬 에스테틱 시술에서 사용되는 핵심 성분을 홈케어 농도와 텍스처로 최적화. PDLLA는 콜라겐 부스팅을, 보르피린은 리프팅을, 스피큘은 결 정돈을 담당합니다.</p>
+      <h2><em>PDLLA</em> · Volufiline<br>· Spicule</h2>
+      <p>피부과 스킨부스터에서 사용되는 핵심 성분을 홈케어 농도로 최적화했어요. PDLLA는 볼륨 탄력을, Volufiline은 볼륨감 강화를, Centella Leaf Water는 진정을, Micro Spicule은 흡수 시스템을 담당해드려요.</p>
     </div>
   </section>
 
@@ -168,14 +176,14 @@
           <div class="year">2025.09</div>
           <div class="desc">
             <h4>Hydro Regene Air Ampoule 출시</h4>
-            <p>99.9ml 시그니처 앰플 런칭. 5종 히알루론산 컴플렉스로 데일리 부스팅 완성.</p>
+            <p>99.9ml 시그니처 Hydro Regene Air Ampoule 런칭. 피부결·광채·수분볼륨을 완성하는 데일리 케어.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="year">2025.11</div>
           <div class="desc">
             <h4>프리미엄 부스터 라인 추가</h4>
-            <p>PDLLA Collagen Booster · Borfirin Lifting · Spicule Resurfacing 3종 라인 추가.</p>
+            <p>Hydro Volume Boosting Spicule Balm 출시. 팔자·목·입술 집중 케어 라인 추가.</p>
           </div>
         </div>
         <div class="timeline-item">
