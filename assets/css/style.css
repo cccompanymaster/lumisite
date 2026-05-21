@@ -1,17 +1,18 @@
 /* LUMI International — Premium Design System v3 (mobile-first, GH Pages 호환) */
 :root {
-  --c-bg: #faf7f2;
-  --c-bg-alt: #f3eee5;
+  /* 밝은 크림 + 따뜻한 다크 + 로즈/와인 액센트 */
+  --c-bg: #fbf6ec;            /* 밝은 따뜻한 크림 */
+  --c-bg-alt: #f0e2c8;        /* 한 단계 따뜻한 secondary */
   --c-paper: #ffffff;
-  --c-ink: #1a1d24;
-  --c-ink-soft: #4a4e57;
-  --c-muted: #8a8e96;
-  --c-line: #e8e2d6;
-  --c-line-soft: #efebe2;
-  --c-gold: #8b3a3a;            /* ORAVIN wine/burgundy accent */
-  --c-gold-soft: #b86b6b;       /* soft rose-wine */
-  --c-rose: #e9c9c3;
-  --c-deep: #0d0d10;            /* near-black */
+  --c-ink: #2a201c;           /* warm dark (청색 빼고) */
+  --c-ink-soft: #5a4842;
+  --c-muted: #9a8a82;
+  --c-line: #e8dcc8;          /* 따뜻한 라인 */
+  --c-line-soft: #f0e6d4;
+  --c-gold: #a05050;          /* 부드러운 wine */
+  --c-gold-soft: #c89a85;     /* 로즈골드 (패키지 톤) */
+  --c-rose: #f0d8d2;          /* 소프트 로즈 */
+  --c-deep: #1c130f;          /* 따뜻한 다크 (browny) */
 
   --font-sans: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'Cormorant Garamond', Georgia, serif;
@@ -338,7 +339,7 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 }
 
 /* ============ MAIN VISUAL ============ */
-.main-visual { position: relative; overflow: hidden; background: #0a0c12; }
+.main-visual { position: relative; overflow: hidden; background: var(--c-deep); }
 .main-visual .swiper {
   aspect-ratio: 3/5;
   min-height: 620px; max-height: 880px;
@@ -549,7 +550,7 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 }
 
 /* ============ BRAND HERITAGE ============ */
-.brand-heritage { background: #0a0c12; color: #fff; overflow: hidden; }
+.brand-heritage { background: var(--c-deep); color: #fff; overflow: hidden; }
 .brand-heritage .grid { display: grid; grid-template-columns: 1fr; gap: 0; align-items: stretch; }
 .brand-heritage .text-side { padding: 80px 28px; display: flex; flex-direction: column; justify-content: center; }
 .brand-heritage .text-side .eyebrow { color: var(--c-gold-soft); margin-bottom: 18px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 5px; text-transform: uppercase; }
@@ -767,7 +768,7 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 
 /* ============ MEMBERSHIP ============ */
 .membership-hero {
-  background: linear-gradient(135deg, #14171e 0%, #2b2e3e 100%);
+  background: linear-gradient(135deg, #1c130f 0%, #3a2a26 100%);
   color: #fff; padding: 100px 0 80px; text-align: center;
   position: relative; overflow: hidden;
 }
@@ -829,7 +830,7 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 .hero-product .container { position: relative; z-index: 1; }
 .hero-product-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
 .hero-product .product-visual {
-  aspect-ratio: 3/4; background: linear-gradient(135deg, #1a1a1f 0%, #0a0a0d 100%);
+  aspect-ratio: 3/4; background: linear-gradient(135deg, #2a1f1c 0%, #1c130f 100%);
   display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
 }
@@ -921,7 +922,7 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 
 /* ============ PDLLA SPOTLIGHT ============ */
 .pdlla-spotlight {
-  background: #0a0a0d; color: #fff;
+  background: var(--c-deep); color: #fff;
   padding: 104px 0;
   position: relative; overflow: hidden;
 }
