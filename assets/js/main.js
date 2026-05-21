@@ -99,6 +99,38 @@
       });
     }
 
+    // 키보드 ↑/↓ + PageUp/Down으로 섹션 단위 점프
+    const snapSelector = '.main-visual, .hero-product, .section, .editorial, .care-system, .pdlla-spotlight, .ingredient-section, .stats-section, .lookbook, .brand-heritage, .insta-section';
+    function getSnapSections() {
+      return Array.from(document.querySelectorAll(snapSelector));
+    }
+    function currentSectionIndex() {
+      const sections = getSnapSections();
+      const y = window.scrollY + 80;
+      let idx = 0;
+      sections.forEach((s, i) => {
+        if (s.offsetTop <= y) idx = i;
+      });
+      return { sections, idx };
+    }
+    let kbLock = false;
+    window.addEventListener('keydown', (e) => {
+      const key = e.key;
+      const isJump = ['PageDown', 'PageUp'].includes(key) ||
+                     ((key === 'ArrowDown' || key === 'ArrowUp') && e.altKey);
+      if (!isJump) return;
+      if (kbLock) return;
+      e.preventDefault();
+      const { sections, idx } = currentSectionIndex();
+      const next = (key === 'PageDown' || key === 'ArrowDown') ? idx + 1 : idx - 1;
+      const target = sections[Math.max(0, Math.min(sections.length - 1, next))];
+      if (target) {
+        kbLock = true;
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => { kbLock = false; }, 700);
+      }
+    });
+
     // Back-to-top button
     const fab = document.createElement('button');
     fab.className = 'back-to-top';
@@ -109,6 +141,32 @@
     const toggleFab = () => fab.classList.toggle('show', window.scrollY > 600);
     toggleFab();
     window.addEventListener('scroll', toggleFab, { passive: true });
+
+    // 섹션 인디케이터 (우측 닷 — 데스크톱만)
+    if (window.matchMedia('(min-width: 1024px)').matches && window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+      const sections = getSnapSections();
+      if (sections.length > 2) {
+        const nav = document.createElement('nav');
+        nav.className = 'section-indicator';
+        nav.setAttribute('aria-label', '섹션 이동');
+        sections.forEach((s, i) => {
+          const btn = document.createElement('button');
+          btn.dataset.idx = i;
+          btn.setAttribute('aria-label', `섹션 ${i + 1}`);
+          btn.addEventListener('click', () => s.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+          nav.appendChild(btn);
+        });
+        document.body.appendChild(nav);
+        const updateActive = () => {
+          const { idx } = currentSectionIndex();
+          nav.querySelectorAll('button').forEach((b, i) => {
+            b.classList.toggle('active', i === idx);
+          });
+        };
+        updateActive();
+        window.addEventListener('scroll', updateActive, { passive: true });
+      }
+    }
 
     if (window.applyImageFallbacks) window.applyImageFallbacks();
   });
