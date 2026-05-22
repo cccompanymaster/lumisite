@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- 포트원(PortOne / 옛 아임포트) 결제 SDK -->
+  <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 </head>
 <body>
   <div class="preloader">
@@ -27,6 +29,9 @@
   </div>
 
   <main class="container">
+    <div id="payModeBanner" style="display:none; max-width: var(--maxw); margin: 16px auto 0; padding: 12px 18px; background: var(--c-bg-rose); border: 1px solid var(--c-line); font-size: 12px; color: var(--c-ink-soft); text-align: center;">
+      <strong style="color: var(--c-gold);">시뮬레이션 모드</strong> · 실제 결제는 진행되지 않습니다. 운영 시 <code style="background:#fff; padding:2px 6px; border-radius:2px;">assets/js/payment-config.js</code>에 PortOne 가맹점 코드를 입력해 주세요.
+    </div>
     <div id="checkoutView"></div>
   </main>
 
@@ -47,6 +52,8 @@
   <script src="../assets/js/cart.js"></script>
   <script src="../assets/js/layout.js"></script>
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/payment-config.js"></script>
+  <script src="../assets/js/payment.js"></script>
   <script>
     let selectedPayMethod = 'card';
     let usedPoints = 0;
@@ -177,44 +184,79 @@
         };
       }
 
-      document.getElementById('payBtn').addEventListener('click', () => {
+      document.getElementById('payBtn').addEventListener('click', async () => {
         const required = ['orderName', 'orderPhone', 'orderEmail', 'rcvName', 'rcvZip', 'rcvAddr1'];
         for (const id of required) {
           const el = document.getElementById(id);
           if (!el.value.trim()) { alert('필수 항목을 모두 입력해주세요.'); el.focus(); return; }
         }
         if (!document.getElementById('agree').checked) { alert('약관 동의가 필요합니다.'); return; }
+
+        // 주문 객체 구성
+        const order = {
+          id: 'ORV-' + Date.now(),
+          createdAt: new Date().toISOString(),
+          items: detail.map(i => ({
+            productId: i.productId, productName: i.product.name,
+            option: i.option.name, qty: i.qty, unitPrice: i.unitPrice, lineTotal: i.lineTotal,
+            image: i.product.image
+          })),
+          subtotal, shipping, gradeDiscount, usedPoints, totalPaid: total,
+          payMethod: selectedPayMethod,
+          buyer: {
+            name: document.getElementById('orderName').value,
+            email: document.getElementById('orderEmail').value,
+            phone: document.getElementById('orderPhone').value
+          },
+          shipTo: {
+            name: document.getElementById('rcvName').value,
+            zip: document.getElementById('rcvZip').value,
+            addr1: document.getElementById('rcvAddr1').value,
+            addr2: document.getElementById('rcvAddr2').value,
+            memo: document.getElementById('rcvMemo').value
+          },
+          status: 'pending'
+        };
+
+        // 시뮬레이션 모드면 진행 모달 / 실제 PG 호출 시엔 SDK가 자체 팝업
         const modal = document.getElementById('payProcessModal');
-        modal.classList.add('show');
-        setTimeout(() => { document.getElementById('payBar').style.width = '100%'; }, 50);
-        setTimeout(() => {
-          const order = {
-            id: 'ORV-' + Date.now(),
-            createdAt: new Date().toISOString(),
-            items: detail.map(i => ({
-              productId: i.productId, productName: i.product.name,
-              option: i.option.name, qty: i.qty, unitPrice: i.unitPrice, lineTotal: i.lineTotal,
-              image: i.product.image
-            })),
-            subtotal, shipping, gradeDiscount, usedPoints, totalPaid: total,
-            payMethod: selectedPayMethod,
-            shipTo: {
-              name: document.getElementById('rcvName').value,
-              zip: document.getElementById('rcvZip').value,
-              addr1: document.getElementById('rcvAddr1').value,
-              addr2: document.getElementById('rcvAddr2').value,
-              memo: document.getElementById('rcvMemo').value
-            },
-            status: 'paid'
+        const isSim = window.LumiPayment ? window.LumiPayment.isSimulation() : true;
+        if (isSim) {
+          modal.classList.add('show');
+          setTimeout(() => { document.getElementById('payBar').style.width = '100%'; }, 50);
+        }
+
+        try {
+          const res = await window.LumiPayment.request(order);
+          // 결제 성공
+          order.status = 'paid';
+          order.payment = {
+            imp_uid: res.imp_uid,
+            merchant_uid: res.merchant_uid,
+            paid_amount: res.paid_amount,
+            simulated: !!res.simulated
           };
           if (u) LumiAuth.addOrder(order);
           LumiCart.clear();
           sessionStorage.setItem('lumi.lastOrder', JSON.stringify(order));
           location.href = 'order-complete.html';
-        }, 1800);
+        } catch (err) {
+          modal.classList.remove('show');
+          document.getElementById('payBar').style.width = '0';
+          alert(err.message || '결제에 실패했습니다. 다시 시도해 주세요.');
+        }
       });
     }
-    document.addEventListener('DOMContentLoaded', render);
+    document.addEventListener('DOMContentLoaded', () => {
+      render();
+      // 결제 모드 배너
+      setTimeout(() => {
+        const banner = document.getElementById('payModeBanner');
+        if (banner && window.LumiPayment && window.LumiPayment.isSimulation()) {
+          banner.style.display = 'block';
+        }
+      }, 200);
+    });
   </script>
 </body>
 </html>
