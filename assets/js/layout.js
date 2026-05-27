@@ -17,17 +17,10 @@
     </div>
     <header class="header">
       <div class="header-inner">
-        <a class="logo" href="${P}index.html">ORAVIN<small>PREMIUM SKINCARE</small></a>
+        <a class="logo" href="${P}index.html">ORAVIN<small>SKINCARE</small></a>
         <ul class="gnb">
           <li><a href="${P}pages/brand.html">브랜드 스토리</a></li>
-          <li><a href="${P}pages/shop.html">SHOP</a>
-            <ul class="submenu">
-              <li><a href="${P}pages/shop.html?cat=all">전체</a></li>
-              <li><a href="${P}pages/shop.html?cat=best">베스트</a></li>
-              <li><a href="${P}pages/shop.html?cat=new">신상품</a></li>
-              <li><a href="${P}pages/shop.html?cat=set">세트</a></li>
-            </ul>
-          </li>
+          <li><a href="${P}pages/shop.html">SHOP</a></li>
           <li><a href="${P}pages/event.html">EVENT</a></li>
           <li><a href="${P}pages/membership.html">VIP</a></li>
         </ul>
@@ -47,7 +40,7 @@
     <div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
     <aside class="mobile-drawer" id="mobileDrawer">
       <button class="close-btn" aria-label="닫기">×</button>
-      <a class="logo" href="${P}index.html">ORAVIN<small>PREMIUM SKINCARE</small></a>
+      <a class="logo" href="${P}index.html">ORAVIN<small>SKINCARE</small></a>
       <nav class="mobile-drawer-nav">
         <a href="${P}pages/brand.html">브랜드 스토리</a>
         <a href="${P}pages/shop.html">SHOP</a>
@@ -64,7 +57,7 @@
       <div class="container">
         <div class="footer-top">
           <div class="brand">
-            <a class="logo" href="${P}index.html">ORAVIN<small>PREMIUM SKINCARE</small></a>
+            <a class="logo" href="${P}index.html">ORAVIN<small>SKINCARE</small></a>
             <p>ORAVIN은 메디컬 에스테틱 감성과 스킨부스터 트렌드를 기반으로 탄생한 프리미엄 스킨케어 브랜드입니다. PDLLA·보르피린·스피큘 기반의 차별화된 처방으로 탄력·광채·볼륨 케어에 집중합니다.</p>
             <div class="social-links">
               <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
