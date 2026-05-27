@@ -19,19 +19,17 @@
       <div class="header-inner">
         <a class="logo" href="${P}index.html">ORAVIN<small>PREMIUM SKINCARE</small></a>
         <ul class="gnb">
-          <li><a href="${P}pages/shop.html">쇼핑</a>
+          <li><a href="${P}pages/brand.html">브랜드 스토리</a></li>
+          <li><a href="${P}pages/shop.html">SHOP</a>
             <ul class="submenu">
               <li><a href="${P}pages/shop.html?cat=all">전체</a></li>
               <li><a href="${P}pages/shop.html?cat=best">베스트</a></li>
               <li><a href="${P}pages/shop.html?cat=new">신상품</a></li>
-              <li><a href="${P}pages/shop.html?cat=skincare">스킨케어</a></li>
-              <li><a href="${P}pages/shop.html?cat=cleanser">클렌저</a></li>
               <li><a href="${P}pages/shop.html?cat=set">세트</a></li>
             </ul>
           </li>
-          <li><a href="${P}pages/membership.html">멤버십</a></li>
-          <li><a href="${P}pages/brand.html">브랜드</a></li>
-          <li><a href="${P}pages/shop.html?cat=new">신상품</a></li>
+          <li><a href="${P}pages/event.html">EVENT</a></li>
+          <li><a href="${P}pages/membership.html">VIP</a></li>
         </ul>
         <div class="header-utils">
           <div class="auth-menu"></div>
@@ -51,12 +49,10 @@
       <button class="close-btn" aria-label="닫기">×</button>
       <a class="logo" href="${P}index.html">ORAVIN<small>PREMIUM SKINCARE</small></a>
       <nav class="mobile-drawer-nav">
-        <a href="${P}pages/shop.html">쇼핑</a>
-        <a href="${P}pages/shop.html?cat=best">베스트</a>
-        <a href="${P}pages/shop.html?cat=new">신상품</a>
-        <a href="${P}pages/shop.html?cat=set">세트</a>
-        <a href="${P}pages/membership.html">멤버십</a>
         <a href="${P}pages/brand.html">브랜드 스토리</a>
+        <a href="${P}pages/shop.html">SHOP</a>
+        <a href="${P}pages/event.html">EVENT</a>
+        <a href="${P}pages/membership.html">VIP</a>
         <a href="${P}pages/cart.html">장바구니</a>
       </nav>
       <div class="mobile-drawer-auth" id="drawerAuth"></div>
@@ -77,19 +73,19 @@
             </div>
           </div>
           <div class="col">
-            <h4>쇼핑</h4>
+            <h4>SHOP</h4>
             <ul>
               <li><a href="${P}pages/shop.html?cat=all">전체보기</a></li>
               <li><a href="${P}pages/shop.html?cat=best">베스트</a></li>
-              <li><a href="${P}pages/shop.html?cat=new">신상품</a></li>
               <li><a href="${P}pages/shop.html?cat=set">세트</a></li>
+              <li><a href="${P}pages/event.html">이벤트</a></li>
             </ul>
           </div>
           <div class="col">
             <h4>안내</h4>
             <ul>
               <li><a href="${P}pages/brand.html">브랜드 스토리</a></li>
-              <li><a href="${P}pages/membership.html">멤버십 안내</a></li>
+              <li><a href="${P}pages/membership.html">VIP 멤버십</a></li>
               <li><a href="${P}pages/login.html">로그인</a></li>
               <li><a href="${P}pages/signup.html">회원가입</a></li>
             </ul>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#faf7f2">
+  <title>EVENT — ORAVIN</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231c130f'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='52' fill='%238b3a3a'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .event-grid { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 0 4px; }
+    .event-card {
+      background: var(--c-paper); border: 1px solid var(--c-line);
+      overflow: hidden; display: block; transition: all 0.4s var(--ease);
+    }
+    .event-card:hover { border-color: var(--c-gold); transform: translateY(-4px); box-shadow: 0 20px 50px -24px rgba(156,80,80,0.25); }
+    .event-card .thumb { aspect-ratio: 16/9; background: var(--c-bg-rose); overflow: hidden; }
+    .event-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .event-card .body { padding: 24px 26px; }
+    .event-card .badge { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #fff; background: var(--c-gold); padding: 4px 10px; margin-bottom: 12px; }
+    .event-card .badge.end { background: var(--c-muted); }
+    .event-card h3 { font-family: var(--font-display); font-size: 26px; font-weight: 600; margin: 0 0 8px; }
+    .event-card p { color: var(--c-ink-soft); font-size: 14px; line-height: 1.7; margin: 0 0 12px; }
+    .event-card .period { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px; color: var(--c-muted); }
+    @media (min-width: 768px) {
+      .event-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .event-card h3 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="preloader">
+    <div class="logo-mark">O R A V I N</div>
+    <div class="small">프리미엄 스킨케어</div>
+    <div class="bar"></div>
+  </div>
+
+  <div id="site-header"></div>
+
+  <div class="page-head">
+    <span class="eyebrow">EVENT</span>
+    <h1>이벤트</h1>
+    <p>ORAVIN이 준비한 특별한 혜택을 만나보세요</p>
+  </div>
+
+  <main class="container" style="padding-top: 16px; padding-bottom: 90px;">
+    <div class="event-grid reveal-stagger">
+      <a class="event-card" href="signup.html">
+        <div class="thumb"><img src="../assets/images/products/oravin-ampoule-main.png" alt="신규 가입 이벤트"></div>
+        <div class="body">
+          <span class="badge">ONGOING</span>
+          <h3>신규 가입 15,000원</h3>
+          <p>지금 ORAVIN 멤버가 되시면 즉시 사용 가능한 15,000원 적립금을 드려요.</p>
+          <span class="period">상시 진행</span>
+        </div>
+      </a>
+      <a class="event-card" href="shop.html?cat=set">
+        <div class="thumb"><img src="../assets/images/products/oravin-set-main.png" alt="듀오 세트 할인"></div>
+        <div class="body">
+          <span class="badge">ONGOING</span>
+          <h3>시그니처 듀오 20% OFF</h3>
+          <p>앰플 + 스피큘 밤 2종 세트를 단품 대비 20% 할인된 가격으로 만나보세요.</p>
+          <span class="period">상시 진행</span>
+        </div>
+      </a>
+      <a class="event-card" href="shop.html">
+        <div class="thumb"><img src="../assets/images/products/oravin-balm-main.png" alt="무료배송"></div>
+        <div class="body">
+          <span class="badge">ONGOING</span>
+          <h3>5만원 이상 무료배송</h3>
+          <p>5만원 이상 구매 시 전 상품 무료배송. 부담 없이 ORAVIN을 경험하세요.</p>
+          <span class="period">상시 진행</span>
+        </div>
+      </a>
+      <a class="event-card" href="membership.html">
+        <div class="thumb"><img src="../assets/images/products/oravin-ampoule-hover.png" alt="멤버십 등급 혜택"></div>
+        <div class="body">
+          <span class="badge">VIP</span>
+          <h3>멤버십 등급 혜택</h3>
+          <p>누적 구매에 따라 자동 상승하는 5단계 멤버십. 등급별 할인과 생일 쿠폰을 누리세요.</p>
+          <span class="period">상시 진행</span>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="../assets/js/products.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
