@@ -101,6 +101,7 @@
           <h3>${p.name}</h3>
           <p>${p.detail}</p>
         </div>
+        <div class="detail-images" id="detailImages"></div>
       `;
 
       const qty = document.getElementById('qty');
@@ -111,7 +112,41 @@
       document.getElementById('addToCart').onclick = () => { addItem(); document.getElementById('addedModal').classList.add('show'); };
       document.getElementById('buyNow').onclick = () => { addItem(); location.href = 'checkout.html'; };
       document.getElementById('modalContinue').onclick = (e) => { e.preventDefault(); document.getElementById('addedModal').classList.remove('show'); };
+
+      // 상세페이지 이미지 자동 로딩 (detailSlug-01, -02 ... 순차 / jpg→png→webp 탐색)
+      loadDetailImages(p.detailSlug || p.slug || p.id);
     });
+
+    // assets/images/details/{slug}-NN.{ext} 를 01부터 순차 로드, 첫 실패 시 중단
+    function loadDetailImages(slug) {
+      const container = document.getElementById('detailImages');
+      if (!container) return;
+      const exts = ['jpg', 'png', 'webp'];
+      let idx = 1;
+      function tryLoad(n) {
+        const num = String(n).padStart(2, '0');
+        let extPos = 0;
+        const img = new Image();
+        const attempt = () => {
+          img.src = `../assets/images/details/${slug}-${num}.${exts[extPos]}`;
+        };
+        img.onload = () => {
+          const el = document.createElement('img');
+          el.src = img.src;
+          el.alt = `상세 이미지 ${num}`;
+          el.loading = 'lazy';
+          container.appendChild(el);
+          tryLoad(n + 1);          // 다음 번호 시도
+        };
+        img.onerror = () => {
+          extPos++;
+          if (extPos < exts.length) attempt();   // 다른 확장자 시도
+          // 모든 확장자 실패 → 해당 번호 없음 → 중단 (단 01이 없으면 그냥 텍스트 상세만 표시)
+        };
+        attempt();
+      }
+      tryLoad(idx);
+    }
   </script>
 </body>
 </html>

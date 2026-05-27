@@ -5,7 +5,7 @@ const U = (id, w = 800) => `https://images.unsplash.com/photo-${id}?w=${w}&q=85&
 
 window.LUMI_PRODUCTS = [
   {
-    id: 1, slug: 'hydro-regene-air-ampoule',
+    id: 1, slug: 'hydro-regene-air-ampoule', detailSlug: 'ampoule',
     name: 'Hydro Regene Air Ampoule',
     nameKo: '하이드로 리제네 에어 앰플',
     size: '99.9ml',
@@ -25,7 +25,7 @@ window.LUMI_PRODUCTS = [
     ]
   },
   {
-    id: 2, slug: 'hydro-volume-boosting-spicule-balm',
+    id: 2, slug: 'hydro-volume-boosting-spicule-balm', detailSlug: 'balm',
     name: 'Hydro Volume Boosting Spicule Balm',
     nameKo: '하이드로 볼륨 부스팅 스피큘 밤',
     size: '15g',
@@ -42,7 +42,7 @@ window.LUMI_PRODUCTS = [
     options: [{ name: '15g 단품', addPrice: 0 }]
   },
   {
-    id: 3, slug: 'oravin-signature-duo',
+    id: 3, slug: 'oravin-signature-duo', detailSlug: 'set',
     name: 'ORAVIN Signature Duo',
     nameKo: 'ORAVIN 시그니처 듀오 세트',
     size: 'Ampoule 99.9ml + Balm 15g',
