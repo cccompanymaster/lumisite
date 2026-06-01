@@ -758,6 +758,90 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 .product-detail .qty-row button:hover { background: var(--c-ink); color: #fff; border-color: var(--c-ink); }
 .product-detail .qty-row input { width: 52px; padding: 6px; border: 1px solid var(--c-line); text-align: center; height: 36px; background: #fff; }
 .product-detail .actions { display: grid; grid-template-columns: 1fr 1.4fr; gap: 8px; }
+/* ============ PRODUCT DETAIL CONTENT (HTML 상세) ============ */
+.pd-wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+.product-detail-content { margin: 0 -24px; }
+.pd-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--c-gold); display: block; margin-bottom: 14px; }
+.pd-eyebrow.center { text-align: center; }
+.pd-h { font-family: var(--font-display); font-size: 32px; font-weight: 600; line-height: 1.2; margin: 0 0 24px; letter-spacing: -0.5px; }
+.pd-h.center { text-align: center; }
+.pd-h em { font-style: italic; color: var(--c-gold); }
+.pd-lead { font-size: 15px; line-height: 1.85; color: var(--c-ink-soft); margin: 0 0 32px; max-width: 560px; }
+
+/* 키비주얼 - 다크 */
+.pd-hero { background: var(--c-deep); color: #fff; padding: 80px 0; text-align: center; }
+.pd-hero .pd-en { font-family: var(--font-mono); font-size: 10px; letter-spacing: 5px; color: var(--c-gold-soft); margin: 0 0 18px; }
+.pd-hero-title { font-family: var(--font-display); font-size: 38px; font-weight: 600; line-height: 1.25; margin: 0 0 18px; }
+.pd-hero-title em { font-style: normal; color: var(--c-gold-soft); display: block; }
+.pd-hero-sub { font-size: 14px; color: rgba(255,255,255,0.7); margin: 0; }
+
+/* 스포트라이트 */
+.pd-spotlight { background: var(--c-bg-rose); padding: 70px 0; }
+.pd-points { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 18px; margin-bottom: 32px; }
+.pd-point-k { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--c-gold); margin-bottom: 6px; }
+.pd-point-v { font-size: 13px; line-height: 1.6; color: var(--c-ink-soft); }
+.pd-quote { font-family: var(--font-display); font-style: italic; font-size: 19px; line-height: 1.6; color: var(--c-ink); border-left: 3px solid var(--c-gold); padding: 4px 0 4px 20px; margin: 0; }
+
+/* 베네핏 */
+.pd-benefits { padding: 60px 0; background: var(--c-paper); }
+.pd-benefit-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.pd-benefit { text-align: center; padding: 24px; background: var(--c-bg-alt); }
+.pd-benefit-k { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--c-gold); margin-bottom: 8px; }
+.pd-benefit-v { font-size: 14px; line-height: 1.6; color: var(--c-ink-soft); }
+
+/* 임상 */
+.pd-clinical { padding: 70px 0; background: var(--c-bg-alt); }
+.pd-bars { max-width: 600px; margin: 0 auto; }
+.pd-bar-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.pd-bar-label { flex: 0 0 130px; font-size: 13px; font-weight: 600; }
+.pd-bar-track { flex: 1; height: 8px; background: #e8dcc8; border-radius: 999px; overflow: hidden; }
+.pd-bar-fill { display: block; height: 100%; background: linear-gradient(90deg, var(--c-gold-soft), var(--c-gold)); border-radius: 999px; }
+.pd-bar-val { flex: 0 0 42px; text-align: right; font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--c-gold); }
+.pd-note { font-size: 11px; color: var(--c-muted); text-align: center; margin: 24px 0 0; line-height: 1.6; }
+
+/* 특징 */
+.pd-features { padding: 70px 0; background: var(--c-paper); }
+.pd-feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+.pd-feature-no { font-family: var(--font-display); font-style: italic; font-size: 32px; color: var(--c-gold-soft); margin-bottom: 8px; }
+.pd-feature-k { font-family: var(--font-display); font-size: 19px; font-weight: 600; margin-bottom: 6px; }
+.pd-feature-v { font-size: 13px; line-height: 1.6; color: var(--c-ink-soft); }
+
+/* 부위별 */
+.pd-areas { padding: 70px 0; background: var(--c-bg-alt); }
+.pd-area-list { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.pd-area { background: var(--c-paper); padding: 24px 26px; }
+.pd-area-k { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--c-gold); margin-bottom: 8px; }
+.pd-area-v { font-size: 13.5px; line-height: 1.7; color: var(--c-ink-soft); }
+
+/* 성분 */
+.pd-ingredients { padding: 70px 0; background: var(--c-paper); }
+.pd-ing-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+.pd-ing { padding: 22px 24px; background: var(--c-bg-rose); border-radius: 4px; }
+.pd-ing-k { font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--c-gold); margin-bottom: 6px; }
+.pd-ing-v { font-size: 13.5px; line-height: 1.7; color: var(--c-ink-soft); }
+
+/* 사용법 */
+.pd-howto { padding: 70px 0; background: var(--c-bg-alt); }
+.pd-howto-list { display: grid; grid-template-columns: 1fr; gap: 18px; }
+.pd-howto-item { display: grid; grid-template-columns: 90px 1fr; gap: 18px; align-items: start; padding: 20px 24px; background: var(--c-paper); }
+.pd-howto-step { font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 1px; color: var(--c-gold); padding-top: 2px; }
+.pd-howto-v { font-size: 13.5px; line-height: 1.7; color: var(--c-ink-soft); }
+
+@media (min-width: 768px) {
+  .pd-hero { padding: 110px 0; }
+  .pd-hero-title { font-size: 52px; }
+  .pd-spotlight, .pd-clinical, .pd-features, .pd-areas, .pd-ingredients, .pd-howto { padding: 96px 0; }
+  .pd-h { font-size: 40px; }
+  .pd-hero-title { font-size: 52px; }
+  .pd-benefit-grid { grid-template-columns: repeat(3, 1fr); }
+  .pd-feature-grid { grid-template-columns: repeat(4, 1fr); }
+  .pd-area-list { grid-template-columns: 1fr 1fr; }
+  .pd-ing-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1024px) {
+  .pd-ing-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
 .product-detail .detail-images { margin: 0 -24px; }
 .product-detail .detail-images img { display: block; width: 100%; height: auto; }
 .product-detail .detail-body { padding: 88px 28px; background: var(--c-bg-alt); margin: 0 -24px; }

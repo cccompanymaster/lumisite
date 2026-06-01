@@ -101,6 +101,7 @@
           <h3>${p.name}</h3>
           <p>${p.detail}</p>
         </div>
+        ${renderDetailContent(p)}
         <div class="detail-images" id="detailImages"></div>
       `;
 
@@ -116,6 +117,143 @@
       // 상세페이지 이미지 자동 로딩 (detailSlug-01, -02 ... 순차 / jpg→png→webp 탐색)
       loadDetailImages(p.detailSlug || p.slug || p.id);
     });
+
+    // detailContent 데이터 → 상세페이지 섹션 렌더링
+    function renderDetailContent(p) {
+      const d = p.detailContent;
+      if (!d) return '';
+      let html = '';
+
+      // 키비주얼 (다크)
+      html += `
+        <section class="pd-hero">
+          <div class="pd-wrap">
+            <p class="pd-en">${d.heroEn || ''}</p>
+            <h2 class="pd-hero-title">${d.heroTitle || ''}</h2>
+            <p class="pd-hero-sub">${d.heroSub || ''}</p>
+          </div>
+        </section>`;
+
+      // 스포트라이트 (성분/시스템 설명 + 포인트)
+      if (d.spotlight) {
+        const s = d.spotlight;
+        html += `
+          <section class="pd-spotlight">
+            <div class="pd-wrap">
+              <span class="pd-eyebrow">${s.eyebrow || ''}</span>
+              <h3 class="pd-h">${s.title || ''}</h3>
+              ${s.body ? `<p class="pd-lead">${s.body}</p>` : ''}
+              <div class="pd-points">
+                ${(s.points || []).map(pt => `
+                  <div class="pd-point"><div class="pd-point-k">${pt.k}</div><div class="pd-point-v">${pt.v}</div></div>
+                `).join('')}
+              </div>
+              ${s.quote ? `<blockquote class="pd-quote">"${s.quote}"</blockquote>` : ''}
+            </div>
+          </section>`;
+      }
+
+      // 핵심 베네핏 (광채/탄력/보습)
+      if (d.benefits) {
+        html += `
+          <section class="pd-benefits">
+            <div class="pd-wrap">
+              <div class="pd-benefit-grid">
+                ${d.benefits.map(b => `
+                  <div class="pd-benefit"><div class="pd-benefit-k">${b.k}</div><div class="pd-benefit-v">${b.v}</div></div>
+                `).join('')}
+              </div>
+            </div>
+          </section>`;
+      }
+
+      // 임상 결과
+      if (d.clinical) {
+        const c = d.clinical;
+        html += `
+          <section class="pd-clinical">
+            <div class="pd-wrap">
+              <h3 class="pd-h center">${c.title}</h3>
+              <div class="pd-bars">
+                ${c.items.map(it => `
+                  <div class="pd-bar-row">
+                    <span class="pd-bar-label">${it.k}</span>
+                    <span class="pd-bar-track"><span class="pd-bar-fill" style="width:${it.v}%"></span></span>
+                    <span class="pd-bar-val">${it.v}%</span>
+                  </div>
+                `).join('')}
+              </div>
+              ${c.note ? `<p class="pd-note">* ${c.note}</p>` : ''}
+            </div>
+          </section>`;
+      }
+
+      // 특징
+      if (d.features) {
+        html += `
+          <section class="pd-features">
+            <div class="pd-wrap">
+              <div class="pd-feature-grid">
+                ${d.features.map((f, i) => `
+                  <div class="pd-feature">
+                    <div class="pd-feature-no">0${i + 1}</div>
+                    <div class="pd-feature-k">${f.k}</div>
+                    <div class="pd-feature-v">${f.v}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </section>`;
+      }
+
+      // 부위별 케어 (밤)
+      if (d.areas) {
+        html += `
+          <section class="pd-areas">
+            <div class="pd-wrap">
+              <h3 class="pd-h center">집중 케어가 필요한 부위에</h3>
+              <div class="pd-area-list">
+                ${d.areas.map(a => `
+                  <div class="pd-area"><div class="pd-area-k">${a.k}</div><div class="pd-area-v">${a.v}</div></div>
+                `).join('')}
+              </div>
+            </div>
+          </section>`;
+      }
+
+      // 성분
+      if (d.ingredients) {
+        html += `
+          <section class="pd-ingredients">
+            <div class="pd-wrap">
+              <span class="pd-eyebrow center">PREMIUM INGREDIENTS</span>
+              <h3 class="pd-h center">${d.ingredients.length}가지 핵심 성분</h3>
+              <div class="pd-ing-grid">
+                ${d.ingredients.map(ig => `
+                  <div class="pd-ing"><div class="pd-ing-k">${ig.k}</div><div class="pd-ing-v">${ig.v}</div></div>
+                `).join('')}
+              </div>
+            </div>
+          </section>`;
+      }
+
+      // 사용법
+      if (d.howto) {
+        html += `
+          <section class="pd-howto">
+            <div class="pd-wrap">
+              <h3 class="pd-h center">HOW TO USE</h3>
+              <div class="pd-howto-list">
+                ${d.howto.map(h => `
+                  <div class="pd-howto-item"><div class="pd-howto-step">${h.step}</div><div class="pd-howto-v">${h.v}</div></div>
+                `).join('')}
+              </div>
+            </div>
+          </section>`;
+      }
+
+      return html;
+    }
 
     // assets/images/details/{slug}-NN.{ext} 를 01부터 순차 로드, 첫 실패 시 중단
     function loadDetailImages(slug) {
