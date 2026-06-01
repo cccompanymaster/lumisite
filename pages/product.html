@@ -96,12 +96,14 @@
             </div>
           </div>
         </div>
-        <div class="detail-body">
-          <span style="font-family:var(--font-mono); font-size:10px; letter-spacing:4px; color:var(--c-gold); text-transform:uppercase; display:block; text-align:center; margin-bottom:14px;">제품 상세</span>
-          <h3>${p.name}</h3>
-          <p>${p.detail}</p>
+        <div class="detail-fallback" id="detailFallback">
+          <div class="detail-body">
+            <span style="font-family:var(--font-mono); font-size:10px; letter-spacing:4px; color:var(--c-gold); text-transform:uppercase; display:block; text-align:center; margin-bottom:14px;">제품 상세</span>
+            <h3>${p.name}</h3>
+            <p>${p.detail}</p>
+          </div>
+          ${renderDetailContent(p)}
         </div>
-        ${renderDetailContent(p)}
         <div class="detail-images" id="detailImages"></div>
       `;
 
@@ -269,6 +271,11 @@
           img.src = `../assets/images/details/${slug}-${num}.${exts[extPos]}`;
         };
         img.onload = () => {
+          // 스토어 상세 이미지가 있으면 HTML 상세(텍스트·섹션)는 숨김
+          if (n === 1) {
+            const fb = document.getElementById('detailFallback');
+            if (fb) fb.style.display = 'none';
+          }
           const el = document.createElement('img');
           el.src = img.src;
           el.alt = `상세 이미지 ${num}`;
