@@ -68,7 +68,7 @@
       view.innerHTML = `
         <p class="breadcrumb" style="padding:24px 0 0;"><a href="../index.html">홈</a> · <a href="shop.html">쇼핑</a> · ${p.nameKo || p.name}</p>
         <div class="product-detail">
-          <div class="main-img"><img src="${p.image}" alt="${p.name}"></div>
+          <div class="main-img"><img src="${(window.LUMI_PREFIX||'../')+p.image}" alt="${p.name}"></div>
           <div class="info-side">
             <div class="cat-label">${p.cat_label || ''}</div>
             <div class="tags">${tagHTML}</div>

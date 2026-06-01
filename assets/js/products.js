@@ -1,7 +1,6 @@
 // ORAVIN — Premium Skin Booster Inspired Skincare
 // PDLLA · Volufiline · Centella Leaf Water · Micro Spicule
-// 실제 제품 사진은 assets/images/products/ 에 업로드하면 자동 반영됩니다.
-const U = (id, w = 800) => `https://images.unsplash.com/photo-${id}?w=${w}&q=85&auto=format&fit=crop`;
+// 제품 이미지: assets/images/products/oravin-*.png (실제 제품 사진)
 
 window.LUMI_PRODUCTS = [
   {
@@ -13,8 +12,8 @@ window.LUMI_PRODUCTS = [
     tags: ['HERO', 'BEST'],
     bullets: ['피부결', '광채', '수분볼륨'],
     price: 138000, salePrice: 138000,
-    image: U('1571781926291-c477ebfd024b', 900),
-    hoverImage: U('1620916566398-39f1143ab7be', 900),
+    image: 'assets/images/products/oravin-ampoule-main.png',
+    hoverImage: 'assets/images/products/oravin-ampoule-hover.png',
     localImage: 'oravin-ampoule-main.png',
     localHover: 'oravin-ampoule-hover.png',
     desc: '넉넉한 99.9ml로 매일 듬뿍 — 결·광채·수분볼륨을 채워주는 시그니처 앰플',
@@ -85,8 +84,8 @@ window.LUMI_PRODUCTS = [
     tags: ['HERO', 'NEW'],
     bullets: ['집중 주름 케어', '팔자·목·입술 볼륨', 'Micro Spicule 함유'],
     price: 68000, salePrice: 68000,
-    image: U('1611080626919-7cf5a9dbab12', 900),
-    hoverImage: U('1608248543803-ba4f8c70ae0b', 900),
+    image: 'assets/images/products/oravin-balm-main.png',
+    hoverImage: 'assets/images/products/oravin-balm-hover.png',
     localImage: 'oravin-balm-main.png',
     localHover: 'oravin-balm-hover.png',
     desc: '집중 주름·볼륨 케어 — Micro Spicule 흡수 시스템 발룸',
@@ -145,8 +144,8 @@ window.LUMI_PRODUCTS = [
     tags: ['SET', 'BEST'],
     bullets: ['데일리 + 집중 케어', '풀 루틴 완성', '앰플 + 스피큘 밤'],
     price: 206000, salePrice: 206000,
-    image: U('1612817288484-6f916006741a', 900),
-    hoverImage: U('1583209814683-c023dd293cc6', 900),
+    image: 'assets/images/products/oravin-set-main.png',
+    hoverImage: 'assets/images/products/oravin-set-hover.png',
     localImage: 'oravin-set-main.png',
     localHover: 'oravin-set-hover.png',
     desc: '앰플 + 스피큘 발룸 시그니처 듀오 — 데일리부터 집중 케어까지',

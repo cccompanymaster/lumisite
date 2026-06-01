@@ -117,13 +117,12 @@
     if (window.applyImageFallbacks) window.applyImageFallbacks();
   });
 
-  // 로컬 이미지 → 실패 시 Unsplash fallback
+  // 제품 카드 이미지 (로컬 ORAVIN PNG)
   function imgWithFallback(p, type) {
     const P = window.LUMI_PREFIX || './';
-    const local = type === 'hover' ? p.localHover : p.localImage;
-    const remote = type === 'hover' ? (p.hoverImage || p.image) : p.image;
+    const src = type === 'hover' ? (p.hoverImage || p.image) : p.image;
     const cls = type === 'hover' ? 'hover-img' : 'main-img';
-    return `<img class="${cls}" src="${P}assets/images/products/${local}" onerror="this.onerror=null;this.src='${remote}'" alt="${type === 'hover' ? '' : p.name}" loading="lazy">`;
+    return `<img class="${cls}" src="${P}${src}" alt="${type === 'hover' ? '' : p.name}" loading="lazy">`;
   }
 
   window.productCardHTML = function (p) {
