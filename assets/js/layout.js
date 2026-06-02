@@ -12,7 +12,7 @@
 
   const HEADER = `
     <div class="top-banner" id="topBanner">
-      <a href="${P}pages/signup.html">신규 가입 즉시 <strong>15,000원 적립금</strong> · LUMI 멤버 혜택을 만나보세요</a>
+      <a href="${P}pages/signup.html">신규 가입 즉시 <strong>10,000원 적립금</strong> · ORAVIN 멤버 혜택을 만나보세요</a>
       <button class="close" aria-label="배너 닫기">×</button>
     </div>
     <header class="header">
@@ -85,7 +85,7 @@
           </div>
           <div class="col">
             <h4>고객센터</h4>
-            <div class="tel">031-000-0000</div>
+            <div class="tel">1844-1729</div>
             <div class="hours">
               평일 09:30 ~ 17:00<br>
               점심 11:30 ~ 13:00<br>
@@ -103,7 +103,7 @@
             <span><strong>개업일.</strong> 2025년 07월 25일</span>
             <span class="biz-full"><strong>주소.</strong> 경기도 수원시 팔달구 팔달문로130번길 69, 가동 503-3에이호 (우만동, 아이월드)</span>
             <span class="biz-full"><strong>업태.</strong> 도매 및 소매업 &nbsp;/&nbsp; <strong>종목.</strong> 전자상거래, 가전제품, 화장품·생활용품, 의류·가방·패션잡화, 기계설비 부품, 수출, 수입</span>
-            <span class="biz-full"><strong>이메일.</strong> contact@lumi-intl.co.kr &nbsp;&nbsp; <strong>개인정보보호책임자.</strong> JIN LINHUA</span>
+            <span class="biz-full"><strong>이메일.</strong> cukhw124@gmail.com &nbsp;&nbsp; <strong>개인정보보호책임자.</strong> JIN LINHUA</span>
           </div>
           <div class="copyright">© 2025 LUMI INTERNATIONAL CO., LTD. ALL RIGHTS RESERVED.</div>
         </div>

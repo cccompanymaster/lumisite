@@ -19,8 +19,7 @@ window.LUMI_PRODUCTS = [
     desc: '넉넉한 99.9ml로 매일 듬뿍 — 결·광채·수분볼륨을 채워주는 시그니처 앰플',
     detail: 'ORAVIN의 시그니처 데일리 앰플이에요. 넉넉한 99.9ml 용량으로 매일 부담 없이 듬뿍 사용하실 수 있어요. PDLLA와 Volufiline이 피부 깊은 곳까지 볼륨감을 채워주고, 정제수 대신 사용한 100% Centella Leaf Water가 피부 결을 차분하게 진정시켜드려요. 가볍게 발리지만 오래 머무는 에어리 텍스처가 광채로 가득한 피부 결을 완성합니다.',
     options: [
-      { name: '99.9ml 단품', addPrice: 0 },
-      { name: '99.9ml + 미니 30ml (선물 패키지)', addPrice: 15000 }
+      { name: '99.9ml 단품', addPrice: 0 }
     ],
     detailContent: {
       heroTitle: '피부 본연의 힘을 깨우는<br><em>프리미엄 스킨부스터</em>',

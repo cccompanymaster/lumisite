@@ -4,11 +4,9 @@
   const SESSION_KEY = 'lumi.session';
 
   const GRADES = [
-    { id: 'welcome', name: 'WELCOME', min: 0, discount: 0, color: '#9aa3ad', desc: '신규 가입 회원 등급' },
-    { id: 'silver', name: 'SILVER', min: 100000, discount: 0.02, color: '#b8b8b8', desc: '누적 구매 10만원 이상' },
-    { id: 'gold', name: 'GOLD', min: 300000, discount: 0.04, color: '#d4af37', desc: '누적 구매 30만원 이상' },
-    { id: 'vip', name: 'VIP', min: 500000, discount: 0.07, color: '#5b6ee8', desc: '누적 구매 50만원 이상' },
-    { id: 'vvip', name: 'VVIP', min: 1000000, discount: 0.10, color: '#1c2238', desc: '누적 구매 100만원 이상' }
+    { id: 'gold', name: 'GOLD', min: 200000, discount: 0.10, pointsRate: 0.15, color: '#d4af37', desc: '누적 구매 20만원 이상' },
+    { id: 'vip',  name: 'VIP',  min: 500000, discount: 0.15, pointsRate: 0.15, color: '#9c5050', desc: '누적 구매 50만원 이상' },
+    { id: 'vvip', name: 'VVIP', min: 1000000, discount: 0.25, pointsRate: 0.15, color: '#1c130f', desc: '누적 구매 100만원 이상' }
   ];
 
   function readUsers() {
@@ -27,8 +25,9 @@
 
   const Auth = {
     GRADES,
+    BASE_GRADE: { id: 'member', name: 'MEMBER', min: 0, discount: 0, pointsRate: 0, color: '#9aa3ad', desc: '일반 회원' },
     gradeOf(totalPurchase) {
-      let result = GRADES[0];
+      let result = this.BASE_GRADE;
       for (const g of GRADES) if (totalPurchase >= g.min) result = g;
       return result;
     },
@@ -43,7 +42,7 @@
         pw: hash(password),
         marketing: !!marketing,
         totalPurchase: 0,
-        points: 15000, // 가입 축하 적립금
+        points: 10000, // 가입 축하 적립금
         orders: [],
         createdAt: new Date().toISOString()
       };

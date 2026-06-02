@@ -24,14 +24,14 @@
     <div class="container">
       <span class="eyebrow">멤버십 라운지</span>
       <h1>이너 <em>서클</em></h1>
-      <p>ORAVIN 멤버만을 위한 다섯 단계의 특별한 혜택을 준비했어요. 누적 구매에 따라 자동으로 올라가는 멤버십 등급으로, 더 정성스러운 케어로 보답해드릴게요.</p>
+      <p>ORAVIN 멤버만을 위한 세 단계의 특별한 혜택을 준비했어요. 누적 구매에 따라 자동으로 올라가는 멤버십 등급으로, 더 정성스러운 케어로 보답해드릴게요.</p>
     </div>
   </section>
 
   <section class="section tight">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">다섯 등급</span>
+        <span class="eyebrow">세 등급</span>
         <h2>나의 <em>멤버십</em></h2>
       </div>
       <div class="tier-grid reveal-stagger" id="tierGrid"></div>
@@ -48,17 +48,17 @@
         <div class="benefit-item">
           <div class="icon-circle">01</div>
           <h3>웰컴 기프트</h3>
-          <p>가입하시면 바로 사용할 수 있는 15,000원 적립금을 선물해드려요. 첫 구매부터 부담 없이 시작해보세요.</p>
+          <p>신규 가입 시 10,000원 적립금 + 5,000원 웰컴 쿠폰을 즉시 선물해드려요. 첫 구매부터 부담 없이 시작해보세요.</p>
         </div>
         <div class="benefit-item">
           <div class="icon-circle">02</div>
-          <h3>무료 배송</h3>
-          <p>5만원 이상 구매하시면 전 등급 무료로 배송해드려요. 매번의 결제가 더 가볍게 느껴지실 거예요.</p>
+          <h3>생일 쿠폰</h3>
+          <p>생일 달이 되면 20% 할인 쿠폰을 자동으로 보내드려요. 특별한 한 달, ORAVIN이 함께할게요.</p>
         </div>
         <div class="benefit-item">
           <div class="icon-circle">03</div>
-          <h3>생일 쿠폰</h3>
-          <p>생일 달이 되면 10% 할인 쿠폰을 자동으로 보내드려요. 특별한 한 달, ORAVIN이 함께할게요.</p>
+          <h3>등급별 할인 쿠폰</h3>
+          <p>GOLD · VIP · VVIP 등급으로 올라갈 때마다 특별 할인 쿠폰을 선물해드려요. 누적 구매가 쌓일수록 혜택도 커집니다.</p>
         </div>
       </div>
     </div>
@@ -72,7 +72,7 @@
     <div class="text-side">
       <span class="eyebrow">ORAVIN과 함께</span>
       <h2>나만의 <em>홈에스테틱</em><br>지금 시작해보세요</h2>
-      <p>지금 ORAVIN 멤버가 되시면 가입과 동시에 15,000원 적립금을 선물해드려요. 누적 구매에 따라 등급도 자동으로 올라가니까, 매일의 케어가 더 특별해질 거예요.</p>
+      <p>지금 ORAVIN 멤버가 되시면 가입과 동시에 10,000원 적립금과 5,000원 웰컴 쿠폰을 선물해드려요. 누적 구매에 따라 등급도 자동으로 올라가니까, 매일의 케어가 더 특별해질 거예요.</p>
       <a class="btn btn-primary" href="signup.html" id="ctaSignup">멤버 가입하기</a>
     </div>
   </section>
@@ -94,7 +94,7 @@
           <div class="tier-min">${g.desc}</div>
           <div class="tier-benefits">
             구매 할인<br><strong>${(g.discount * 100).toFixed(0)}%</strong><br><br>
-            적립<br><strong>1%</strong><br><br>
+            적립<br><strong>${(g.pointsRate * 100).toFixed(0)}%</strong><br><br>
             ${g.id === 'vip' || g.id === 'vvip' ? '시즌 이벤트 우선 안내<br>VIP 한정 굿즈 증정' : '신상품 사전 알림'}
           </div>
         </div>
