@@ -100,9 +100,7 @@
             <span><strong>사업자등록번호.</strong> 147-81-03362</span>
             <span><strong>법인등록번호.</strong> 130111-0126014</span>
             <span><strong>통신판매업신고.</strong> 제 2025-수원팔달-XXXX호 (신청 예정)</span>
-            <span><strong>개업일.</strong> 2025년 07월 25일</span>
             <span class="biz-full"><strong>주소.</strong> 경기도 수원시 팔달구 팔달문로130번길 69, 가동 503-3에이호 (우만동, 아이월드)</span>
-            <span class="biz-full"><strong>업태.</strong> 도매 및 소매업 &nbsp;/&nbsp; <strong>종목.</strong> 전자상거래, 가전제품, 화장품·생활용품, 의류·가방·패션잡화, 기계설비 부품, 수출, 수입</span>
             <span class="biz-full"><strong>이메일.</strong> cukhw124@gmail.com &nbsp;&nbsp; <strong>개인정보보호책임자.</strong> JIN LINHUA</span>
           </div>
           <div class="copyright">© 2025 LUMI INTERNATIONAL CO., LTD. ALL RIGHTS RESERVED.</div>
