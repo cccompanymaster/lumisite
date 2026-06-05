@@ -1220,7 +1220,7 @@ input, select, textarea { font-family: inherit; font-size: 14px; }
 
   .membership-hero { padding: 140px 0 110px; }
   .membership-hero h1 { font-size: 68px; }
-  .tier-grid { grid-template-columns: repeat(5, 1fr); }
+  .tier-grid { grid-template-columns: repeat(3, 1fr); }
   .benefit-grid { grid-template-columns: repeat(3, 1fr); }
 
   .checkout-grid { grid-template-columns: 1.4fr 1fr; gap: 36px; padding: 50px 0 80px; }
