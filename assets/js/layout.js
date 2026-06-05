@@ -99,7 +99,7 @@
             <span><strong>대표.</strong> JIN LINHUA (김림화)</span>
             <span><strong>사업자등록번호.</strong> 147-81-03362</span>
             <span><strong>법인등록번호.</strong> 130111-0126014</span>
-            <span><strong>통신판매업신고.</strong> 제 2025-수원팔달-XXXX호 (신청 예정)</span>
+            <span><strong>통신판매업신고.</strong> 제 2026-수원팔달-0420호</span>
             <span class="biz-full"><strong>주소.</strong> 경기도 수원시 팔달구 팔달문로130번길 69, 가동 503-3에이호 (우만동, 아이월드)</span>
             <span class="biz-full"><strong>이메일.</strong> cukhw124@gmail.com &nbsp;&nbsp; <strong>개인정보보호책임자.</strong> JIN LINHUA</span>
           </div>
