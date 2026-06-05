@@ -110,8 +110,7 @@
           <div class="tier-min">${g.desc}</div>
           <div class="tier-benefits">
             구매 할인<br><strong>${(g.discount * 100).toFixed(0)}%</strong><br><br>
-            적립<br><strong>${(g.pointsRate * 100).toFixed(0)}%</strong><br><br>
-            ${g.id === 'vip' || g.id === 'vvip' ? '시즌 이벤트 우선 안내<br>VIP 한정 굿즈 증정' : '신상품 사전 알림'}
+            적립<br><strong>${(g.pointsRate * 100).toFixed(0)}%</strong>
           </div>
         </div>
       `).join('');
